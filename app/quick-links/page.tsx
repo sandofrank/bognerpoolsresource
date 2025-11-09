@@ -151,7 +151,7 @@ export default function ResourcesPage() {
         <div key={cardId} className="bg-white/80 backdrop-blur-sm rounded shadow border border-gray-200 overflow-hidden transition-all duration-300 mb-1">
           <button
             onClick={() => toggleCard(cardId)}
-            className="w-full px-2 py-1 bg-gradient-to-r from-slate-600 via-slate-700 to-slate-800 text-white hover:from-slate-700 hover:via-slate-800 hover:to-slate-900 transition-all duration-200 flex items-center justify-between min-h-[32px] touch-manipulation"
+            className="w-full px-2 py-1.5 bg-gradient-to-r from-slate-600 via-slate-700 to-slate-800 text-white hover:from-slate-700 hover:via-slate-800 hover:to-slate-900 transition-all duration-200 flex items-center justify-between min-h-[44px] touch-manipulation"
             aria-expanded={isExpanded}
             aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${category.title} section`}
           >
@@ -177,7 +177,7 @@ export default function ResourcesPage() {
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex items-center gap-1.5 px-2 py-1 rounded border border-gray-200 hover:border-bogner-teal hover:bg-gradient-to-r hover:from-blue-50 hover:to-teal-50 transition-all duration-200 min-h-[28px] touch-manipulation"
+                        className="group flex items-center gap-1.5 px-2 py-1.5 rounded border border-gray-200 hover:border-bogner-teal hover:bg-gradient-to-r hover:from-blue-50 hover:to-teal-50 transition-all duration-200 min-h-[44px] touch-manipulation"
                         aria-label={`Open ${link.name} in new tab`}
                       >
                         <img
