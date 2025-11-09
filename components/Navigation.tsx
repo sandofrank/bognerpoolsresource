@@ -11,6 +11,7 @@ export default function Navigation() {
   const { data: session } = useSession();
 
   const navItems = [
+    { href: '/', label: 'Home' },
     { href: '/quick-links', label: 'Quick Links' },
     { href: '/price-list', label: 'Price List' },
     { href: '/tools', label: 'Tools', comingSoon: true },
@@ -20,12 +21,8 @@ export default function Navigation() {
     <header className="bg-gradient-to-r from-bogner-blue via-blue-600 to-bogner-teal text-white shadow-xl rounded-t-xl backdrop-blur-sm" role="banner">
       <div className="px-3 sm:px-6 md:px-8">
         <div className="flex items-center justify-between py-3 sm:py-4 md:py-5">
-          <Link
-            href="/"
-            className="flex items-center gap-3 group min-h-[44px] touch-manipulation"
-            aria-label="Bogner Pools Resources Home"
-          >
-            <div className="relative h-10 sm:h-12 w-auto group-hover:scale-105 transition-transform duration-200">
+          <div className="flex items-center gap-3">
+            <div className="relative h-10 sm:h-12 w-auto">
               <Image
                 src="/bogner-logo.png"
                 alt="Bogner Pools"
@@ -38,7 +35,7 @@ export default function Navigation() {
             <span className="text-base sm:text-lg font-semibold tracking-tight hidden md:inline">
               Resources
             </span>
-          </Link>
+          </div>
           <nav aria-label="Main navigation">
             <ul className="flex gap-1 sm:gap-2 items-center">
               {navItems.map((item) => (
