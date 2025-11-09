@@ -18,17 +18,18 @@ export default function Navigation() {
   ];
 
   return (
-    <header className="bg-gradient-to-r from-bogner-blue via-blue-600 to-bogner-teal text-white shadow-xl rounded-t-xl backdrop-blur-sm overflow-visible" role="banner">
-      <div className="px-3 sm:px-6 md:px-8">
-        <div className="flex items-center justify-between py-4 sm:py-5 md:py-6">
-          <div className="relative h-14 sm:h-16 md:h-20 w-auto flex items-center py-1">
+    <header className="bg-gradient-to-r from-bogner-blue via-blue-600 to-bogner-teal text-white shadow-xl rounded-t-xl backdrop-blur-sm" role="banner">
+      <div className="px-3 sm:px-6 md:px-8 overflow-visible">
+        <div className="flex items-center justify-between py-5 sm:py-6 md:py-7 overflow-visible">
+          <div className="relative w-auto flex items-center -my-2">
             <Image
               src="/bogner-logo.png"
               alt="Bogner Pools"
               width={289}
               height={89}
-              className="h-full w-auto object-contain"
+              className="h-auto w-32 sm:w-40 md:w-48 object-contain"
               priority
+              style={{ maxHeight: 'none' }}
             />
           </div>
           <nav aria-label="Main navigation">
