@@ -128,9 +128,9 @@ export default function PriceListPage() {
   }
 
   return (
-    <div className="flex overflow-hidden gap-2 mt-2" style={{ minHeight: 'var(--content-height)' }}>
+    <div className="flex gap-2 mt-2" style={{ minHeight: 'var(--content-height)' }}>
         {/* Sidebar */}
-        <aside className="hidden lg:block w-48 xl:w-56 bg-white/80 backdrop-blur-sm overflow-y-auto rounded-xl shadow-lg border border-gray-200" role="navigation" aria-label="Price list sections">
+        <aside className="hidden lg:block w-48 xl:w-56 bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200 sticky top-2 self-start overflow-y-auto" style={{ maxHeight: 'calc(var(--content-height) - 1rem)' }} role="navigation" aria-label="Price list sections">
         <div className="p-2 bg-gradient-to-br from-slate-50 to-blue-50 border-b border-gray-200 rounded-t-xl">
           <h3 className="text-xs font-bold text-slate-700 tracking-tight flex items-center gap-1.5">
             <span className="w-1 h-3 bg-gradient-to-b from-bogner-blue to-bogner-teal rounded-full"></span>
@@ -231,7 +231,7 @@ export default function PriceListPage() {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col overflow-hidden bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200">
+      <main className="flex-1 flex flex-col bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200" style={{ maxHeight: 'calc(var(--content-height) - 0.5rem)' }}>
         {/* Search Bar */}
         <div className="p-2 bg-gradient-to-br from-slate-50 to-blue-50 border-b border-gray-200 rounded-t-xl">
           <div className="relative" role="search">
