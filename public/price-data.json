@@ -1,0 +1,3685 @@
+{
+  "title": "Bogner Price List",
+  "lastUpdated": "Last Updated 11-11-2025 Chris Cowles",
+  "categories": [
+    {
+      "name": "NEW CONSTRUCTION",
+      "sections": [
+        {
+          "name": "PHASE 1: PROJECT PLANNING & SITE PREPARATION",
+          "items": []
+        },
+        {
+          "name": "Pool Base Cost",
+          "items": [
+            {
+              "cost": 33320,
+              "unit": "EA",
+              "description": "Starting base cost for 72 perimeter. Includes solar pool cover to be drop shipped."
+            },
+            {
+              "cost": 297,
+              "unit": "PLF",
+              "description": "73'-80' perimeter add for every ft over 72'."
+            },
+            {
+              "cost": 324,
+              "unit": "PLF",
+              "description": "81'-100' perimeter add for every ft over 72'."
+            },
+            {
+              "cost": 346,
+              "unit": "PLF",
+              "description": "101'-125' perimeter add for every ft over 72'."
+            },
+            {
+              "cost": 378,
+              "unit": "PLF",
+              "description": "126'-130' perimeter add for every ft over 72'."
+            },
+            {
+              "cost": 600,
+              "unit": "EA",
+              "description": "Re-submittal to building department for changes made after 1st plan submittal due to additional engineering or plan changes."
+            }
+          ],
+          "notes": [
+            "Note – Engineering plans, building permits, unconditional lien releases, excavation from shallow end, 1 led white light, 1 set of shallow end steps, 1 deep end love seat, rope anchors, pentair quad de filter, variable speed pump, 10' of plumbing run, shotcrete to building code, group 5 tile, white safety grip coping, 1 cylindrical weir skimmer,return lines as needed, vgb complian dual safety main drains, up to 3'6\"-6' deep, electrical hook up, white plaster, brush, pole and leaf net, test kit, complete clean up, start up instructions.",
+            "Note - Over 130 perimeter bid as 2 pools."
+          ]
+        },
+        {
+          "name": "Pool Depths",
+          "items": [
+            {
+              "cost": 800,
+              "unit": "EA",
+              "description": "Over 6' deep under 550 SF with 7'6\" max."
+            },
+            {
+              "cost": 900,
+              "unit": "EA",
+              "description": "Over 6' deep over 550 SF with 7'6\" max."
+            },
+            {
+              "cost": 1300,
+              "unit": "EA",
+              "description": "Pool over 7'6\" not greater than 8'6\" deep."
+            },
+            {
+              "cost": 1000,
+              "unit": "EA",
+              "description": "Shallow end over 4' deep under 450 SF."
+            },
+            {
+              "cost": 1500,
+              "unit": "EA",
+              "description": "Shallow end over 4' deep over 450 SF and under 800 SF."
+            }
+          ]
+        },
+        {
+          "name": "Zone Charges",
+          "items": [
+            {
+              "cost": 800,
+              "unit": "EA",
+              "description": "Corona."
+            },
+            {
+              "cost": 800,
+              "unit": "EA",
+              "description": "Moreno Valley for shotcrete inspection."
+            },
+            {
+              "cost": 2800,
+              "unit": "EA",
+              "description": "North of the 10 freeway but south of the 210 freeway."
+            },
+            {
+              "cost": 3200,
+              "unit": "EA",
+              "description": "North of the 210 freeway."
+            },
+            {
+              "cost": 2800,
+              "unit": "EA",
+              "description": "Highland and Redlands north of hwy 38."
+            },
+            {
+              "cost": 600,
+              "unit": "EA",
+              "description": "Beaumont."
+            },
+            {
+              "cost": 500,
+              "unit": "EA",
+              "description": "Murrieta for hydrostatic valve."
+            }
+          ]
+        },
+        {
+          "name": "Structural Engineering",
+          "items": [
+            {
+              "cost": 250,
+              "unit": "EA",
+              "description": "Patio post closer than 7' to pool."
+            },
+            {
+              "cost": 55,
+              "unit": "PLF",
+              "description": "House closer than 7' to pool."
+            },
+            {
+              "cost": 60,
+              "unit": "PLF",
+              "description": "Upslope closer than 7' to pool. Pool depth up to 5'."
+            },
+            {
+              "cost": 95,
+              "unit": "PLF",
+              "description": "Upslope closer than 7' to pool. Pool depth more than 5'."
+            },
+            {
+              "cost": 80,
+              "unit": "PLF",
+              "description": "Upslope closer than 7' to pool with raised bond beam. Pool depth up to 5'."
+            },
+            {
+              "cost": 115,
+              "unit": "PLF",
+              "description": "Upslope closer than 7' to pool with raised bond beam. Pool depth more than 5'."
+            },
+            {
+              "cost": 65,
+              "unit": "PLF",
+              "description": "Upslope with block wall footing closer than 7' to pool. Pool depth up to 5'."
+            },
+            {
+              "cost": 105,
+              "unit": "PLF",
+              "description": "Upslope with block wall footing closer than 7' to pool. Pool depth more than 5'."
+            },
+            {
+              "cost": 85,
+              "unit": "PLF",
+              "description": "Upslope with block wall footing closer than 7' to pool with raised bond beam. Pool depth up to 5'."
+            },
+            {
+              "cost": 125,
+              "unit": "PLF",
+              "description": "Upslope with block wall footing closer than 7' to pool with raised bond beam. Pool depth more than 5'."
+            },
+            {
+              "cost": 150,
+              "unit": "EA",
+              "description": "Structural plan per instance."
+            },
+            {
+              "cost": 400,
+              "unit": "EA",
+              "description": "Minimum engineering charge."
+            },
+            {
+              "cost": 940,
+              "unit": "PLF",
+              "description": "Downslope area outside of vanishing edge area. Salesman must verify that downslope is 2:1."
+            },
+            {
+              "cost": "BID ONLY",
+              "unit": null,
+              "description": "Any downslope closer than 7' to pool."
+            }
+          ],
+          "notes": [
+            "Note - Soils reports to be paid by owner if necessary."
+          ]
+        },
+        {
+          "name": "Excavation",
+          "items": [
+            {
+              "cost": 700,
+              "unit": "EA",
+              "description": "Deep end ramp."
+            },
+            {
+              "cost": 850,
+              "unit": "EA",
+              "description": "Medium Bobcat dig with 6'-7'5\" clearance up to 400 SF. Over 400 SF, add $9.75 PSF."
+            },
+            {
+              "cost": 4290,
+              "unit": "EA",
+              "description": "Small bobcat dig With 4'6\"-6' clearance up to 400 sq SF. Over 400 SF, add $16.25 PSF."
+            },
+            {
+              "cost": 6.5,
+              "unit": "PLF",
+              "description": "Dirt walk over 200 LF. Measure from ramp to curb."
+            },
+            {
+              "cost": 465,
+              "unit": "EA",
+              "description": "Grading over 1 hour per load. Grading for retaining walls over 4' bid only. Add 1' to width of cut for walls."
+            },
+            {
+              "cost": 500,
+              "unit": "EA",
+              "description": "Saw cut up to 65'.  Minimum charge."
+            },
+            {
+              "cost": 6,
+              "unit": "PLF",
+              "description": "Saw cut over 65'."
+            },
+            {
+              "cost": 845,
+              "unit": "EA",
+              "description": "Grass loads with standard access. Grass and shrubs or trees cannot be mixed. 400 SF max per load."
+            },
+            {
+              "cost": 780,
+              "unit": "EA",
+              "description": "Tree or shrub loads with standard access. Grass and shrubs or trees cannot be mixed. Over 2 loads, bid only."
+            },
+            {
+              "cost": 780,
+              "unit": "EA",
+              "description": "Grass loads with small bobcat access. Grass and shrubs or trees cannot be mixed. Over 2 loads, bid only."
+            },
+            {
+              "cost": 780,
+              "unit": "EA",
+              "description": "Tree or shrub loads with small bobcat access. Grass and shrubs or trees cannot be mixed. Over 2 loads, bid only."
+            },
+            {
+              "cost": 700,
+              "unit": "EA",
+              "description": "Access wall disposal."
+            },
+            {
+              "cost": 1175,
+              "unit": "EA",
+              "description": "Concrete loads up to 500 SF. If total demo is under 250 SF, charge $750 for 1 partial load."
+            },
+            {
+              "cost": "BID ONLY",
+              "unit": null,
+              "description": "Garage access."
+            },
+            {
+              "cost": "BID ONLY",
+              "unit": null,
+              "description": "Access under 4'6\". Construction department needs photos with measurements to verify access."
+            },
+            {
+              "cost": "BID ONLY",
+              "unit": null,
+              "description": "Alternative dig options."
+            },
+            {
+              "cost": "BID ONLY",
+              "unit": null,
+              "description": "All other demo including but not limited to patio covers, bbqs, trash."
+            }
+          ],
+          "notes": [
+            "Note - Standard excavation includes 7'6\" wide x 10' tall access and grading for pool forms only.",
+            "Note - Any grass, bushes, trees, concrete, brick, or anything other than dirt is an additional cost."
+          ]
+        },
+        {
+          "name": "PHASE 2: POOL SHELL CONSTRUCTION",
+          "items": []
+        },
+        {
+          "name": "Shotcrete",
+          "items": [
+            {
+              "cost": 40,
+              "unit": "PLF",
+              "description": "Steps and seats over 35 LF including pool and spa."
+            },
+            {
+              "cost": 400,
+              "unit": "EA",
+              "description": "Set up shotcrete watering system if owner unable to water."
+            },
+            {
+              "cost": 650,
+              "unit": "EA",
+              "description": "Large step landing."
+            },
+            {
+              "cost": 800,
+              "unit": "EA",
+              "description": "2nd set of steps."
+            },
+            {
+              "cost": 12,
+              "unit": "PLF",
+              "description": "Clean up shotcrete in planter areas."
+            },
+            {
+              "cost": 12,
+              "unit": "PSF",
+              "description": "Strip and finish up to 45 SF. Over 45 SF, add 50% to total SF cost."
+            },
+            {
+              "cost": 900,
+              "unit": "EA",
+              "description": "Shotcrete bar stools with tile top in shallow end only."
+            },
+            {
+              "cost": 2750,
+              "unit": "EA",
+              "description": "Shotcrete bar table. 36” diameter with tile top."
+            },
+            {
+              "cost": 2500,
+              "unit": "EA",
+              "description": "Beach entry with flagstone transition."
+            },
+            {
+              "cost": 3,
+              "unit": "PLF",
+              "description": "Long shotcrete hose run over 200'."
+            }
+          ],
+          "notes": [
+            "Note - Any job exceeding 45 SF must be previewed by management before contract is signed."
+          ]
+        },
+        {
+          "name": "Raised Bond Beam",
+          "items": [
+            {
+              "cost": 32,
+              "unit": "PLF",
+              "description": "6” RAISED BOND BEAM W/ TILE FACE"
+            },
+            {
+              "cost": 60,
+              "unit": "PLF",
+              "description": "12” RAISED BOND BEAM W/ TILE FACE"
+            },
+            {
+              "cost": 84,
+              "unit": "PLF",
+              "description": "18” RAISED BOND BEAM W/ TILE FACE"
+            },
+            {
+              "cost": 31,
+              "unit": "PLF",
+              "description": "OVER 18\" RBB ADD PER 6\" RAISE (RAISED BOND BEAM OVER 30” IS BID ONLY)"
+            },
+            {
+              "cost": 27,
+              "unit": "PSF",
+              "description": "UPGRADE TO FLAGSTONE FACE ADD"
+            },
+            {
+              "cost": 33,
+              "unit": "PSF",
+              "description": "UPGRADE TO MAN MADE STONE ADD"
+            },
+            {
+              "cost": 57,
+              "unit": "PSF",
+              "description": "UPGRADE TO REAL LEDGE STONE"
+            }
+          ]
+        },
+        {
+          "name": "Wing Walls",
+          "items": [
+            {
+              "cost": 52,
+              "unit": "PLF",
+              "description": "6” wing wall with no facing included. Max 8’ long."
+            },
+            {
+              "cost": 80,
+              "unit": "PLF",
+              "description": "12” wing wall with no facing included. Max 8’ long."
+            },
+            {
+              "cost": 105,
+              "unit": "PLF",
+              "description": "18” wing wall with no facing included. Max 8’ long."
+            }
+          ]
+        },
+        {
+          "name": "Vanishing Edge",
+          "items": [
+            {
+              "cost": 950,
+              "unit": "PLF",
+              "description": "Pools up to 5' deep at edge. Measure entire length of catch basin."
+            },
+            {
+              "cost": 1050,
+              "unit": "PLF",
+              "description": "Pools over 5' deep at edge. Measure entire length of catch basin."
+            }
+          ]
+        },
+        {
+          "name": "Spa Base Cost",
+          "items": [
+            {
+              "cost": 5840,
+              "unit": "EA",
+              "description": "6' circle with 4 anzen jets."
+            },
+            {
+              "cost": 6390,
+              "unit": "EA",
+              "description": "7' circle with 6 anzen jets."
+            },
+            {
+              "cost": 6760,
+              "unit": "EA",
+              "description": "8' circle with 6 anzen jets."
+            },
+            {
+              "cost": 6220,
+              "unit": "EA",
+              "description": "6' square with 4 anzen jets."
+            },
+            {
+              "cost": 6780,
+              "unit": "EA",
+              "description": "7' square with 6 anzen jets."
+            },
+            {
+              "cost": 7520,
+              "unit": "EA",
+              "description": "8' square with 6 anzen jets."
+            }
+          ],
+          "notes": [
+            "Note – Includes 1 spillway, split level bench, LED white light, anzen jets.",
+            "Note - Max 6 anzen or 4 anzen with 2 rotating jets on recirculation pump."
+          ]
+        },
+        {
+          "name": "Spa Extras",
+          "items": [
+            {
+              "cost": 700,
+              "unit": "EA",
+              "description": "Add for any octagon."
+            },
+            {
+              "cost": 175,
+              "unit": "EA",
+              "description": "Additional anzen jet. 7 anzen jets max without a booster pump). Spa run cannot exceed 50'."
+            },
+            {
+              "cost": 275,
+              "unit": "EA",
+              "description": "Additional rotating jet. 4 rotating jets max without a booster pump. 6 jets max if mixed without a booster pump."
+            },
+            {
+              "cost": 700,
+              "unit": "EA",
+              "description": "Air in seat. Add blower cost."
+            },
+            {
+              "cost": 500,
+              "unit": "EA",
+              "description": "Blower."
+            },
+            {
+              "cost": 500,
+              "unit": "EA",
+              "description": "5g LED colored spa light upgrade."
+            },
+            {
+              "cost": 2192,
+              "unit": "EA",
+              "description": "Variable speed booster pump."
+            },
+            {
+              "cost": 340,
+              "unit": "EA",
+              "description": "Raise spa 6”."
+            },
+            {
+              "cost": 490,
+              "unit": "EA",
+              "description": "Raise spa 12”."
+            },
+            {
+              "cost": 640,
+              "unit": "EA",
+              "description": "Raise spa 18”."
+            },
+            {
+              "cost": 250,
+              "unit": "EA",
+              "description": "Raise spa over 18”. Max 30”. Add for every additional 6”. Over 30” is bid only."
+            }
+          ]
+        },
+        {
+          "name": "Spa Walls",
+          "items": [
+            {
+              "cost": 147,
+              "unit": "PLF",
+              "description": "12” wide spa wall."
+            },
+            {
+              "cost": 185,
+              "unit": "PLF",
+              "description": "18” wide spa wall."
+            },
+            {
+              "cost": 240,
+              "unit": "PLF",
+              "description": "24” wide spa wall."
+            },
+            {
+              "cost": 400,
+              "unit": "EA",
+              "description": "Additional tile spill way."
+            },
+            {
+              "cost": 400,
+              "unit": "EA",
+              "description": "Additional flagstone spill way."
+            },
+            {
+              "cost": 255,
+              "unit": "PLF",
+              "description": "Tile tiered spa wall. Charge for each step X LF cost.)"
+            },
+            {
+              "cost": 425,
+              "unit": "PSF",
+              "description": "Real stacked ledgerstone spa wall."
+            }
+          ]
+        },
+        {
+          "name": "Spa Only",
+          "items": [
+            {
+              "cost": 32900,
+              "unit": "EA",
+              "description": "Spa only. Max 40' perimeter and 64 SF. Add plumbing runs and gas line."
+            }
+          ],
+          "notes": [
+            "Note – Includes 6 anzen jets, LED white light, 400,000 BTU heater, white plaster."
+          ]
+        },
+        {
+          "name": "PHASE 3: PLUMBING SYSTEMS",
+          "items": []
+        },
+        {
+          "name": "Pool Plumbing",
+          "items": [
+            {
+              "cost": 27,
+              "unit": "PLF",
+              "description": "2” Skimmer over 10' of total run. Also applies to spa only."
+            },
+            {
+              "cost": 38.5,
+              "unit": "PLF",
+              "description": "2-1/2” Skimmer over 50' of total run. Also applies to spa only."
+            },
+            {
+              "cost": 51.5,
+              "unit": "PLF",
+              "description": "3” Skimmer over 100' of total run. Also applies to spa only."
+            },
+            {
+              "cost": 200,
+              "unit": "EA",
+              "description": "Manual fill line with valve."
+            },
+            {
+              "cost": 375,
+              "unit": "EA",
+              "description": "Automatic fill line with overflow."
+            },
+            {
+              "cost": 5.25,
+              "unit": "PLF",
+              "description": "Fill line over 20'."
+            },
+            {
+              "cost": 800,
+              "unit": "EA",
+              "description": "2nd skimmer for pools over 800 SF."
+            },
+            {
+              "cost": 11.5,
+              "unit": "PLF",
+              "description": "2nd skimmer run to eq or other skimmer."
+            },
+            {
+              "cost": 140,
+              "unit": "EA",
+              "description": "Additional 1” return line to 20'."
+            },
+            {
+              "cost": 9,
+              "unit": "PLF",
+              "description": "Water feature plumbing less than 50' from pool."
+            },
+            {
+              "cost": 10.5,
+              "unit": "PLF",
+              "description": "Water feature plumbing 50' or more from pool."
+            },
+            {
+              "cost": 195,
+              "unit": "EA",
+              "description": "Water feature valve."
+            },
+            {
+              "cost": 24.5,
+              "unit": "PLF",
+              "description": "Solar stub with 2” plumbing lines and 1/2” conduit."
+            },
+            {
+              "cost": 1000,
+              "unit": "EA",
+              "description": "Delay equipment set."
+            },
+            {
+              "cost": 825,
+              "unit": "EA",
+              "description": "Below grade equipment set."
+            },
+            {
+              "cost": 2132,
+              "unit": "EA",
+              "description": "Variable speed water feature pump."
+            },
+            {
+              "cost": 8.5,
+              "unit": "PLF",
+              "description": "PVC line to P-Trap"
+            },
+            {
+              "cost": 150,
+              "unit": "EA",
+              "description": "Hose bib. Use fill line PLF cost."
+            },
+            {
+              "cost": 225,
+              "unit": "EA",
+              "description": "Dig under side walk for pool or spa plumbing. Max 36\" wide sidewalk. Charge per line."
+            },
+            {
+              "cost": "BID ONLY",
+              "unit": null,
+              "description": "Iron line to P-Trap"
+            }
+          ]
+        },
+        {
+          "name": "Spa Plumbing",
+          "items": [
+            {
+              "cost": 29.25,
+              "unit": "PLF",
+              "description": "2” Spa run to 35'."
+            },
+            {
+              "cost": 44.5,
+              "unit": "PLF",
+              "description": "2-1/2” Spa run over 35' total run."
+            },
+            {
+              "cost": 52,
+              "unit": "PLF",
+              "description": "2-1/2” Spa run over 65' total run. Over 85', bid only."
+            },
+            {
+              "cost": 29.25,
+              "unit": "PLF",
+              "description": "2” Spa booster run to 35'."
+            },
+            {
+              "cost": 44.5,
+              "unit": "PLF",
+              "description": "2-1/2” Spa booster run over 35' total run."
+            },
+            {
+              "cost": 52,
+              "unit": "PLF",
+              "description": "2-1/2” Spa booster run over 65' total run. Over 85', bid only."
+            }
+          ]
+        },
+        {
+          "name": "In Floor Cleaner",
+          "items": [
+            {
+              "cost": 78.5,
+              "unit": "PLF",
+              "description": "Run from pool to water valve."
+            },
+            {
+              "cost": 14,
+              "unit": "PLF",
+              "description": "Run from water valve to equipment."
+            },
+            {
+              "cost": 1200,
+              "unit": "EA",
+              "description": "Cleaner in spa."
+            },
+            {
+              "cost": 835,
+              "unit": "EA",
+              "description": "Leaf vac basket."
+            },
+            {
+              "cost": 7100,
+              "unit": "EA",
+              "description": "Under 400 SF."
+            },
+            {
+              "cost": 7425,
+              "unit": "EA",
+              "description": "Under 500 SF."
+            },
+            {
+              "cost": 7580,
+              "unit": "EA",
+              "description": "Under 600 SF."
+            },
+            {
+              "cost": 8260,
+              "unit": "EA",
+              "description": "Under 650 SF."
+            },
+            {
+              "cost": 8835,
+              "unit": "EA",
+              "description": "Under 700 SF."
+            },
+            {
+              "cost": 9455,
+              "unit": "EA",
+              "description": "Under 750 SF."
+            },
+            {
+              "cost": 1075,
+              "unit": "EA",
+              "description": "Additional 2 port water valve for pools over 750 SF."
+            },
+            {
+              "cost": 172,
+              "unit": "EA",
+              "description": "Additional in floor head. Figure 1 head per 8 LF of seats and steps over 30 LF."
+            }
+          ]
+        },
+        {
+          "name": "Pool Sweeps",
+          "items": [
+            {
+              "cost": 375,
+              "unit": "EA",
+              "description": "Pool sweep line and valve only. Specify suction or pressure."
+            },
+            {
+              "cost": 200,
+              "unit": "EA",
+              "description": "Manual vac and hose."
+            },
+            {
+              "cost": 785,
+              "unit": "EA",
+              "description": "The pool cleaner with line and valve."
+            }
+          ]
+        },
+        {
+          "name": "Drains",
+          "items": [
+            {
+              "cost": 9.1,
+              "unit": "PLF",
+              "description": "3” drain line."
+            },
+            {
+              "cost": 18,
+              "unit": "EA",
+              "description": "3” drain head. PVC yard drain."
+            },
+            {
+              "cost": 27,
+              "unit": "EA",
+              "description": "3” drain head. Poured concrete cap."
+            },
+            {
+              "cost": 22.5,
+              "unit": "PLF",
+              "description": "NDS channel drains, grey."
+            },
+            {
+              "cost": 25,
+              "unit": "PLF",
+              "description": "NDS channel drains, tan."
+            },
+            {
+              "cost": 100,
+              "unit": "EA",
+              "description": "Pop-up drain head."
+            },
+            {
+              "cost": 495,
+              "unit": "EA",
+              "description": "Curb core. North of 210 and Highland, add $100."
+            }
+          ]
+        },
+        {
+          "name": "Gas Lines",
+          "items": [
+            {
+              "cost": 15.25,
+              "unit": "PLF",
+              "description": "PEC gas line over 20' up to 100'."
+            },
+            {
+              "cost": 16.75,
+              "unit": "PLF",
+              "description": "PEC gas line over 100' up to 150'."
+            },
+            {
+              "cost": 19.25,
+              "unit": "PLF",
+              "description": "PEC gas line over 150' to 250'."
+            },
+            {
+              "cost": 15.25,
+              "unit": "PLF",
+              "description": "Riverside County only gas line over 20' up to 40'."
+            },
+            {
+              "cost": 16.75,
+              "unit": "PLF",
+              "description": "Riverside County only gas line over 40' up to 80'."
+            },
+            {
+              "cost": 19.75,
+              "unit": "PLF",
+              "description": "Riverside County only gas line over 80' up to 250'."
+            },
+            {
+              "cost": 23.25,
+              "unit": "PLF",
+              "description": "Iron gas line over 20' up to 100' total length of gas line."
+            },
+            {
+              "cost": 25.25,
+              "unit": "PLF",
+              "description": "Iron gas line over 100' up to 150' total length of gas line."
+            },
+            {
+              "cost": 30.25,
+              "unit": "PLF",
+              "description": "Iron gas line over 150' up to 250' total length of gas line."
+            },
+            {
+              "cost": 15.25,
+              "unit": "PLF",
+              "description": "Fire pit and bbq gas line."
+            },
+            {
+              "cost": 215,
+              "unit": "EA",
+              "description": "Fire pit and bbq tee each."
+            },
+            {
+              "cost": 305,
+              "unit": "EA",
+              "description": "Fire pit burner and valve each for 30” ID fire pit."
+            },
+            {
+              "cost": 225,
+              "unit": "EA",
+              "description": "Dig under side walk for gas line up to 36\" wide per line."
+            },
+            {
+              "cost": 8,
+              "unit": "PLF",
+              "description": "Venting for gas line under patio cover. Add to gas line cost."
+            },
+            {
+              "cost": "BID ONLY",
+              "unit": null,
+              "description": "Any gas line over 250'."
+            },
+            {
+              "cost": "BID ONLY",
+              "unit": null,
+              "description": "Any gas line through attic."
+            }
+          ]
+        },
+        {
+          "name": "PHASE 4: EQUIPMENT INSTALLATION",
+          "items": []
+        },
+        {
+          "name": "Heaters",
+          "items": [
+            {
+              "cost": 3640,
+              "unit": "EA",
+              "description": "150,000 BTU Mastertemp heater."
+            },
+            {
+              "cost": 3952,
+              "unit": "EA",
+              "description": "300,000 BTU Mastertemp heater."
+            },
+            {
+              "cost": 4560,
+              "unit": "EA",
+              "description": "400,000 BTU Mastertemp heater."
+            },
+            {
+              "cost": 4845,
+              "unit": "EA",
+              "description": "108,000 BTU Ultratemp heat pump. Must be used in conjunction with gas heater. Add electrical."
+            },
+            {
+              "cost": 250,
+              "unit": "EA",
+              "description": "Reverse heater set for window clearance."
+            }
+          ]
+        },
+        {
+          "name": "Sanitizers",
+          "items": [
+            {
+              "cost": 395,
+              "unit": "EA",
+              "description": "Rainbow 320 in-line chlorine feeder."
+            },
+            {
+              "cost": 1500,
+              "unit": "EA",
+              "description": "Del-Ozone with auto adjusting flow."
+            },
+            {
+              "cost": 2790,
+              "unit": "EA",
+              "description": "Salt chlorine generator with cleaning kit."
+            }
+          ]
+        },
+        {
+          "name": "PHASE 5: ELECTRICAL SYSTEMS",
+          "items": []
+        },
+        {
+          "name": "Electrical",
+          "items": [
+            {
+              "cost": 8.25,
+              "unit": "PLF",
+              "description": "PVC home run for up to two items. Ie, pump, blower, refrigerator, etc."
+            },
+            {
+              "cost": 17.85,
+              "unit": "PLF",
+              "description": "PVC home run with heat pump and single pump system, 80A.."
+            },
+            {
+              "cost": 19,
+              "unit": "PLF",
+              "description": "PVC home run with heat pump and two pump system 100A. More than 2 pumps, bid only."
+            },
+            {
+              "cost": 2.25,
+              "unit": "PLF",
+              "description": "Add to home run for each additional pump, blower, refrigerator. Over 3 additional items bid only."
+            },
+            {
+              "cost": 2.5,
+              "unit": "PLF",
+              "description": "Any home run over 150', add."
+            },
+            {
+              "cost": 8.25,
+              "unit": "PLF",
+              "description": "Electrical run to j-box, outlet, bbq, lamp post, cover motor, remote control, low voltage."
+            },
+            {
+              "cost": 6.5,
+              "unit": "PLF",
+              "description": "PVC run to lights."
+            },
+            {
+              "cost": 200,
+              "unit": "EA",
+              "description": "Additional 110v circuit. Required for bbq with refrigerator."
+            },
+            {
+              "cost": 150,
+              "unit": "EA",
+              "description": "Additional 110v receptacle."
+            },
+            {
+              "cost": 600,
+              "unit": "EA",
+              "description": "Credit to owner for time clock and equipment wiring."
+            },
+            {
+              "cost": 1,
+              "unit": "PLF",
+              "description": "Credit to owner for existing conduit."
+            },
+            {
+              "cost": 350,
+              "unit": "EA",
+              "description": "Sub panel at house panel."
+            },
+            {
+              "cost": 300,
+              "unit": "EA",
+              "description": "Install owners lamp post or column lamp. Add footing if not in decking area, $300 EA."
+            },
+            {
+              "cost": 450,
+              "unit": "EA",
+              "description": "Colored LED light controller (up to 3 lights, not needed if remote is present)"
+            },
+            {
+              "cost": 12,
+              "unit": "PLF",
+              "description": "50A spa power. Add $250 for spa disconnect box if needed."
+            },
+            {
+              "cost": 225,
+              "unit": "EA",
+              "description": "Dig under side walk for electrical line. 36\" wide max.  Charge per line."
+            },
+            {
+              "cost": 200,
+              "unit": "EA",
+              "description": "LED step lights white. Add footage."
+            },
+            {
+              "cost": 275,
+              "unit": "EA",
+              "description": "LED step lights oil rubbed bronze. Add footage."
+            },
+            {
+              "cost": 15,
+              "unit": "PLF",
+              "description": "Electrical for booster pump not at equipment."
+            },
+            {
+              "cost": "BID ONLY",
+              "unit": null,
+              "description": "Panel change."
+            },
+            {
+              "cost": "BID ONLY",
+              "unit": null,
+              "description": "New riser pipe."
+            },
+            {
+              "cost": "BID ONLY",
+              "unit": null,
+              "description": "Badu jet power."
+            }
+          ]
+        },
+        {
+          "name": "Remote Controls",
+          "items": [
+            {
+              "cost": 5392,
+              "unit": "EA",
+              "description": "Intellicenter i5 with salt. Phone control only. Wireless handheld extra"
+            },
+            {
+              "cost": 5922,
+              "unit": "EA",
+              "description": "Intellicenter i8 with salt. Phone control only. Wireless handheld extra"
+            },
+            {
+              "cost": 6273,
+              "unit": "EA",
+              "description": "Intellicenter i10 with salt. Phone control only. Wireless handheld extra"
+            },
+            {
+              "cost": 3672,
+              "unit": "EA",
+              "description": "Intellicenter i5 without salt. Phone control only. Wireless handheld extra"
+            },
+            {
+              "cost": 4135,
+              "unit": "EA",
+              "description": "Intellicenter i8 without salt. Phone control only. Wireless handheld extra"
+            },
+            {
+              "cost": 1400,
+              "unit": "EA",
+              "description": "Wireless handheld remote for Intellicenter."
+            },
+            {
+              "cost": 350,
+              "unit": "EA",
+              "description": "Additional motorized valve at equipment."
+            },
+            {
+              "cost": 7.5,
+              "unit": "PLF",
+              "description": "Motorized valve conduit run."
+            }
+          ]
+        },
+        {
+          "name": "PHASE 6: INTERIOR FINISHES",
+          "items": []
+        },
+        {
+          "name": "Tile",
+          "items": [
+            {
+              "cost": 12,
+              "unit": "PLF",
+              "description": "Group 6 and 7 tile per 6” row."
+            },
+            {
+              "cost": 3,
+              "unit": "PLF",
+              "description": "Colored grout."
+            },
+            {
+              "cost": 12.5,
+              "unit": "PLF",
+              "description": "Step tile trim."
+            },
+            {
+              "cost": 12.5,
+              "unit": "EA",
+              "description": "3” spotters."
+            },
+            {
+              "cost": 32,
+              "unit": "PLF",
+              "description": "Swim lane. One row of tile."
+            },
+            {
+              "cost": 52,
+              "unit": "PSF",
+              "description": "Tile spa exterior with group 4 tile. Add strip and finish."
+            },
+            {
+              "cost": 27,
+              "unit": "PLF",
+              "description": "Tile back of vanishing edge wall with group 5 tile per 6” row."
+            }
+          ]
+        },
+        {
+          "name": "Coping",
+          "items": [
+            {
+              "cost": 13,
+              "unit": "PLF",
+              "description": "Safety grip coping with custom color. Add to coping cost."
+            },
+            {
+              "cost": 15,
+              "unit": "PLF",
+              "description": "Safety grip coping with sandblast finish. Add to coping cost."
+            },
+            {
+              "cost": 30,
+              "unit": "EA",
+              "description": "Safety grip coping miter."
+            },
+            {
+              "cost": 45,
+              "unit": "PLF",
+              "description": "12” bullnose brick."
+            },
+            {
+              "cost": 35,
+              "unit": "EA",
+              "description": "Brick miter."
+            },
+            {
+              "cost": 40,
+              "unit": "PLF",
+              "description": "Pie cut brick coping. Add to coping cost."
+            },
+            {
+              "cost": 52,
+              "unit": "PLF",
+              "description": "Flagstone."
+            },
+            {
+              "cost": 23.5,
+              "unit": "PLF",
+              "description": "1-1/2” square cantilever edge. Add decking SF."
+            },
+            {
+              "cost": 23.5,
+              "unit": "PLF",
+              "description": "1-1/2” radius cantilever edge. Add decking SF."
+            },
+            {
+              "cost": 6,
+              "unit": "PLF",
+              "description": "2-1/2” cantilever edge. Add decking SF. Add to 1-1/2” cantilever cost."
+            },
+            {
+              "cost": 43,
+              "unit": "PLF",
+              "description": "12”x24” precast with color, sandblast and radius or square one side."
+            },
+            {
+              "cost": 18,
+              "unit": "PLF",
+              "description": "12”x24” precast white with salt finish and radius or square one side."
+            },
+            {
+              "cost": 35,
+              "unit": "EA",
+              "description": "Precast miter."
+            },
+            {
+              "cost": 39.5,
+              "unit": "PLF",
+              "description": "Icontile travertine 12\"x12\" 3cm all colors."
+            },
+            {
+              "cost": 33,
+              "unit": "PLF",
+              "description": "Icontile travertine 12\"x24\" 3cm all colors."
+            },
+            {
+              "cost": 47,
+              "unit": "PLF",
+              "description": "Icontile travertine 12\"x12\" 5cm all colors."
+            },
+            {
+              "cost": 44,
+              "unit": "PLF",
+              "description": "Icontile travertine 12\"x24\" 5cm all colors."
+            },
+            {
+              "cost": 48,
+              "unit": "EA",
+              "description": "Icontile travertine miter."
+            },
+            {
+              "cost": 17,
+              "unit": "PLF",
+              "description": "Icontile travertine pie cut on radius. Add to coping cost."
+            }
+          ]
+        },
+        {
+          "name": "PHASE 7: POOL FEATURES & ACCESSORIES",
+          "items": []
+        },
+        {
+          "name": "Pool Extras",
+          "items": [
+            {
+              "cost": 990,
+              "unit": "EA",
+              "description": "Additional LED white pool light. 1 light per 600 SF white plaster or 400 SF colored material."
+            },
+            {
+              "cost": 652,
+              "unit": "EA",
+              "description": "Upgrade LED light color from LED white. 1 light per 500 SF white plaster or 350 sf colored material. Needs controls."
+            },
+            {
+              "cost": 670,
+              "unit": "EA",
+              "description": "Micro-Bright light. 1 light per 100 SF. If facing up, add $200 EA. Add $6 PLF for each light to transformer."
+            },
+            {
+              "cost": 400,
+              "unit": "EA",
+              "description": "Transformer for Micro-Bright lights. 6 lights max. Add $6 PLF."
+            },
+            {
+              "cost": 200,
+              "unit": "EA",
+              "description": "Upgrade filter per size."
+            },
+            {
+              "cost": 1350,
+              "unit": "EA",
+              "description": "6' Flyte 2 diving board."
+            },
+            {
+              "cost": 1575,
+              "unit": "EA",
+              "description": "8' Flyte 2 diving board."
+            },
+            {
+              "cost": 1900,
+              "unit": "EA",
+              "description": "8' 608 cantilever spring diving board."
+            },
+            {
+              "cost": 2850,
+              "unit": "EA",
+              "description": "Left or right hand slide with water line. White SR Smith Rogue."
+            },
+            {
+              "cost": 3650,
+              "unit": "EA",
+              "description": "Left or right hand slide with water line. Colored SR Smith Rogue."
+            },
+            {
+              "cost": 800,
+              "unit": "EA",
+              "description": "3 recessed step treads with 2 grab rails"
+            },
+            {
+              "cost": 525,
+              "unit": "EA",
+              "description": "Figure 4 hand rail 54” for pools and spas."
+            },
+            {
+              "cost": 400,
+              "unit": "EA",
+              "description": "Figure 4 hand rail 30” for spas."
+            },
+            {
+              "cost": 650,
+              "unit": "EA",
+              "description": "SR Smith artisan hand rail."
+            },
+            {
+              "cost": 650,
+              "unit": "EA",
+              "description": "SR Smith meridian hand rail."
+            },
+            {
+              "cost": 125,
+              "unit": "EA",
+              "description": "Umbrella sleeve in deck or pool. Specify white, grey or tan."
+            },
+            {
+              "cost": 310,
+              "unit": "EA",
+              "description": "P-Trap ABS."
+            },
+            {
+              "cost": 550,
+              "unit": "EA",
+              "description": "P-Trap Iron."
+            },
+            {
+              "cost": 800,
+              "unit": "EA",
+              "description": "Separation tank with backwash valve."
+            },
+            {
+              "cost": 200,
+              "unit": "EA",
+              "description": "Backwash valve only."
+            },
+            {
+              "cost": 750,
+              "unit": "EA",
+              "description": "Pump insulation for city of Beaumont."
+            },
+            {
+              "cost": 400,
+              "unit": "EA",
+              "description": "Watering system if owner unable to water cure shotcrete."
+            },
+            {
+              "cost": 500,
+              "unit": "EA",
+              "description": "Portable toilet located on or near driveway."
+            }
+          ]
+        },
+        {
+          "name": "Water Features",
+          "items": [
+            {
+              "cost": 350,
+              "unit": "EA",
+              "description": "Deck mount brass nozzle."
+            },
+            {
+              "cost": 285,
+              "unit": "EA",
+              "description": "Sheer descent water feature 1st LF. Bid only if over 9' of combined length. 6' max combined length on sheer descent without booster pump"
+            },
+            {
+              "cost": 155,
+              "unit": "PLF",
+              "description": "Sheer descent each additional LF. Over 4' is bid only."
+            },
+            {
+              "cost": 100,
+              "unit": "EA",
+              "description": "Radius cut sheer descent. No radius under 4' or length over 3'."
+            }
+          ]
+        },
+        {
+          "name": "Motorized Pool Cover",
+          "items": [
+            {
+              "cost": "BID ONLY",
+              "unit": "EA",
+              "description": "All cover sizes"
+            },
+            {
+              "cost": 2850,
+              "unit": "EA",
+              "description": "Shotcrete vault up to 15' wide."
+            },
+            {
+              "cost": 3050,
+              "unit": "EA",
+              "description": "Shotcrete vault up to 20' wide."
+            },
+            {
+              "cost": 3250,
+              "unit": "EA",
+              "description": "Shotcrete vault up to 24' wide."
+            },
+            {
+              "cost": 7,
+              "unit": "PLF",
+              "description": "110v electrical to switch. Must be in full view of the entire pool."
+            },
+            {
+              "cost": 7,
+              "unit": "PLF",
+              "description": "110v electrical from switch to motor."
+            },
+            {
+              "cost": 400,
+              "unit": "EA",
+              "description": "Water feature sensor plus electrical to pool equipment from vault."
+            }
+          ],
+          "notes": [
+            "Note - ncludes fitted and stitched vinyl cover from poolsafe, drum and drive mechanism, dayton gear drive motor w/ 3 yr warranty, aluminum under deck track w/ glider system and aluminum motor cover, drains in vault (figure drains, vault must drain somewhere), lowered and tiled bond beam in front of mechanism vault, wired key switch, fabric colors:  aqua, light blue, grey, tan, dark blue, operation manual, installation labor, shotcrete mechanism vault, #8 bond wire for vault, standard alum vault cover, installed with any coping."
+          ]
+        },
+        {
+          "name": "PHASE 8: DECKING & HARDSCAPE",
+          "items": []
+        },
+        {
+          "name": "Decking",
+          "items": [
+            {
+              "cost": 3900,
+              "unit": "EA",
+              "description": "Minimum concrete charge. Includes decking, utility re-pour, cantilever, and cantilever banding."
+            },
+            {
+              "cost": 400,
+              "unit": "EA",
+              "description": "Decking base cost."
+            },
+            {
+              "cost": 8.3,
+              "unit": "PSF",
+              "description": "Broom or salt finish."
+            },
+            {
+              "cost": 9.1,
+              "unit": "PSF",
+              "description": "Scored broom or salt finish. 4'x4' or larger pattern."
+            },
+            {
+              "cost": 10,
+              "unit": "PSF",
+              "description": "Scored broom or salt finish. Smaller than 4'x4' pattern."
+            },
+            {
+              "cost": 10.6,
+              "unit": "PSF",
+              "description": "Exposed top cast aggregate type finish."
+            },
+            {
+              "cost": 10.5,
+              "unit": "PSF",
+              "description": "Stamped random rock finish."
+            },
+            {
+              "cost": 15.6,
+              "unit": "PSF",
+              "description": "Separate pour banding. This applies to coping only jobs too."
+            },
+            {
+              "cost": 1.75,
+              "unit": "PSF",
+              "description": "Add color to any finish 1% loading."
+            },
+            {
+              "cost": 2.75,
+              "unit": "PSF",
+              "description": "Add color to any finish 2% loading."
+            },
+            {
+              "cost": 3.25,
+              "unit": "PSF",
+              "description": "Add color to any finish 3% loading."
+            },
+            {
+              "cost": 4,
+              "unit": "PSF",
+              "description": "Add color to any finish 4% loading."
+            },
+            {
+              "cost": 350,
+              "unit": "EA",
+              "description": "Concrete pump for banding, pours under 500 SF or 2 color pours."
+            },
+            {
+              "cost": 1.5,
+              "unit": "PSF",
+              "description": "Any deck under 600 SF. Add PSF."
+            },
+            {
+              "cost": 2.75,
+              "unit": "PSF",
+              "description": "Any deck under 400 SF. Add PSF."
+            },
+            {
+              "cost": 3.25,
+              "unit": "PSF",
+              "description": "Any deck under 300 SF. Add PSF."
+            },
+            {
+              "cost": 2,
+              "unit": "PSF",
+              "description": "Shiners on deckwork."
+            },
+            {
+              "cost": 5.5,
+              "unit": "PLF",
+              "description": "Form for brick or stone ribbons."
+            },
+            {
+              "cost": 3.5,
+              "unit": "PSF",
+              "description": "Wire mesh in place of stealth fibers."
+            },
+            {
+              "cost": 4.5,
+              "unit": "PSF",
+              "description": "#3 rebar 18” OC for RV and driveway areas."
+            },
+            {
+              "cost": 7.47,
+              "unit": "PLF",
+              "description": "Mastic. $747.00 minimum."
+            },
+            {
+              "cost": 700,
+              "unit": "EA",
+              "description": "Owner deck or no deck. Backfill trenches with no compaction."
+            },
+            {
+              "cost": 4.5,
+              "unit": "PSF",
+              "description": "Stepping stones. Add to concrete cost. $600 minimum."
+            },
+            {
+              "cost": 250,
+              "unit": "EA",
+              "description": "Re-pour nat grey sawcut when deck is colored. Add footage."
+            },
+            {
+              "cost": 1.5,
+              "unit": "PSF",
+              "description": "Add texture stamp surface with liquid release color."
+            },
+            {
+              "cost": 2.25,
+              "unit": "PSF",
+              "description": "Add texture stamp surface with color powder release."
+            },
+            {
+              "cost": 1.85,
+              "unit": "PSF",
+              "description": "Add concrete sealer."
+            },
+            {
+              "cost": 100,
+              "unit": "EA",
+              "description": "Concrete skimmer or autofill lid."
+            },
+            {
+              "cost": 700,
+              "unit": "EA",
+              "description": "Eco potential bonding requirements."
+            },
+            {
+              "cost": 1000,
+              "unit": "EA",
+              "description": "Backfill of trenches and ramp for jobs without decking by Bogner. Coping not included."
+            }
+          ]
+        },
+        {
+          "name": "Footings",
+          "items": [
+            {
+              "cost": 12,
+              "unit": "PLF",
+              "description": "6” in ground deck footing that is not exposed."
+            },
+            {
+              "cost": 17,
+              "unit": "PLF",
+              "description": "12” in ground deck footing that is not exposed."
+            },
+            {
+              "cost": 25,
+              "unit": "PLF",
+              "description": "18” in ground deck footing that is not exposed."
+            },
+            {
+              "cost": "BID ONLY",
+              "unit": null,
+              "description": "Solid roof patio cover footing."
+            },
+            {
+              "cost": "BID ONLY",
+              "unit": null,
+              "description": "Special engineering footings."
+            }
+          ]
+        },
+        {
+          "name": "Step Risers",
+          "items": [
+            {
+              "cost": 21,
+              "unit": "PLF",
+              "description": "6” tall concrete step riser or pour down footing."
+            },
+            {
+              "cost": 35,
+              "unit": "PLF",
+              "description": "12” tall concrete step riser or pour down footing."
+            },
+            {
+              "cost": 35,
+              "unit": "PLF",
+              "description": "18” tall concrete step riser or pour down footing."
+            },
+            {
+              "cost": 40,
+              "unit": "PLF",
+              "description": "24” tall concrete step riser or pour down footing."
+            },
+            {
+              "cost": 30,
+              "unit": "PLF",
+              "description": "6\" tall concrete curb."
+            },
+            {
+              "cost": 45,
+              "unit": "PLF",
+              "description": "12\" tall concrete curb."
+            },
+            {
+              "cost": 35,
+              "unit": "PLF",
+              "description": "6” tall cantilever step riser."
+            },
+            {
+              "cost": 45,
+              "unit": "PLF",
+              "description": "12” tall cantilever step riser."
+            },
+            {
+              "cost": 2.5,
+              "unit": "PLF",
+              "description": "Add radius cantilever to step. No step lights."
+            },
+            {
+              "cost": 70,
+              "unit": "PLF",
+              "description": "Brick step riser. 8” brick."
+            },
+            {
+              "cost": 80,
+              "unit": "PLF",
+              "description": "Bullnose brick step riser. 12” bullnose brick."
+            },
+            {
+              "cost": 65,
+              "unit": "PLF",
+              "description": "Flagstone step riser."
+            }
+          ]
+        },
+        {
+          "name": "Pavers",
+          "items": [
+            {
+              "cost": 25.75,
+              "unit": "PSF",
+              "description": "Belgard concrete cambridge cobble."
+            },
+            {
+              "cost": 25.75,
+              "unit": "PSF",
+              "description": "Belgard concrete holland stone."
+            },
+            {
+              "cost": 25.75,
+              "unit": "PSF",
+              "description": "Belgard concrete catalina."
+            },
+            {
+              "cost": 5.5,
+              "unit": "PLF",
+              "description": "Belgard perimeter borders. Add SF."
+            },
+            {
+              "cost": 5,
+              "unit": "PSF",
+              "description": "Belgard vehicle bearing surface."
+            },
+            {
+              "cost": 38,
+              "unit": "PSF",
+              "description": "Icontile travertine autum leaves, versailles, mini roman pattern. No vehicle bearing. 200 SF minimum."
+            },
+            {
+              "cost": 39,
+              "unit": "PSF",
+              "description": "Icontile travertine noce toros, versailles, mini roman pattern. No vehicle bearing. 200 SF minimum."
+            },
+            {
+              "cost": 38,
+              "unit": "PSF",
+              "description": "Icontile travertine cordoba cream, versailles, mini roman pattern. No vehicle bearing. 200 SF minimum."
+            },
+            {
+              "cost": 39,
+              "unit": "PSF",
+              "description": "Icontile travertine silver, versailles, mini roman pattern. No vehicle bearing. 200 SF minimum."
+            },
+            {
+              "cost": 39,
+              "unit": "PSF",
+              "description": "Icontile travertine chocolate brown, versailles, mini roman pattern. No vehicle bearing. 200 SF minimum."
+            },
+            {
+              "cost": 6,
+              "unit": "PLF",
+              "description": "Icontile travertine perimeter borders. Add SF."
+            },
+            {
+              "cost": 75,
+              "unit": "PSF",
+              "description": "Icontile travertine paver 6” step risers."
+            },
+            {
+              "cost": 40,
+              "unit": "PSF",
+              "description": "Paver remove and reinstall. $800 minimum."
+            }
+          ],
+          "notes": [
+            "Note - 500 SF minimum.",
+            "Note - Belgard upgrades with pricing, see brochure."
+          ]
+        },
+        {
+          "name": "PHASE 9: WALLS & STRUCTURES",
+          "items": []
+        },
+        {
+          "name": "Walls",
+          "items": [
+            {
+              "cost": 37,
+              "unit": "PLF",
+              "description": "6\" slumpstone block freestanding."
+            },
+            {
+              "cost": 47,
+              "unit": "PLF",
+              "description": "12\" slumpstone block freestanding."
+            },
+            {
+              "cost": 63,
+              "unit": "PLF",
+              "description": "18\" slumpstone block freestanding."
+            },
+            {
+              "cost": 76,
+              "unit": "PLF",
+              "description": "24\" slumpstone block freestanding."
+            },
+            {
+              "cost": 97,
+              "unit": "PLF",
+              "description": "30\" slumpstone block freestanding."
+            },
+            {
+              "cost": 112,
+              "unit": "PLF",
+              "description": "36\" slumpstone block freestanding."
+            },
+            {
+              "cost": 119,
+              "unit": "PLF",
+              "description": "42\" slumpstone block freestanding."
+            },
+            {
+              "cost": 124,
+              "unit": "PLF",
+              "description": "48\" slumpstone block freestanding."
+            },
+            {
+              "cost": 137,
+              "unit": "PLF",
+              "description": "54\" slumpstone block freestanding."
+            },
+            {
+              "cost": 156,
+              "unit": "PLF",
+              "description": "60\" slumpstone block freestanding."
+            },
+            {
+              "cost": 182,
+              "unit": "PLF",
+              "description": "66\" slumpstone block freestanding."
+            },
+            {
+              "cost": 189,
+              "unit": "PLF",
+              "description": "72\" slumpstone block freestanding."
+            },
+            {
+              "cost": 39,
+              "unit": "PLF",
+              "description": "8\" precision block freestanding."
+            },
+            {
+              "cost": 52,
+              "unit": "PLF",
+              "description": "16\" precision block freestanding."
+            },
+            {
+              "cost": 71,
+              "unit": "PLF",
+              "description": "24\" precision block freestanding."
+            },
+            {
+              "cost": 78,
+              "unit": "PLF",
+              "description": "32\" precision block freestanding."
+            },
+            {
+              "cost": 98,
+              "unit": "PLF",
+              "description": "40\" precision block freestanding."
+            },
+            {
+              "cost": 111,
+              "unit": "PLF",
+              "description": "48\" precision block freestanding."
+            },
+            {
+              "cost": 130,
+              "unit": "PLF",
+              "description": "56\" precision block freestanding."
+            },
+            {
+              "cost": 156,
+              "unit": "PLF",
+              "description": "64\" precision block freestanding."
+            },
+            {
+              "cost": 169,
+              "unit": "PLF",
+              "description": "72\" precision block freestanding."
+            },
+            {
+              "cost": 65,
+              "unit": "PLF",
+              "description": "8\" splitface block 1 side freestanding."
+            },
+            {
+              "cost": 85,
+              "unit": "PLF",
+              "description": "16\" splitface block 1 side freestanding."
+            },
+            {
+              "cost": 95,
+              "unit": "PLF",
+              "description": "24\" splitface block 1 side freestanding."
+            },
+            {
+              "cost": 111,
+              "unit": "PLF",
+              "description": "32\" splitface block 1 side freestanding."
+            },
+            {
+              "cost": 124,
+              "unit": "PLF",
+              "description": "40\" splitface block 1 side freestanding."
+            },
+            {
+              "cost": 145,
+              "unit": "PLF",
+              "description": "48\" splitface block 1 side freestanding."
+            },
+            {
+              "cost": 156,
+              "unit": "PLF",
+              "description": "56\" splitface block 1 side freestanding."
+            },
+            {
+              "cost": 176,
+              "unit": "PLF",
+              "description": "64\" splitface block 1 side freestanding."
+            },
+            {
+              "cost": 202,
+              "unit": "PLF",
+              "description": "72\" splitface block 1 side freestanding."
+            },
+            {
+              "cost": 38,
+              "unit": "PLF",
+              "description": "6\" slumpstone block retaining."
+            },
+            {
+              "cost": 45,
+              "unit": "PLF",
+              "description": "12\" slumpstone block retaining."
+            },
+            {
+              "cost": 59,
+              "unit": "PLF",
+              "description": "18\" slumpstone block retaining."
+            },
+            {
+              "cost": 107,
+              "unit": "PLF",
+              "description": "24\" slumpstone block retaining."
+            },
+            {
+              "cost": 121,
+              "unit": "PLF",
+              "description": "30\" slumpstone block retaining."
+            },
+            {
+              "cost": 137,
+              "unit": "PLF",
+              "description": "36\" slumpstone block retaining."
+            },
+            {
+              "cost": 161,
+              "unit": "PLF",
+              "description": "42\" slumpstone block retaining."
+            },
+            {
+              "cost": 184,
+              "unit": "PLF",
+              "description": "48\" slumpstone block retaining."
+            },
+            {
+              "cost": 215,
+              "unit": "PLF",
+              "description": "54\" slumpstone block retaining."
+            },
+            {
+              "cost": 251,
+              "unit": "PLF",
+              "description": "60\" slumpstone block retaining."
+            },
+            {
+              "cost": 273,
+              "unit": "PLF",
+              "description": "66\" slumpstone block retaining."
+            },
+            {
+              "cost": 295,
+              "unit": "PLF",
+              "description": "72\" slumpstone block retaining."
+            },
+            {
+              "cost": 33,
+              "unit": "PLF",
+              "description": "8\" precision block retaining."
+            },
+            {
+              "cost": 58,
+              "unit": "PLF",
+              "description": "16\" precision block retaining."
+            },
+            {
+              "cost": 95,
+              "unit": "PLF",
+              "description": "24\" precision block retaining."
+            },
+            {
+              "cost": 126,
+              "unit": "PLF",
+              "description": "32\" precision block retaining."
+            },
+            {
+              "cost": 149,
+              "unit": "PLF",
+              "description": "40\" precision block retaining."
+            },
+            {
+              "cost": 162,
+              "unit": "PLF",
+              "description": "48\" precision block retaining."
+            },
+            {
+              "cost": 210,
+              "unit": "PLF",
+              "description": "56\" precision block retaining."
+            },
+            {
+              "cost": 235,
+              "unit": "PLF",
+              "description": "64\" precision block retaining."
+            },
+            {
+              "cost": 258,
+              "unit": "PLF",
+              "description": "72\" precision block retaining."
+            },
+            {
+              "cost": 51,
+              "unit": "PLF",
+              "description": "8\" splitface block 1 side retaining."
+            },
+            {
+              "cost": 63,
+              "unit": "PLF",
+              "description": "16\" splitface block 1 side retaining."
+            },
+            {
+              "cost": 123,
+              "unit": "PLF",
+              "description": "24\" splitface block 1 side retaining."
+            },
+            {
+              "cost": 155,
+              "unit": "PLF",
+              "description": "32\" splitface block 1 side retaining."
+            },
+            {
+              "cost": 188,
+              "unit": "PLF",
+              "description": "40\" splitface block 1 side retaining."
+            },
+            {
+              "cost": 214,
+              "unit": "PLF",
+              "description": "48\" splitface block 1 side retaining."
+            },
+            {
+              "cost": 236,
+              "unit": "PLF",
+              "description": "56\" splitface block 1 side retaining."
+            },
+            {
+              "cost": 265,
+              "unit": "PLF",
+              "description": "64\" splitface block 1 side retaining."
+            },
+            {
+              "cost": 303,
+              "unit": "PLF",
+              "description": "72\" splitface block 1 side retaining."
+            },
+            {
+              "cost": 35,
+              "unit": "PLF",
+              "description": "Splitface block 2 sides. Add to splitface 1 side cost."
+            },
+            {
+              "cost": 2150,
+              "unit": "EA",
+              "description": "Re-close 5' to 6' tall wall for access. Add $2250 plus permit for Riverside County. Add $2000 plus permit for Menifee, Corona, Eastvale. Add $2250 for Calimesa. Add load for wall debris removal."
+            },
+            {
+              "cost": 12,
+              "unit": "PSF",
+              "description": "Stucco surface with regular scrub or lace finish. $600 minimum."
+            },
+            {
+              "cost": 450,
+              "unit": "EA",
+              "description": "Add permit fees to any free standing wall in Riverside County for any wall height."
+            },
+            {
+              "cost": 450,
+              "unit": "EA",
+              "description": "Add permit fees to any retaining wall in any county for any wall height."
+            }
+          ],
+          "notes": [
+            "Note - $1500.00 minimum on all wall work $2500 for retaining walls",
+            "Note - All retaining walls include drain in rock pack at the base if required by engineering.  Surface drains are additional cost. Retaining walls over 4' high bid only."
+          ]
+        },
+        {
+          "name": "Wall Caps",
+          "items": [
+            {
+              "cost": 9.5,
+              "unit": "PLF",
+              "description": "Slumpstone block cap."
+            },
+            {
+              "cost": 9.5,
+              "unit": "PLF",
+              "description": "Precision block cap."
+            },
+            {
+              "cost": 13,
+              "unit": "PLF",
+              "description": "Splitface block cap."
+            },
+            {
+              "cost": 30,
+              "unit": "PLF",
+              "description": "8\" brick cap."
+            },
+            {
+              "cost": 42,
+              "unit": "PLF",
+              "description": "12\" bullnose brick cap."
+            },
+            {
+              "cost": 42,
+              "unit": "EA",
+              "description": "Brick cap miter or tight radius."
+            },
+            {
+              "cost": 9.5,
+              "unit": "PLF",
+              "description": "Pie cut brick cap."
+            },
+            {
+              "cost": 42,
+              "unit": "PLF",
+              "description": "Flagstone cap."
+            },
+            {
+              "cost": 46,
+              "unit": "PLF",
+              "description": "Stepstone precast cap, white or almond."
+            },
+            {
+              "cost": 30,
+              "unit": "EA",
+              "description": "Stepstone precast cap miter or tight radius."
+            },
+            {
+              "cost": 12,
+              "unit": "PLF",
+              "description": "Pie cut precast cap."
+            },
+            {
+              "cost": 50,
+              "unit": "PLF",
+              "description": "Double 1-1/2\" cantilever poured cap. Add concrete SF."
+            },
+            {
+              "cost": 4,
+              "unit": "PLF",
+              "description": "2-1/2” cantilever edge. Add to 1-1/2” cost."
+            }
+          ]
+        },
+        {
+          "name": "Columns",
+          "items": [
+            {
+              "cost": 375,
+              "unit": "EA",
+              "description": "12\"x12\"x24\" slumpstone."
+            },
+            {
+              "cost": 315,
+              "unit": "EA",
+              "description": "12\"x12\"x24\" precision block."
+            },
+            {
+              "cost": 449,
+              "unit": "EA",
+              "description": "12\"x12\"x24\" stucco."
+            },
+            {
+              "cost": 928,
+              "unit": "EA",
+              "description": "12\"x12\"x24\" flagstone."
+            },
+            {
+              "cost": 896,
+              "unit": "EA",
+              "description": "12\"x12\"x24\" man made stone."
+            },
+            {
+              "cost": 617,
+              "unit": "EA",
+              "description": "12\"x12\"x24\" splitface."
+            },
+            {
+              "cost": 569,
+              "unit": "EA",
+              "description": "16\"x16\"x24\" slumpstone."
+            },
+            {
+              "cost": 515,
+              "unit": "EA",
+              "description": "16\"x16\"x24\" precision block."
+            },
+            {
+              "cost": 717,
+              "unit": "EA",
+              "description": "16\"x16\"x24\" stucco."
+            },
+            {
+              "cost": 1433,
+              "unit": "EA",
+              "description": "16\"x16\"x24\" flagstone."
+            },
+            {
+              "cost": 1366,
+              "unit": "EA",
+              "description": "16\"x16\"x24\" man made stone."
+            },
+            {
+              "cost": 824,
+              "unit": "EA",
+              "description": "16\"x16\"x24\" splitface."
+            },
+            {
+              "cost": 770,
+              "unit": "EA",
+              "description": "24\"x24\"x24\" slumpstone."
+            },
+            {
+              "cost": 717,
+              "unit": "EA",
+              "description": "24\"x24\"x24\" precision block."
+            },
+            {
+              "cost": 986,
+              "unit": "EA",
+              "description": "24\"x24\"x24\" stucco."
+            },
+            {
+              "cost": 1971,
+              "unit": "EA",
+              "description": "24\"x24\"x24\" flagstone."
+            },
+            {
+              "cost": 2060,
+              "unit": "EA",
+              "description": "24\"x24\"x24\" man made stone."
+            },
+            {
+              "cost": 1030,
+              "unit": "EA",
+              "description": "24\"x24\"x24\" splitface."
+            },
+            {
+              "cost": 450,
+              "unit": "EA",
+              "description": "12\"x12\"x48\" slumpstone."
+            },
+            {
+              "cost": 380,
+              "unit": "EA",
+              "description": "12\"x12\"x48\" precision block."
+            },
+            {
+              "cost": 540,
+              "unit": "EA",
+              "description": "12\"x12\"x48\" stucco."
+            },
+            {
+              "cost": 1117,
+              "unit": "EA",
+              "description": "12\"x12\"x48\" flagstone."
+            },
+            {
+              "cost": 1079,
+              "unit": "EA",
+              "description": "12\"x12\"x48\" man made stone."
+            },
+            {
+              "cost": 743,
+              "unit": "EA",
+              "description": "12\"x12\"x48\" splitface."
+            },
+            {
+              "cost": 686,
+              "unit": "EA",
+              "description": "16\"x16\"x48\" slumpstone."
+            },
+            {
+              "cost": 621,
+              "unit": "EA",
+              "description": "16\"x16\"x48\" precision block."
+            },
+            {
+              "cost": 864,
+              "unit": "EA",
+              "description": "16\"x16\"x48\" stucco."
+            },
+            {
+              "cost": 1727,
+              "unit": "EA",
+              "description": "16\"x16\"x48\" flagstone."
+            },
+            {
+              "cost": 1646,
+              "unit": "EA",
+              "description": "16\"x16\"x48\" man made stone."
+            },
+            {
+              "cost": 993,
+              "unit": "EA",
+              "description": "16\"x16\"x48\" splitface."
+            },
+            {
+              "cost": 928,
+              "unit": "EA",
+              "description": "24\"x24\"x48\" slumpstone."
+            },
+            {
+              "cost": 864,
+              "unit": "EA",
+              "description": "24\"x24\"x48\" precision block."
+            },
+            {
+              "cost": 1187,
+              "unit": "EA",
+              "description": "24\"x24\"x48\" stucco."
+            },
+            {
+              "cost": 2374,
+              "unit": "EA",
+              "description": "24\"x24\"x48\" flagstone."
+            },
+            {
+              "cost": 2482,
+              "unit": "EA",
+              "description": "24\"x24\"x48\" man made stone."
+            },
+            {
+              "cost": 1241,
+              "unit": "EA",
+              "description": "24\"x24\"x48\" splitface."
+            },
+            {
+              "cost": 520,
+              "unit": "EA",
+              "description": "12\"x12\"x72\" slumpstone."
+            },
+            {
+              "cost": 455,
+              "unit": "EA",
+              "description": "12\"x12\"x72\" precision block."
+            },
+            {
+              "cost": 650,
+              "unit": "EA",
+              "description": "12\"x12\"x72\" stucco."
+            },
+            {
+              "cost": 1345,
+              "unit": "EA",
+              "description": "12\"x12\"x72\" flagstone."
+            },
+            {
+              "cost": 1300,
+              "unit": "EA",
+              "description": "12\"x12\"x72\" man made stone."
+            },
+            {
+              "cost": 895,
+              "unit": "EA",
+              "description": "12\"x12\"x72\" splitface."
+            },
+            {
+              "cost": 825,
+              "unit": "EA",
+              "description": "16\"x16\"x72\" slumpstone."
+            },
+            {
+              "cost": 748,
+              "unit": "EA",
+              "description": "16\"x16\"x72\" precision block."
+            },
+            {
+              "cost": 1040,
+              "unit": "EA",
+              "description": "16\"x16\"x72\" stucco."
+            },
+            {
+              "cost": 2080,
+              "unit": "EA",
+              "description": "16\"x16\"x72\" flagstone."
+            },
+            {
+              "cost": 1983,
+              "unit": "EA",
+              "description": "16\"x16\"x72\" man made stone."
+            },
+            {
+              "cost": 1196,
+              "unit": "EA",
+              "description": "16\"x16\"x72\" splitface."
+            },
+            {
+              "cost": 1118,
+              "unit": "EA",
+              "description": "24\"x24\"x72\" slumpstone."
+            },
+            {
+              "cost": 1040,
+              "unit": "EA",
+              "description": "24\"x24\"x72\" precision block."
+            },
+            {
+              "cost": 1430,
+              "unit": "EA",
+              "description": "24\"x24\"x72\" stucco."
+            },
+            {
+              "cost": 2860,
+              "unit": "EA",
+              "description": "24\"x24\"x72\" flagstone."
+            },
+            {
+              "cost": 2990,
+              "unit": "EA",
+              "description": "24\"x24\"x72\" man made stone."
+            },
+            {
+              "cost": 1495,
+              "unit": "EA",
+              "description": "24\"x24\"x72\" splitface."
+            }
+          ],
+          "notes": [
+            "Note – columns over 6’ tall are bid only.",
+            "Note - 24\" wide column add $1000 to job for engineering.",
+            "Note - 24\" wide column add $1000 to job for engineering.",
+            "Note - 24\" wide column add $1000 to job for engineering."
+          ]
+        },
+        {
+          "name": "Column Caps",
+          "items": [
+            {
+              "cost": 76,
+              "unit": "EA",
+              "description": "15\"x15\" slumpstone."
+            },
+            {
+              "cost": 76,
+              "unit": "EA",
+              "description": "15\"x15\" precision block."
+            },
+            {
+              "cost": 228,
+              "unit": "EA",
+              "description": "15\"x15\" brick."
+            },
+            {
+              "cost": 370,
+              "unit": "EA",
+              "description": "15\"x15\" bullnose brick."
+            },
+            {
+              "cost": 150,
+              "unit": "EA",
+              "description": "15\"x15\" flagstone."
+            },
+            {
+              "cost": 377,
+              "unit": "EA",
+              "description": "15\"x15\" stepstone precast."
+            },
+            {
+              "cost": 377,
+              "unit": "EA",
+              "description": "15\"x15\" stepstone precast with light hole."
+            },
+            {
+              "cost": 200,
+              "unit": "EA",
+              "description": "15\"x15\" poured cantilever with 1-1/2\" overhang."
+            },
+            {
+              "cost": 110,
+              "unit": "EA",
+              "description": "19\"x19\" slumpstone."
+            },
+            {
+              "cost": 110,
+              "unit": "EA",
+              "description": "19\"x19\" precision block."
+            },
+            {
+              "cost": 286,
+              "unit": "EA",
+              "description": "19\"x19\" brick."
+            },
+            {
+              "cost": 481,
+              "unit": "EA",
+              "description": "19\"x19\" bullnose brick."
+            },
+            {
+              "cost": 228,
+              "unit": "EA",
+              "description": "19\"x19\" flagstone."
+            },
+            {
+              "cost": 520,
+              "unit": "EA",
+              "description": "19\"x19\" stepstone precast."
+            },
+            {
+              "cost": 520,
+              "unit": "EA",
+              "description": "19\"x19\" stepstone precast with light hole."
+            },
+            {
+              "cost": 200,
+              "unit": "EA",
+              "description": "19\"x19\" poured cantilever with 1-1/2\" overhang."
+            },
+            {
+              "cost": 150,
+              "unit": "EA",
+              "description": "27\"x27\" slumpstone."
+            },
+            {
+              "cost": 117,
+              "unit": "EA",
+              "description": "27\"x27\" precision block."
+            },
+            {
+              "cost": 448,
+              "unit": "EA",
+              "description": "27\"x27\" brick."
+            },
+            {
+              "cost": 676,
+              "unit": "EA",
+              "description": "27\"x27\" bullnose brick."
+            },
+            {
+              "cost": 299,
+              "unit": "EA",
+              "description": "27\"x27\" flagstone."
+            },
+            {
+              "cost": 747,
+              "unit": "EA",
+              "description": "27\"x27\" stepstone precast."
+            },
+            {
+              "cost": 747,
+              "unit": "EA",
+              "description": "27\"x27\" stepstone precast with light hole."
+            },
+            {
+              "cost": 250,
+              "unit": "EA",
+              "description": "27\"x27\" poured cantilever with 1-1/2\" overhang."
+            }
+          ]
+        },
+        {
+          "name": "Facing and Veneer Not Raised Bond Beam",
+          "items": [
+            {
+              "cost": 42,
+              "unit": "PSF",
+              "description": "Flagstone."
+            },
+            {
+              "cost": 34.75,
+              "unit": "PSF",
+              "description": "Man made stone."
+            },
+            {
+              "cost": 16.5,
+              "unit": "PLF",
+              "description": "Man made stone corners."
+            },
+            {
+              "cost": 62,
+              "unit": "PSF",
+              "description": "Real ledge stone."
+            },
+            {
+              "cost": 31,
+              "unit": "PLF",
+              "description": "Real ledge stone panel 6\" row."
+            },
+            {
+              "cost": 14,
+              "unit": "PLF",
+              "description": "Real ledge stone panel corners."
+            },
+            {
+              "cost": 8,
+              "unit": "PLF",
+              "description": "Real ledge stone panels with radius less than 6'. Add per 6\" row."
+            },
+            {
+              "cost": 15,
+              "unit": "PSF",
+              "description": "Cut ledge stone for radius."
+            },
+            {
+              "cost": 47,
+              "unit": "PSF",
+              "description": "Tile veneer on shotcrete. Not allowed on block work."
+            },
+            {
+              "cost": 18,
+              "unit": "PSF",
+              "description": "Stucco surface with regular scrub or lace finish. Smooth finish, bid only.  $600 minimum."
+            }
+          ]
+        },
+        {
+          "name": "PHASE 10: OUTDOOR LIVING FEATURES",
+          "items": []
+        },
+        {
+          "name": "Bbqs",
+          "items": [
+            {
+              "cost": 11650,
+              "unit": "EA",
+              "description": "Block construction 6' long, 3' wide bbq with group 5 tile top and no facing included."
+            },
+            {
+              "cost": 10970,
+              "unit": "EA",
+              "description": "Steel construction 8' long 3' wide bbq with tile top and no facing included."
+            },
+            {
+              "cost": 973,
+              "unit": "PLF",
+              "description": "Each additional LF."
+            },
+            {
+              "cost": 425,
+              "unit": "PLF",
+              "description": "Each additional LF steel construction."
+            },
+            {
+              "cost": "BID ONLY",
+              "unit": "PLF",
+              "description": "Any curved bbq."
+            },
+            {
+              "cost": 300,
+              "unit": "EA",
+              "description": "Any angle not 90 degrees."
+            },
+            {
+              "cost": 225,
+              "unit": "PLF",
+              "description": "6\" high backsplash."
+            },
+            {
+              "cost": 125,
+              "unit": "PLF",
+              "description": "6\" high backsplash steel construction."
+            },
+            {
+              "cost": 250,
+              "unit": "PLF",
+              "description": "Bar counter tops 8\" overhang steel or masonry construction."
+            },
+            {
+              "cost": 380,
+              "unit": "PLF",
+              "description": "Curved bar counter top."
+            },
+            {
+              "cost": 450,
+              "unit": "EA",
+              "description": "Stainless side burner unit."
+            },
+            {
+              "cost": 250,
+              "unit": "EA",
+              "description": "2nd stainless access door."
+            },
+            {
+              "cost": 1008,
+              "unit": "EA",
+              "description": "15\" wide refrigerator. Add outlet and separate circuit."
+            },
+            {
+              "cost": 1850,
+              "unit": "EA",
+              "description": "24\" wide refrigerator. Add outlet and separate circuit."
+            },
+            {
+              "cost": 300,
+              "unit": "EA",
+              "description": "Stainless steel sink. Must have drain and water supply."
+            },
+            {
+              "cost": 475,
+              "unit": "EA",
+              "description": "Double drawer insert."
+            },
+            {
+              "cost": 150,
+              "unit": "EA",
+              "description": "Elect outlet at bbq. Add footage."
+            },
+            {
+              "cost": 175,
+              "unit": "EA",
+              "description": "Bbq stub permit. Future project not available in Riverside County."
+            },
+            {
+              "cost": 400,
+              "unit": "EA",
+              "description": "Bbq permit if part of project."
+            },
+            {
+              "cost": -1450,
+              "unit": "EA",
+              "description": "Owner supplied bbq grill and access door."
+            }
+          ],
+          "notes": [
+            "Note – Includes blaze 4 burner grill, stainless access door and outlet for bbq"
+          ]
+        },
+        {
+          "name": "Fire Pits and Bowls",
+          "items": [
+            {
+              "cost": 1040,
+              "unit": "EA",
+              "description": "16\" tall x 30\" ID. Fire pit round or square. Structure only."
+            },
+            {
+              "cost": 250,
+              "unit": "EA",
+              "description": "Add stucco finish."
+            },
+            {
+              "cost": 683,
+              "unit": "EA",
+              "description": "Add flagstone veneer."
+            },
+            {
+              "cost": 555,
+              "unit": "EA",
+              "description": "Add manmade stone veneer."
+            },
+            {
+              "cost": 1050,
+              "unit": "EA",
+              "description": "Add real rock stone veneer."
+            },
+            {
+              "cost": 675,
+              "unit": "EA",
+              "description": "Add flagstone cap."
+            },
+            {
+              "cost": 600,
+              "unit": "EA",
+              "description": "Add cantilever cap."
+            },
+            {
+              "cost": 715,
+              "unit": "EA",
+              "description": "Add Hancrete or Stepstone precast cap."
+            },
+            {
+              "cost": 507,
+              "unit": "EA",
+              "description": "Add 8\" brick cap."
+            },
+            {
+              "cost": 750,
+              "unit": "EA",
+              "description": "Add 12\" brick cap."
+            },
+            {
+              "cost": 300,
+              "unit": "EA",
+              "description": "Finish inside of fire pit with small black lava rock on sand."
+            },
+            {
+              "cost": 125,
+              "unit": "PSF",
+              "description": "Finish inside of fire pit with glass bead."
+            },
+            {
+              "cost": 2150,
+              "unit": "EA",
+              "description": "8\" tall x 26\" wide match lit concrete fire bowl with lava rock and manual valve. Add glass media $250.00."
+            },
+            {
+              "cost": 4335,
+              "unit": "EA",
+              "description": "8\" tall x 26\" wide match lit concrete fire bowl with lava rock and electronic ignition valve. Add glass media $250.00."
+            },
+            {
+              "cost": 175,
+              "unit": "EA",
+              "description": "Fire pit gas line permit."
+            },
+            {
+              "cost": 600,
+              "unit": "EA",
+              "description": "Install owner supplied water or fire bowl. Must be approved by construction."
+            }
+          ],
+          "notes": [
+            "Note - Any size other than 30\" ID must provide ID measurement.",
+            "Note – All fire bowls require gas line footage, permit, and any tees added to cost of bowl.",
+            "Note - Electronic ignition fire bowls require electrical conduit from fire bowl to equipment plus transformer."
+          ]
+        },
+        {
+          "name": "Real Rock",
+          "items": [
+            {
+              "cost": 425,
+              "unit": "EA",
+              "description": "12”-24” real rock boulders on beam or on the ground. D0 not sell with artificial rock on job."
+            },
+            {
+              "cost": "BID ONLY",
+              "unit": null,
+              "description": "Any real rock waterfall."
+            }
+          ]
+        },
+        {
+          "name": "Artificial Rock",
+          "items": [
+            {
+              "cost": "BID ONLY",
+              "unit": "EA",
+              "description": "All artificial rock."
+            },
+            {
+              "cost": 3175,
+              "unit": "EA",
+              "description": "6' wide exterior measurement shotcrete box for grotto with 18” max overhang past bond beam."
+            },
+            {
+              "cost": 4275,
+              "unit": "EA",
+              "description": "8' wide exterior measurement shotcrete box for grotto with 48” max overhang past bond beam."
+            }
+          ],
+          "notes": [
+            "Note - $4000 minimum on all artificial rock not including waterfalls."
+          ]
+        },
+        {
+          "name": "Solar",
+          "items": [
+            {
+              "cost": "BID ONLY",
+              "unit": "EA",
+              "description": "All systems."
+            }
+          ]
+        },
+        {
+          "name": "Alumawood Patio Covers",
+          "items": [
+            {
+              "cost": "BID ONLY",
+              "unit": null,
+              "description": "All Alumawood Covers."
+            }
+          ]
+        },
+        {
+          "name": "PHASE 11: FENCING & SAFETY",
+          "items": []
+        },
+        {
+          "name": "Fencing",
+          "items": [
+            {
+              "cost": 650,
+              "unit": "EA",
+              "description": "Re-install 1 iron gate."
+            },
+            {
+              "cost": 900,
+              "unit": "EA",
+              "description": "Re-install 1 iron gate with post. Must be in working order prior to construction."
+            },
+            {
+              "cost": 450,
+              "unit": "EA",
+              "description": "Re-install 1 wood fence section."
+            },
+            {
+              "cost": 700,
+              "unit": "EA",
+              "description": "Re-install 1 wood fence section and gate. Must be in working order prior to construction."
+            },
+            {
+              "cost": 400,
+              "unit": "EA",
+              "description": "Gate ready for inspection. Must be in good working order prior to construction."
+            },
+            {
+              "cost": 250,
+              "unit": "EA",
+              "description": "Garage man door ready for inspection."
+            },
+            {
+              "cost": 60,
+              "unit": "EA",
+              "description": "Door alarm."
+            },
+            {
+              "cost": 150,
+              "unit": "EA",
+              "description": "Door alarm installed."
+            },
+            {
+              "cost": 1050,
+              "unit": "EA",
+              "description": "Re-install 1 vinyl fence section with post."
+            },
+            {
+              "cost": 1200,
+              "unit": "EA",
+              "description": "Re-install 1 vinyl gate with post. Must be in working order prior to construction."
+            },
+            {
+              "cost": 1050,
+              "unit": "EA",
+              "description": "Reverse 1 vinyl gate. Must be in good working order prior to construction."
+            },
+            {
+              "cost": "BID ONLY",
+              "unit": "PLF",
+              "description": "5' poolsafe removable fencing installed over concrete."
+            },
+            {
+              "cost": "BID ONLY",
+              "unit": "EA",
+              "description": "5' poolsafe removable fencing gate."
+            },
+            {
+              "cost": "BID ONLY",
+              "unit": "PLF",
+              "description": "4' poolsafe removable fencing installed over concrete."
+            },
+            {
+              "cost": "BID ONLY",
+              "unit": "EA",
+              "description": "4' poolsafe removable fencing gate."
+            }
+          ],
+          "notes": [
+            "Note - Removable fence is black. Other colors bid only."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "REMODEL",
+      "sections": [
+        {
+          "name": "REMODEL PHASE 1: DEMOLITION & PREPARATION",
+          "items": []
+        },
+        {
+          "name": "Strip Plaster",
+          "items": [
+            {
+              "cost": 26.5,
+              "unit": "PLF",
+              "description": "Strip pool. Measure perimeter through spa wall. $1500 minimum."
+            },
+            {
+              "cost": 23,
+              "unit": "PLF",
+              "description": "Strip spa."
+            },
+            {
+              "cost": 1800,
+              "unit": "EA",
+              "description": "Strip spa only."
+            },
+            {
+              "cost": 7.5,
+              "unit": "PLF",
+              "description": "Strip coping."
+            },
+            {
+              "cost": 4.5,
+              "unit": "PSF",
+              "description": "Concrete removal. 80 SF per load."
+            }
+          ]
+        },
+        {
+          "name": "Dump Fees",
+          "items": [
+            {
+              "cost": 500,
+              "unit": "EA",
+              "description": "550 SF pool and spa."
+            },
+            {
+              "cost": 125,
+              "unit": "EA",
+              "description": "If coping, add."
+            }
+          ]
+        },
+        {
+          "name": "REMODEL PHASE 2: SURFACE PREPARATION",
+          "items": []
+        },
+        {
+          "name": "Cut Tile if Tile Stays on Pool and Spa",
+          "items": [
+            {
+              "cost": 3.75,
+              "unit": "PLF",
+              "description": "130 perimeter or less including spa."
+            },
+            {
+              "cost": 3.75,
+              "unit": "PLF",
+              "description": "Over 130 perimeter including spa."
+            }
+          ]
+        },
+        {
+          "name": "Tile up to Group 5",
+          "items": [
+            {
+              "cost": 25,
+              "unit": "PLF",
+              "description": "84 LF min."
+            },
+            {
+              "cost": 114,
+              "unit": "PLF",
+              "description": "6\" wide spa walls."
+            },
+            {
+              "cost": 139,
+              "unit": "PLF",
+              "description": "12\" wide spa walls."
+            },
+            {
+              "cost": 4.5,
+              "unit": "PLF",
+              "description": "Mastic for cantilever coping."
+            },
+            {
+              "cost": 125,
+              "unit": "EA",
+              "description": "Extra skimmer tile work only."
+            },
+            {
+              "cost": 14,
+              "unit": "EA",
+              "description": "3x3 spotters."
+            },
+            {
+              "cost": 14,
+              "unit": "PLF",
+              "description": "Step tile trim."
+            }
+          ]
+        },
+        {
+          "name": "Coping",
+          "items": [
+            {
+              "cost": 13,
+              "unit": "PLF",
+              "description": "Safety grip coping with custom color. Add to coping cost."
+            },
+            {
+              "cost": 15,
+              "unit": "PLF",
+              "description": "Safety grip coping with sandblast finish. Add to coping cost."
+            },
+            {
+              "cost": 30,
+              "unit": "EA",
+              "description": "Safety grip coping miter."
+            },
+            {
+              "cost": 45,
+              "unit": "PLF",
+              "description": "12” bullnose brick."
+            },
+            {
+              "cost": 35,
+              "unit": "EA",
+              "description": "Brick miter."
+            },
+            {
+              "cost": 40,
+              "unit": "PLF",
+              "description": "Pie cut brick coping. Add to coping cost."
+            },
+            {
+              "cost": 52,
+              "unit": "PLF",
+              "description": "Flagstone."
+            },
+            {
+              "cost": 23.5,
+              "unit": "PLF",
+              "description": "1-1/2” square cantilever edge. Add decking SF."
+            },
+            {
+              "cost": 23.5,
+              "unit": "PLF",
+              "description": "1-1/2” radius cantilever edge. Add decking SF."
+            },
+            {
+              "cost": 6,
+              "unit": "PLF",
+              "description": "2-1/2” cantilever edge. Add decking SF. Add to 1-1/2” cantilever cost."
+            },
+            {
+              "cost": 43,
+              "unit": "PLF",
+              "description": "12”x24” precast with color, sandblast and radius or square one side."
+            },
+            {
+              "cost": 18,
+              "unit": "PLF",
+              "description": "12”x24” precast white with salt finish and radius or square one side."
+            },
+            {
+              "cost": 35,
+              "unit": "EA",
+              "description": "Precast miter."
+            },
+            {
+              "cost": 39.5,
+              "unit": "PLF",
+              "description": "Icontile travertine 12\"x12\" 3cm all colors."
+            },
+            {
+              "cost": 33,
+              "unit": "PLF",
+              "description": "Icontile travertine 12\"x24\" 3cm all colors."
+            },
+            {
+              "cost": 47,
+              "unit": "PLF",
+              "description": "Icontile travertine 12\"x12\" 5cm all colors."
+            },
+            {
+              "cost": 44,
+              "unit": "PLF",
+              "description": "Icontile travertine 12\"x24\" 5cm all colors."
+            },
+            {
+              "cost": 48,
+              "unit": "EA",
+              "description": "Icontile travertine miter."
+            },
+            {
+              "cost": 17,
+              "unit": "PLF",
+              "description": "Icontile travertine pie cut on radius. Add to coping cost."
+            }
+          ]
+        },
+        {
+          "name": "REMODEL PHASE 3: NEW FINISHES",
+          "items": []
+        },
+        {
+          "name": "White Plaster",
+          "items": [
+            {
+              "cost": 3995,
+              "unit": "EA",
+              "description": "Up to 85 perimeter."
+            },
+            {
+              "cost": 47,
+              "unit": "PLF",
+              "description": "Add for each additional perimeter FT."
+            },
+            {
+              "cost": 3000,
+              "unit": "EA",
+              "description": "Spa only plaster."
+            },
+            {
+              "cost": 46.15,
+              "unit": "PLF",
+              "description": "Spa plaster with pool on site."
+            },
+            {
+              "cost": 800,
+              "unit": "EA",
+              "description": "Minimum plaster patch."
+            }
+          ]
+        },
+        {
+          "name": "Pebble Finish",
+          "items": [
+            {
+              "cost": 40,
+              "unit": "PLF",
+              "description": "Regular pebble."
+            },
+            {
+              "cost": 41,
+              "unit": "PLF",
+              "description": "Mini pebble."
+            },
+            {
+              "cost": 20,
+              "unit": "EA",
+              "description": "Eyeball fittings"
+            },
+            {
+              "cost": 50,
+              "unit": "EA",
+              "description": "Pebble drain"
+            }
+          ]
+        },
+        {
+          "name": "Sparkle Quartz",
+          "items": [
+            {
+              "cost": 23,
+              "unit": "PLF",
+              "description": "Plus $845 base cost."
+            }
+          ]
+        },
+        {
+          "name": "REMODEL PHASE 4: SYSTEMS UPGRADES",
+          "items": []
+        },
+        {
+          "name": "Plumbing",
+          "items": [
+            {
+              "cost": 3165,
+              "unit": "EA",
+              "description": "Set equipment pool and spa with 3, 3 port valves and spa bypass. Includes slabs."
+            },
+            {
+              "cost": 9,
+              "unit": "PLF",
+              "description": "Add LF from skimmer to return. No LF included. 2\" PVC for each spa run, cleaner run, etc."
+            },
+            {
+              "cost": 1650,
+              "unit": "EA",
+              "description": "Set equipment pool only with cleaner valve, same as above. No LF included."
+            },
+            {
+              "cost": 195,
+              "unit": "EA",
+              "description": "Additional 3 port valve."
+            }
+          ],
+          "notes": [
+            "Note - For gas line, use price book plus base price of $450 plus 10% of total."
+          ]
+        },
+        {
+          "name": "Electrical",
+          "items": [
+            {
+              "cost": 8.25,
+              "unit": "PLF",
+              "description": "PVC home run for up to two items. Ie, pump, blower, refrigerator, etc."
+            },
+            {
+              "cost": 17.85,
+              "unit": "PLF",
+              "description": "PVC home run with heat pump and single pump system, 80A.."
+            },
+            {
+              "cost": 19,
+              "unit": "PLF",
+              "description": "PVC home run with heat pump and two pump system 100A. More than 2 pumps, bid only."
+            },
+            {
+              "cost": 2.25,
+              "unit": "PLF",
+              "description": "Add to home run for each additional pump, blower, refrigerator. Over 3 additional items bid only."
+            },
+            {
+              "cost": 2.5,
+              "unit": "PLF",
+              "description": "Any home run over 150', add."
+            },
+            {
+              "cost": 8.25,
+              "unit": "PLF",
+              "description": "Electrical run to j-box, outlet, bbq, lamp post, cover motor, remote control, low voltage."
+            },
+            {
+              "cost": 6.5,
+              "unit": "PLF",
+              "description": "PVC run to lights."
+            },
+            {
+              "cost": 200,
+              "unit": "EA",
+              "description": "Additional 110v circuit. Required for bbq with refrigerator."
+            },
+            {
+              "cost": 150,
+              "unit": "EA",
+              "description": "Additional 110v receptacle."
+            },
+            {
+              "cost": 600,
+              "unit": "EA",
+              "description": "Credit to owner for time clock and equipment wiring."
+            },
+            {
+              "cost": 1,
+              "unit": "PLF",
+              "description": "Credit to owner for existing conduit."
+            },
+            {
+              "cost": 350,
+              "unit": "EA",
+              "description": "Sub panel at house panel."
+            },
+            {
+              "cost": 300,
+              "unit": "EA",
+              "description": "Install owners lamp post or column lamp. Add footing if not in decking area, $300 EA."
+            },
+            {
+              "cost": 450,
+              "unit": "EA",
+              "description": "Colored LED light controller (up to 3 lights, not needed if remote is present)"
+            },
+            {
+              "cost": 12,
+              "unit": "PLF",
+              "description": "50A spa power. Add $250 for spa disconnect box if needed."
+            },
+            {
+              "cost": 225,
+              "unit": "EA",
+              "description": "Dig under side walk for electrical line. 36\" wide max.  Charge per line."
+            },
+            {
+              "cost": 200,
+              "unit": "EA",
+              "description": "LED step lights white. Add footage."
+            },
+            {
+              "cost": 275,
+              "unit": "EA",
+              "description": "LED step lights oil rubbed bronze. Add footage."
+            },
+            {
+              "cost": 15,
+              "unit": "PLF",
+              "description": "Electrical for booster pump not at equipment."
+            },
+            {
+              "cost": "BID ONLY",
+              "unit": null,
+              "description": "Panel change."
+            },
+            {
+              "cost": "BID ONLY",
+              "unit": null,
+              "description": "New riser pipe."
+            },
+            {
+              "cost": "BID ONLY",
+              "unit": null,
+              "description": "Badu jet power."
+            }
+          ]
+        },
+        {
+          "name": "Equipment",
+          "items": [
+            {
+              "cost": 4368,
+              "unit": "EA",
+              "description": "400,000 BTU Mastertemp heater."
+            },
+            {
+              "cost": 1800,
+              "unit": "EA",
+              "description": "Quad DE 80 filter."
+            },
+            {
+              "cost": 2200,
+              "unit": "EA",
+              "description": "Variable speed pump. If no remote, add to variable speed cost $450."
+            },
+            {
+              "cost": 1800,
+              "unit": "EA",
+              "description": "New skimmer."
+            },
+            {
+              "cost": 1280,
+              "unit": "EA",
+              "description": "New light and niche plus conduit $6 PLF."
+            },
+            {
+              "cost": 570,
+              "unit": "EA",
+              "description": "New light white LED plus above cost."
+            },
+            {
+              "cost": 850,
+              "unit": "EA",
+              "description": "New light color LED plus above cost."
+            },
+            {
+              "cost": 300,
+              "unit": "EA",
+              "description": "Color light controller."
+            },
+            {
+              "cost": 400,
+              "unit": "EA",
+              "description": "Change to suction or pressure."
+            },
+            {
+              "cost": 225,
+              "unit": "EA",
+              "description": "If adding without new equipment set, add to salt system book cost."
+            }
+          ],
+          "notes": [
+            "Note – For remotes, use new const price book.",
+            "Note – For cleaners, use new const price book.",
+            "Note - Salt systems require no copper plumbing and may require new equipment."
+          ]
+        },
+        {
+          "name": "REMODEL PHASE 5: DECKING",
+          "items": []
+        },
+        {
+          "name": "Decking",
+          "items": [
+            {
+              "cost": 3900,
+              "unit": "EA",
+              "description": "Minimum concrete charge. Includes decking, utility re-pour, cantilever, and cantilever banding."
+            },
+            {
+              "cost": 400,
+              "unit": "EA",
+              "description": "Decking base cost."
+            },
+            {
+              "cost": 8.3,
+              "unit": "PSF",
+              "description": "Broom or salt finish."
+            },
+            {
+              "cost": 9.1,
+              "unit": "PSF",
+              "description": "Scored broom or salt finish. 4'x4' or larger pattern."
+            },
+            {
+              "cost": 10,
+              "unit": "PSF",
+              "description": "Scored broom or salt finish. Smaller than 4'x4' pattern."
+            },
+            {
+              "cost": 10.6,
+              "unit": "PSF",
+              "description": "Exposed top cast aggregate type finish."
+            },
+            {
+              "cost": 10.5,
+              "unit": "PSF",
+              "description": "Stamped random rock finish."
+            },
+            {
+              "cost": 15.6,
+              "unit": "PSF",
+              "description": "Separate pour banding. This applies to coping only jobs too."
+            },
+            {
+              "cost": 1.75,
+              "unit": "PSF",
+              "description": "Add color to any finish 1% loading."
+            },
+            {
+              "cost": 2.75,
+              "unit": "PSF",
+              "description": "Add color to any finish 2% loading."
+            },
+            {
+              "cost": 3.25,
+              "unit": "PSF",
+              "description": "Add color to any finish 3% loading."
+            },
+            {
+              "cost": 4,
+              "unit": "PSF",
+              "description": "Add color to any finish 4% loading."
+            },
+            {
+              "cost": 350,
+              "unit": "EA",
+              "description": "Concrete pump for banding, pours under 500 SF or 2 color pours."
+            },
+            {
+              "cost": 1.5,
+              "unit": "PSF",
+              "description": "Any deck under 600 SF. Add PSF."
+            },
+            {
+              "cost": 2.75,
+              "unit": "PSF",
+              "description": "Any deck under 400 SF. Add PSF."
+            },
+            {
+              "cost": 3.25,
+              "unit": "PSF",
+              "description": "Any deck under 300 SF. Add PSF."
+            },
+            {
+              "cost": 2,
+              "unit": "PSF",
+              "description": "Shiners on deckwork."
+            },
+            {
+              "cost": 5.5,
+              "unit": "PLF",
+              "description": "Form for brick or stone ribbons."
+            },
+            {
+              "cost": 3.5,
+              "unit": "PSF",
+              "description": "Wire mesh in place of stealth fibers."
+            },
+            {
+              "cost": 4.5,
+              "unit": "PSF",
+              "description": "#3 rebar 18” OC for RV and driveway areas."
+            },
+            {
+              "cost": 7.47,
+              "unit": "PLF",
+              "description": "Mastic. $747.00 minimum."
+            },
+            {
+              "cost": 700,
+              "unit": "EA",
+              "description": "Owner deck or no deck. Backfill trenches with no compaction."
+            },
+            {
+              "cost": 4.5,
+              "unit": "PSF",
+              "description": "Stepping stones. Add to concrete cost. $600 minimum."
+            },
+            {
+              "cost": 250,
+              "unit": "EA",
+              "description": "Re-pour nat grey sawcut when deck is colored. Add footage."
+            },
+            {
+              "cost": 1.5,
+              "unit": "PSF",
+              "description": "Add texture stamp surface with liquid release color."
+            },
+            {
+              "cost": 2.25,
+              "unit": "PSF",
+              "description": "Add texture stamp surface with color powder release."
+            },
+            {
+              "cost": 1.85,
+              "unit": "PSF",
+              "description": "Add concrete sealer."
+            },
+            {
+              "cost": 100,
+              "unit": "EA",
+              "description": "Concrete skimmer or autofill lid."
+            },
+            {
+              "cost": 700,
+              "unit": "EA",
+              "description": "Eco potential bonding requirements."
+            },
+            {
+              "cost": 1000,
+              "unit": "EA",
+              "description": "Backfill of trenches and ramp for jobs without decking by Bogner. Coping not included."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
