@@ -21,20 +21,15 @@ export default function Navigation() {
     <header className="bg-gradient-to-r from-bogner-blue via-blue-600 to-bogner-teal text-white shadow-xl rounded-t-xl backdrop-blur-sm" role="banner">
       <div className="px-3 sm:px-6 md:px-8">
         <div className="flex items-center justify-between py-3 sm:py-4 md:py-5">
-          <div className="flex items-center gap-3">
-            <div className="relative h-10 sm:h-12 w-auto">
-              <Image
-                src="/bogner-logo.png"
-                alt="Bogner Pools"
-                width={289}
-                height={89}
-                className="h-full w-auto object-contain"
-                priority
-              />
-            </div>
-            <span className="text-base sm:text-lg font-semibold tracking-tight hidden md:inline">
-              Resources
-            </span>
+          <div className="relative h-10 sm:h-12 w-auto">
+            <Image
+              src="/bogner-logo.png"
+              alt="Bogner Pools"
+              width={289}
+              height={89}
+              className="h-full w-auto object-contain"
+              priority
+            />
           </div>
           <nav aria-label="Main navigation">
             <ul className="flex gap-1 sm:gap-2 items-center">

@@ -1,12 +1,20 @@
 import { signIn } from "@/auth"
+import Image from 'next/image'
 
 export default function SignIn() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="bg-white p-8 rounded-xl shadow-2xl border border-gray-200 max-w-md w-full">
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-gradient-to-r from-bogner-blue to-bogner-teal rounded-xl flex items-center justify-center font-bold text-2xl text-white mx-auto mb-4">
-            BP
+          <div className="mx-auto mb-4 relative h-16 w-auto flex items-center justify-center">
+            <Image
+              src="/bogner-logo.png"
+              alt="Bogner Pools"
+              width={289}
+              height={89}
+              className="h-16 w-auto object-contain"
+              priority
+            />
           </div>
           <h1 className="text-3xl font-bold bg-gradient-to-r from-bogner-blue to-bogner-teal bg-clip-text text-transparent mb-2">
             Bogner Pools Resources
