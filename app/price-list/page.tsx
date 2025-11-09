@@ -29,12 +29,25 @@ export default function PriceListPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [expandedPhases, setExpandedPhases] = useState<Set<string>>(new Set());
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch('/price-data.json')
-      .then(res => res.json())
-      .then(data => setPriceData(data))
-      .catch(err => console.error('Error loading price data:', err));
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to load price data');
+        return res.json();
+      })
+      .then(data => {
+        setPriceData(data);
+        setError(null);
+      })
+      .catch(err => {
+        setError(err.message || 'Failed to load price data');
+        console.error('Error loading price data:', err);
+      })
+      .finally(() => setIsLoading(false));
   }, []);
 
   const isPhaseHeader = (sectionName: string) => {
@@ -64,28 +77,60 @@ export default function PriceListPage() {
 
   const highlightText = (text: string) => {
     if (!searchTerm) return text;
-    const parts = text.split(new RegExp(`(${searchTerm})`, 'gi'));
-    return parts.map((part, i) =>
-      part.toLowerCase() === searchTerm.toLowerCase() ? (
-        <span key={i} className="bg-yellow-200 font-semibold">{part}</span>
-      ) : (
-        part
-      )
-    );
+    try {
+      // Escape special regex characters to prevent RegExp errors
+      const escapedTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const parts = text.split(new RegExp(`(${escapedTerm})`, 'gi'));
+      return parts.map((part, i) =>
+        part.toLowerCase() === searchTerm.toLowerCase() ? (
+          <span key={i} className="bg-yellow-200 font-semibold">{part}</span>
+        ) : (
+          part
+        )
+      );
+    } catch (e) {
+      // Fallback if regex fails
+      return text;
+    }
   };
 
-  if (!priceData) {
+  if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-gray-600">Loading price data...</div>
+      <div className="min-h-[var(--content-height)] flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50/30 p-4">
+        <div className="text-center max-w-md">
+          <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h2 className="text-xl font-bold text-gray-900 mb-2">Failed to Load Price Data</h2>
+          <p className="text-gray-600 mb-4">{error}</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="px-6 py-2 bg-gradient-to-r from-bogner-blue to-bogner-teal text-white font-semibold rounded-lg hover:opacity-90 transition-opacity"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (isLoading || !priceData) {
+    return (
+      <div className="min-h-[var(--content-height)] flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50/30">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-bogner-blue border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="text-gray-700 font-medium">Loading price data...</div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="flex h-full overflow-hidden gap-2" style={{ height: 'calc(100vh - 108px)', marginTop: '8px' }}>
+    <div className="flex overflow-hidden gap-2 mt-2" style={{ minHeight: 'var(--content-height)' }}>
         {/* Sidebar */}
-        <aside className="hidden lg:block w-48 xl:w-56 bg-white/80 backdrop-blur-sm overflow-y-auto rounded-xl shadow-lg border border-gray-200">
+        <aside className="hidden lg:block w-48 xl:w-56 bg-white/80 backdrop-blur-sm overflow-y-auto rounded-xl shadow-lg border border-gray-200" role="navigation" aria-label="Price list sections">
         <div className="p-2 bg-gradient-to-br from-slate-50 to-blue-50 border-b border-gray-200 rounded-t-xl">
           <h3 className="text-xs font-bold text-slate-700 tracking-tight flex items-center gap-1.5">
             <span className="w-1 h-3 bg-gradient-to-b from-bogner-blue to-bogner-teal rounded-full"></span>
@@ -189,15 +234,18 @@ export default function PriceListPage() {
       <main className="flex-1 flex flex-col overflow-hidden bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200">
         {/* Search Bar */}
         <div className="p-2 bg-gradient-to-br from-slate-50 to-blue-50 border-b border-gray-200 rounded-t-xl">
-          <div className="relative">
+          <div className="relative" role="search">
+            <label htmlFor="price-search" className="sr-only">Search price list</label>
             <input
-              type="text"
+              id="price-search"
+              type="search"
               placeholder="Search price list..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-3 py-1.5 pl-8 border-2 border-gray-200 rounded-lg text-xs focus:outline-none focus:border-bogner-teal focus:ring-2 focus:ring-bogner-teal/20 transition-all bg-white shadow-sm"
+              className="w-full px-3 py-2 sm:py-1.5 pl-8 border-2 border-gray-200 rounded-lg text-sm sm:text-xs focus:outline-none focus:border-bogner-teal focus:ring-2 focus:ring-bogner-teal/20 transition-all bg-white shadow-sm"
+              aria-label="Search price list items"
             />
-            <svg className="absolute left-2 top-2 w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="absolute left-2 top-2.5 sm:top-2 w-4 h-4 sm:w-3.5 sm:h-3.5 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </div>

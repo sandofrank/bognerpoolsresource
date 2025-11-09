@@ -72,9 +72,9 @@ export default function ResourcesPage() {
   };
 
   return (
-    <main className="h-full overflow-y-auto bg-gradient-to-br from-slate-50 to-blue-50/30 p-2 sm:p-3" style={{ height: 'calc(100vh - 108px)', marginTop: '8px' }}>
+    <main className="overflow-y-auto bg-gradient-to-br from-slate-50 to-blue-50/30 p-2 sm:p-3 mt-2" style={{ minHeight: 'var(--content-height)' }}>
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-lg sm:text-xl font-bold mb-2 bg-gradient-to-r from-bogner-blue to-bogner-teal bg-clip-text text-transparent">
+        <h1 className="text-lg sm:text-xl font-bold mb-3 bg-gradient-to-r from-bogner-blue to-bogner-teal bg-clip-text text-transparent">
           Quick Links
         </h1>
 
@@ -85,14 +85,17 @@ export default function ResourcesPage() {
               <div key={idx} className="bg-white/80 backdrop-blur-sm rounded-lg shadow-lg border border-gray-200 overflow-hidden transition-all duration-300 break-inside-avoid mb-2">
                 <button
                   onClick={() => toggleCard(idx)}
-                  className="w-full px-2 py-1.5 bg-gradient-to-r from-slate-600 via-slate-700 to-slate-800 text-white hover:from-slate-700 hover:via-slate-800 hover:to-slate-900 transition-all duration-200 flex items-center justify-between"
+                  className="w-full px-3 py-2.5 sm:py-2 bg-gradient-to-r from-slate-600 via-slate-700 to-slate-800 text-white hover:from-slate-700 hover:via-slate-800 hover:to-slate-900 transition-all duration-200 flex items-center justify-between min-h-[44px] touch-manipulation"
+                  aria-expanded={isExpanded}
+                  aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${category.title} section`}
                 >
-                  <h2 className="text-xs sm:text-sm font-bold tracking-tight">{category.title}</h2>
+                  <h2 className="text-xs sm:text-sm font-bold tracking-tight text-left">{category.title}</h2>
                   <svg
-                    className={`w-4 h-4 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
+                    className={`w-5 h-5 sm:w-4 sm:h-4 transition-transform duration-200 flex-shrink-0 ${isExpanded ? 'rotate-180' : ''}`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
+                    aria-hidden="true"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
@@ -108,7 +111,8 @@ export default function ResourcesPage() {
                               href={link.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="group flex items-center gap-1.5 px-2 py-1.5 rounded border border-gray-200 hover:border-bogner-teal hover:bg-gradient-to-r hover:from-blue-50 hover:to-teal-50 transition-all duration-200"
+                              className="group flex items-center gap-2 px-3 py-2.5 sm:py-2 rounded border border-gray-200 hover:border-bogner-teal hover:bg-gradient-to-r hover:from-blue-50 hover:to-teal-50 transition-all duration-200 min-h-[44px] touch-manipulation"
+                              aria-label={`Open ${link.name} in new tab`}
                             >
                               <img
                                 src={`https://icons.duckduckgo.com/ip3/${domain}.ico`}
@@ -116,22 +120,13 @@ export default function ResourcesPage() {
                                 className="w-4 h-4 flex-shrink-0"
                                 loading="lazy"
                                 onError={(e) => {
-                                  const target = e.currentTarget;
-                                  if (target.src.includes('duckduckgo')) {
-                                    target.src = `https://www.google.com/s2/favicons?domain=${domain}&sz=32`;
-                                  } else {
-                                    target.style.display = 'none';
-                                    const svg = target.nextElementSibling;
-                                    if (svg instanceof SVGElement) {
-                                      svg.classList.remove('hidden');
-                                    }
-                                  }
+                                  e.currentTarget.style.display = 'none';
                                 }}
                               />
-                              <svg className="w-4 h-4 flex-shrink-0 text-bogner-blue group-hover:text-bogner-teal transition-colors hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <svg className="w-4 h-4 flex-shrink-0 text-bogner-blue group-hover:text-bogner-teal transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                               </svg>
-                              <span className="text-xs sm:text-sm font-medium text-slate-700 group-hover:text-bogner-blue transition-colors">
+                              <span className="text-xs sm:text-sm font-medium text-slate-700 group-hover:text-bogner-blue transition-colors flex-1">
                                 {link.name}
                               </span>
                             </a>

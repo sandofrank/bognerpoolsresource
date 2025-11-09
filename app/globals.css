@@ -5,6 +5,18 @@
   --color-bogner-teal: #14b8a6;
 }
 
+:root {
+  --nav-height: 76px;
+  --content-height: calc(100vh - var(--nav-height));
+}
+
+/* Mobile-safe viewport height (handles collapsing address bars) */
+@supports (height: 100svh) {
+  :root {
+    --content-height: calc(100svh - var(--nav-height));
+  }
+}
+
 * {
   box-sizing: border-box;
 }

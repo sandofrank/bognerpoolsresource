@@ -16,33 +16,38 @@ export default function Navigation() {
   ];
 
   return (
-    <header className="bg-gradient-to-r from-bogner-blue via-blue-600 to-bogner-teal text-white shadow-xl rounded-t-xl backdrop-blur-sm">
+    <header className="bg-gradient-to-r from-bogner-blue via-blue-600 to-bogner-teal text-white shadow-xl rounded-t-xl backdrop-blur-sm" role="banner">
       <div className="px-3 sm:px-6 md:px-8">
         <div className="flex items-center justify-between py-3 sm:py-4 md:py-5">
-          <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 backdrop-blur-md rounded-lg flex items-center justify-center font-bold text-base sm:text-lg group-hover:bg-white/30 transition-all duration-200 group-hover:scale-105">
+          <Link
+            href="/"
+            className="flex items-center gap-2 sm:gap-3 group min-h-[44px] touch-manipulation"
+            aria-label="Bogner Pools Resources Home"
+          >
+            <div className="w-10 h-10 sm:w-10 sm:h-10 bg-white/20 backdrop-blur-md rounded-lg flex items-center justify-center font-bold text-base sm:text-lg group-hover:bg-white/30 transition-all duration-200 group-hover:scale-105" aria-hidden="true">
               BP
             </div>
             <span className="text-base sm:text-xl font-bold tracking-tight group-hover:tracking-normal transition-all duration-200">
-              Bogner Pools <span className="font-normal opacity-90 hidden sm:inline">Resources</span>
+              Bogner Pools <span className="font-normal opacity-100 hidden sm:inline">Resources</span>
             </span>
           </Link>
-          <nav>
+          <nav aria-label="Main navigation">
             <ul className="flex gap-1 sm:gap-2 items-center">
               {navItems.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className={`px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 flex items-center gap-1 sm:gap-2 ${
+                    className={`px-3 sm:px-3 md:px-4 py-2 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 flex items-center gap-1 sm:gap-2 min-h-[44px] touch-manipulation ${
                       pathname === item.href
                         ? 'bg-white/20 backdrop-blur-md shadow-lg'
                         : 'hover:bg-white/10 hover:backdrop-blur-md'
                     }`}
+                    aria-current={pathname === item.href ? 'page' : undefined}
                   >
                     <span className="hidden sm:inline">{item.label}</span>
                     <span className="sm:hidden">{item.label.split(' ')[0]}</span>
                     {item.comingSoon && (
-                      <span className="px-1.5 sm:px-2 py-0.5 bg-white/20 rounded text-xs font-semibold">Soon</span>
+                      <span className="px-1.5 sm:px-2 py-0.5 bg-white/20 rounded text-xs font-semibold" aria-label="Coming soon">Soon</span>
                     )}
                   </Link>
                 </li>
@@ -51,11 +56,11 @@ export default function Navigation() {
                 <li>
                   <button
                     onClick={() => signOut()}
-                    className="px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 hover:bg-white/10 hover:backdrop-blur-md flex items-center gap-2"
-                    title={`Sign out (${session.user.email})`}
+                    className="px-3 sm:px-3 md:px-4 py-2 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 hover:bg-white/10 hover:backdrop-blur-md flex items-center gap-2 min-h-[44px] touch-manipulation"
+                    aria-label={`Sign out ${session.user.name || session.user.email}`}
                   >
                     <span className="hidden md:inline">{session.user.name?.split(' ')[0]}</span>
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                     </svg>
                   </button>
