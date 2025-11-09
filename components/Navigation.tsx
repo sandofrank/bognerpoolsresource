@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react';
 import { useSession } from 'next-auth/react';
@@ -21,14 +22,21 @@ export default function Navigation() {
         <div className="flex items-center justify-between py-3 sm:py-4 md:py-5">
           <Link
             href="/"
-            className="flex items-center gap-2 sm:gap-3 group min-h-[44px] touch-manipulation"
+            className="flex items-center gap-3 group min-h-[44px] touch-manipulation"
             aria-label="Bogner Pools Resources Home"
           >
-            <div className="w-10 h-10 sm:w-10 sm:h-10 bg-white/20 backdrop-blur-md rounded-lg flex items-center justify-center font-bold text-base sm:text-lg group-hover:bg-white/30 transition-all duration-200 group-hover:scale-105" aria-hidden="true">
-              BP
+            <div className="relative h-10 sm:h-12 w-auto group-hover:scale-105 transition-transform duration-200">
+              <Image
+                src="/bogner-logo.png"
+                alt="Bogner Pools"
+                width={289}
+                height={89}
+                className="h-full w-auto object-contain"
+                priority
+              />
             </div>
-            <span className="text-base sm:text-xl font-bold tracking-tight group-hover:tracking-normal transition-all duration-200">
-              Bogner Pools <span className="font-normal opacity-100 hidden sm:inline">Resources</span>
+            <span className="text-base sm:text-lg font-semibold tracking-tight hidden md:inline">
+              Resources
             </span>
           </Link>
           <nav aria-label="Main navigation">
