@@ -18,16 +18,16 @@ export default function Navigation() {
   ];
 
   return (
-    <header className="bg-gradient-to-r from-bogner-blue via-blue-600 to-bogner-teal text-white shadow-xl rounded-t-xl backdrop-blur-sm" role="banner">
+    <header className="bg-gradient-to-r from-bogner-blue via-blue-600 to-bogner-teal text-white shadow-xl rounded-t-xl backdrop-blur-sm overflow-visible" role="banner">
       <div className="px-3 sm:px-6 md:px-8">
-        <div className="flex items-center justify-between py-3 sm:py-4 md:py-5">
-          <div className="relative h-12 sm:h-14 md:h-16 w-auto flex items-center">
+        <div className="flex items-center justify-between py-4 sm:py-5 md:py-6">
+          <div className="relative h-14 sm:h-16 md:h-20 w-auto flex items-center py-1">
             <Image
               src="/bogner-logo.png"
               alt="Bogner Pools"
               width={289}
               height={89}
-              className="h-full w-auto object-contain max-h-12 sm:max-h-14 md:max-h-16"
+              className="h-full w-auto object-contain"
               priority
             />
           </div>
