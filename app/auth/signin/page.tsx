@@ -6,13 +6,13 @@ export default function SignIn() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="bg-white p-8 rounded-xl shadow-2xl border border-gray-200 max-w-md w-full">
         <div className="text-center mb-8">
-          <div className="mx-auto mb-4 relative h-16 w-auto flex items-center justify-center">
+          <div className="mx-auto mb-4 w-full max-w-xs flex items-center justify-center">
             <Image
               src="/bogner-logo.png"
               alt="Bogner Pools"
               width={289}
               height={89}
-              className="h-16 w-auto object-contain"
+              className="h-auto w-full max-w-[200px] object-contain"
               priority
             />
           </div>

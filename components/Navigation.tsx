@@ -21,13 +21,13 @@ export default function Navigation() {
     <header className="bg-gradient-to-r from-bogner-blue via-blue-600 to-bogner-teal text-white shadow-xl rounded-t-xl backdrop-blur-sm" role="banner">
       <div className="px-3 sm:px-6 md:px-8">
         <div className="flex items-center justify-between py-3 sm:py-4 md:py-5">
-          <div className="relative h-10 sm:h-12 w-auto">
+          <div className="relative h-12 sm:h-14 md:h-16 w-auto flex items-center">
             <Image
               src="/bogner-logo.png"
               alt="Bogner Pools"
               width={289}
               height={89}
-              className="h-full w-auto object-contain"
+              className="h-full w-auto object-contain max-h-12 sm:max-h-14 md:max-h-16"
               priority
             />
           </div>
