@@ -1,0 +1,13 @@
+# Production browsers
+> 0.2%
+not dead
+not op_mini all
+
+# Specifically support Safari 14.1.2
+Safari >= 14.1
+iOS >= 14.5
+
+# Support modern browsers too
+last 2 Chrome versions
+last 2 Firefox versions
+last 2 Edge versions

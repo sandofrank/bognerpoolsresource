@@ -7,10 +7,12 @@
 
 :root {
   --nav-height: 76px;
+  /* Fallback for Safari 14.1.2 and older browsers */
   --content-height: calc(100vh - var(--nav-height));
 }
 
-/* Mobile-safe viewport height (handles collapsing address bars) */
+/* Modern viewport height for Safari 15.4+ and other modern browsers */
+/* Uses small viewport units that account for dynamic toolbars */
 @supports (height: 100svh) {
   :root {
     --content-height: calc(100svh - var(--nav-height));
