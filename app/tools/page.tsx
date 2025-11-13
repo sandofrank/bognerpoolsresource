@@ -22,7 +22,110 @@ export default function ToolsPage() {
   const [cyaNeeded, setCyaNeeded] = useState<number | null>(null);
 
   const handleDownloadPDF = () => {
-    window.print();
+    // Check if on mobile
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isMobile && navigator.share) {
+      // Use Web Share API on mobile
+      const reportText = generateReportText();
+      navigator.share({
+        title: 'Bogner Pools - Fresh Plaster Startup Report',
+        text: reportText,
+      }).catch((error) => {
+        // Fallback to print if share is cancelled
+        if (error.name !== 'AbortError') {
+          window.print();
+        }
+      });
+    } else {
+      // Use print dialog on desktop
+      window.print();
+    }
+  };
+
+  const generateReportText = () => {
+    const lines = [
+      '═══════════════════════════════════════',
+      'BOGNER POOLS',
+      'Fresh Plaster Startup Report',
+      '═══════════════════════════════════════',
+      '',
+    ];
+
+    if (jobName) {
+      lines.push(`Job: ${jobName}`);
+      lines.push('');
+    }
+
+    lines.push(`Generated: ${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`);
+    lines.push('');
+    lines.push('POOL SPECIFICATIONS');
+    lines.push('───────────────────────────────────────');
+    lines.push(`Surface Area: ${surfaceArea} sq ft`);
+    lines.push(`Shallow End: ${shallowDepth} ft`);
+    lines.push(`Deep End: ${deepDepth} ft`);
+
+    if (shallowDepth2 && parseFloat(shallowDepth2) > 0) {
+      lines.push(`Shallow End 2: ${shallowDepth2} ft`);
+    }
+    if (deepInMiddle) {
+      lines.push('Pool Type: Deep end in middle');
+    }
+    if (landingArea && parseFloat(landingArea) > 0) {
+      lines.push(`Landing Area: ${landingArea} sq ft`);
+      lines.push(`Landing Depth: ${landingDepth} ft`);
+    }
+    if (seatsStepsLength && parseFloat(seatsStepsLength) > 0) {
+      lines.push(`Seats/Steps: ${seatsStepsLength} ft length`);
+    }
+    lines.push(`Target Salt: ${desiredSaltPPM} PPM`);
+    lines.push(`Target CYA: ${desiredCYA} PPM`);
+    lines.push('');
+
+    lines.push('CHEMICAL REQUIREMENTS');
+    lines.push('───────────────────────────────────────');
+    lines.push(`Water Volume: ${volume?.toLocaleString()} gallons`);
+    lines.push('');
+
+    if (saltNeeded !== null) {
+      lines.push(`Salt: ${saltNeeded.toLocaleString()} lbs`);
+      lines.push(`  (≈ ${Math.round(saltNeeded / 40)} bags, 40 lb each)`);
+      lines.push('');
+    }
+
+    if (chlorineNeeded !== null) {
+      lines.push(`Liquid Chlorine: ${(chlorineNeeded / 128).toFixed(2)} gallons`);
+      lines.push(`  (${chlorineNeeded} oz, 12.5% to 2.0 PPM)`);
+      lines.push('');
+    }
+
+    if (cyaNeeded !== null) {
+      lines.push(`Stabilizer (CYA): ${(cyaNeeded / 16).toFixed(1)} lbs`);
+      lines.push(`  (${cyaNeeded} oz to ${desiredCYA} PPM)`);
+      lines.push('');
+    }
+
+    if (acidNeeded !== null) {
+      lines.push(`Muriatic Acid: ${(acidNeeded / 128).toFixed(2)} gallons`);
+      lines.push(`  (${acidNeeded} oz, 31.45%)`);
+      lines.push('  ✓ Includes 1.5x dose for fresh plaster');
+      lines.push('  ✓ Includes chlorine pH compensation');
+      lines.push('  ⚠ Retest pH daily during first week');
+      lines.push('');
+    }
+
+    lines.push('SAFETY NOTES');
+    lines.push('───────────────────────────────────────');
+    lines.push('• Add chemicals with pump running');
+    lines.push('• Never mix chemicals together');
+    lines.push('• Wear safety equipment');
+    lines.push('• Test daily during first week');
+    lines.push('');
+    lines.push('═══════════════════════════════════════');
+    lines.push('BOGNER POOLS');
+    lines.push('═══════════════════════════════════════');
+
+    return lines.join('\n');
   };
 
   const calculateVolume = () => {
@@ -471,15 +574,16 @@ export default function ToolsPage() {
           {/* Result */}
           {volume !== null && (
             <div className="space-y-3 mt-4 print:block">
-                {/* Download/Print PDF Button */}
+                {/* Download/Share Report Button */}
                 <button
                   onClick={handleDownloadPDF}
                   className="w-full bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-md transition-colors flex items-center justify-center gap-2 print:hidden"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
                   </svg>
-                  Save as PDF
+                  <span className="hidden sm:inline">Save as PDF</span>
+                  <span className="sm:hidden">Share Report</span>
                 </button>
 
                 {/* Pool Measurements - Only visible when printing */}
