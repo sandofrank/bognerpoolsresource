@@ -148,16 +148,16 @@ export default function ResourcesPage() {
       const cardId = `${columnName}-${idx}`;
       const isExpanded = expandedCards.has(cardId);
       return (
-        <div key={cardId} className="bg-white/80 backdrop-blur-sm rounded shadow border border-gray-200 overflow-hidden transition-all duration-300 mb-1">
+        <div key={cardId} className="quick-link-section">
           <button
             onClick={() => toggleCard(cardId)}
-            className="w-full px-2 py-1.5 bg-gradient-to-r from-slate-600 via-slate-700 to-slate-800 text-white hover:from-slate-700 hover:via-slate-800 hover:to-slate-900 transition-all duration-200 flex items-center justify-between min-h-[44px] touch-manipulation"
+            className="quick-link-header"
             aria-expanded={isExpanded}
             aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${category.title} section`}
           >
             <h2 className="text-xs font-bold tracking-tight text-left">{category.title}</h2>
             <svg
-              className={`w-3.5 h-3.5 transition-transform duration-200 flex-shrink-0 ${isExpanded ? 'rotate-180' : ''}`}
+              className={`icon-xs transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -166,33 +166,34 @@ export default function ResourcesPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'}`}>
+          <div className={`collapse-content ${isExpanded ? 'expanded' : 'collapsed'}`}>
             <div className="p-1">
               <ul className="space-y-0.5">
-                {category.links.map((link, linkIdx) => {
+                {category.links.map((link) => {
                   const domain = new URL(link.url).hostname;
+                  const linkKey = `${link.name}-${domain}`;
                   return (
-                    <li key={linkIdx}>
+                    <li key={linkKey}>
                       <a
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex items-center gap-1.5 px-2 py-1.5 rounded border border-gray-200 hover:border-bogner-teal hover:bg-gradient-to-r hover:from-blue-50 hover:to-teal-50 transition-all duration-200 min-h-[44px] touch-manipulation"
+                        className="quick-link-item"
                         aria-label={`Open ${link.name} in new tab`}
                       >
                         <img
                           src={`https://icons.duckduckgo.com/ip3/${domain}.ico`}
                           alt=""
-                          className="w-3.5 h-3.5 flex-shrink-0"
+                          className="icon-xs"
                           loading="lazy"
                           onError={(e) => {
                             e.currentTarget.style.display = 'none';
                           }}
                         />
-                        <svg className="w-3 h-3 flex-shrink-0 text-bogner-blue group-hover:text-bogner-teal transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <svg className="quick-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
-                        <span className="text-xs font-medium text-slate-700 group-hover:text-bogner-blue transition-colors flex-1">
+                        <span className="quick-link-text">
                           {link.name}
                         </span>
                       </a>
@@ -208,9 +209,9 @@ export default function ResourcesPage() {
   };
 
   return (
-    <main className="overflow-y-auto bg-gradient-to-br from-slate-50 to-blue-50/30 p-1.5 mt-2" style={{ minHeight: 'var(--content-height)' }}>
+    <main className="page-content overflow-y-auto">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-sm font-bold mb-1.5 bg-gradient-to-r from-bogner-blue to-bogner-teal bg-clip-text text-transparent">
+        <h1 className="text-sm font-bold mb-1.5 text-gradient-primary">
           Quick Links
         </h1>
 

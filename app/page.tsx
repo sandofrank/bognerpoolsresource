@@ -40,11 +40,11 @@ const resources = [
 
 export default function Home() {
   return (
-    <main className="bg-gradient-to-br from-slate-50 to-blue-50/30 min-h-[var(--content-height)] p-1.5 mt-2">
+    <main className="page-content">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-3">
-          <h1 className="text-xl sm:text-2xl font-bold mb-1.5 bg-gradient-to-r from-bogner-blue to-bogner-teal bg-clip-text text-transparent">
+          <h1 className="text-xl sm:text-2xl font-bold mb-1.5 text-gradient-primary">
             Bogner Pools Resources
           </h1>
           <p className="text-sm text-gray-700 max-w-2xl mx-auto">
@@ -58,7 +58,7 @@ export default function Home() {
             <Link
               key={resource.href}
               href={resource.href}
-              className="group relative bg-white rounded-lg shadow border border-gray-200 p-3 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 overflow-hidden"
+              className="group relative card-solid card-hover p-3 overflow-hidden"
             >
               {/* Gradient Background */}
               <div className={`absolute inset-0 bg-gradient-to-br ${resource.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
@@ -67,7 +67,7 @@ export default function Home() {
               <div className="relative">
                 {/* Icon */}
                 <div className={`inline-flex p-2 rounded-lg bg-gradient-to-br ${resource.gradient} text-white mb-2 group-hover:scale-105 transition-transform duration-300`}>
-                  <div className="w-8 h-8">
+                  <div className="icon-xl">
                     {resource.icon}
                   </div>
                 </div>
@@ -76,9 +76,7 @@ export default function Home() {
                 <h2 className="text-base font-bold text-gray-900 mb-1 flex items-center gap-1.5">
                   {resource.title}
                   {resource.comingSoon && (
-                    <span className="text-xs font-semibold px-1.5 py-0.5 bg-gray-100 text-gray-600 rounded">
-                      Soon
-                    </span>
+                    <span className="pill badge-gray">Soon</span>
                   )}
                 </h2>
 
@@ -90,7 +88,7 @@ export default function Home() {
                 {/* Arrow Icon */}
                 <div className="flex items-center text-bogner-blue font-semibold group-hover:gap-1 transition-all">
                   <span className="text-xs">Access</span>
-                  <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="icon-sm transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </div>

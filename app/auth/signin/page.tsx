@@ -3,8 +3,8 @@ import Image from 'next/image'
 
 export default function SignIn() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50">
-      <div className="bg-white p-8 rounded-xl shadow-2xl border border-gray-200 max-w-md w-full">
+    <div className="auth-container">
+      <div className="auth-card">
         <div className="text-center mb-8">
           <div className="mx-auto mb-4 w-full max-w-xs flex items-center justify-center">
             <Image
@@ -16,11 +16,11 @@ export default function SignIn() {
               priority
             />
           </div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-bogner-blue to-bogner-teal bg-clip-text text-transparent mb-2">
+          <h1 className="auth-title">
             Bogner Pools Resources
           </h1>
-          <p className="text-gray-600 mb-2">Sign in to access resources</p>
-          <p className="text-sm text-slate-500">@bognerpools.com emails only</p>
+          <p className="auth-subtitle">Sign in to access resources</p>
+          <p className="auth-note">@bognerpools.com emails only</p>
         </div>
 
         <form
@@ -31,9 +31,9 @@ export default function SignIn() {
         >
           <button
             type="submit"
-            className="w-full flex items-center justify-center gap-3 px-6 py-3 bg-white border-2 border-gray-300 rounded-lg font-semibold text-gray-700 hover:bg-gray-50 hover:border-bogner-blue transition-all duration-200 shadow-sm"
+            className="btn-google"
           >
-            <svg className="w-5 h-5" viewBox="0 0 24 24">
+            <svg className="icon-md" viewBox="0 0 24 24">
               <path
                 fill="#4285F4"
                 d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"

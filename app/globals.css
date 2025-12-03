@@ -2,20 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================
+   CSS CUSTOM PROPERTIES
+   ============================================ */
 :root {
+  /* Layout */
   --nav-height: 76px;
   /* Fallback for Safari 14.1.2 and older browsers */
   --content-height: calc(100vh - var(--nav-height));
+
+  /* Brand Colors */
+  --color-bogner-blue: #2563eb;
+  --color-bogner-blue-dark: #1d4ed8;
+  --color-bogner-teal: #14b8a6;
+  --color-bogner-teal-dark: #0d9488;
+
+  /* Neutral Colors */
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
 }
 
 /* Modern viewport height for Safari 15.4+ and other modern browsers */
-/* Uses small viewport units that account for dynamic toolbars */
 @supports (height: 100svh) {
   :root {
     --content-height: calc(100svh - var(--nav-height));
   }
 }
 
+/* ============================================
+   BASE STYLES
+   ============================================ */
 * {
   box-sizing: border-box;
 }
@@ -53,7 +96,9 @@ body {
   }
 }
 
-/* Scrollbar styling */
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -85,4 +130,773 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #1d4ed8 0%, #0d9488 100%);
+}
+
+/* ============================================
+   COMPONENT LAYER - Reusable Classes
+   ============================================ */
+@layer components {
+
+  /* ----------------------------------------
+     LAYOUT COMPONENTS
+     ---------------------------------------- */
+
+  /* Page content area - standard page wrapper */
+  .page-content {
+    @apply bg-gradient-to-br from-slate-50 to-blue-50/30 p-1.5 mt-2 rounded-xl;
+    min-height: var(--content-height);
+  }
+
+  /* Full height content area */
+  .content-full-height {
+    min-height: var(--content-height);
+  }
+
+  /* Scrollable content with max height */
+  .content-scrollable {
+    max-height: calc(var(--content-height) - 1rem);
+    overflow-y: auto;
+  }
+
+  /* ----------------------------------------
+     CARD COMPONENTS
+     ---------------------------------------- */
+
+  /* Glass morphism card */
+  .card-glass {
+    @apply bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200;
+  }
+
+  /* Solid white card */
+  .card-solid {
+    @apply bg-white rounded-xl shadow-lg border border-gray-200;
+  }
+
+  /* Hover card with lift effect */
+  .card-hover {
+    @apply transition-all duration-200;
+  }
+  .card-hover:hover {
+    @apply shadow-xl -translate-y-0.5;
+  }
+
+  /* ----------------------------------------
+     GRADIENT COMPONENTS
+     ---------------------------------------- */
+
+  /* Primary brand gradient (blue to teal) */
+  .gradient-primary {
+    @apply bg-gradient-to-r from-bogner-blue to-bogner-teal;
+  }
+
+  /* Primary gradient hover state */
+  .gradient-primary-hover {
+    @apply bg-gradient-to-r from-blue-700 to-teal-600;
+  }
+
+  /* Light page background gradient */
+  .gradient-page-bg {
+    @apply bg-gradient-to-br from-slate-50 to-blue-50/30;
+  }
+
+  /* Dark section header gradient */
+  .gradient-header-dark {
+    @apply bg-gradient-to-r from-slate-600 via-slate-700 to-slate-800;
+  }
+
+  /* Text gradient */
+  .text-gradient-primary {
+    @apply bg-gradient-to-r from-bogner-blue to-bogner-teal bg-clip-text text-transparent;
+  }
+
+  /* ----------------------------------------
+     BUTTON COMPONENTS
+     ---------------------------------------- */
+
+  /* Base button styles */
+  .btn {
+    @apply inline-flex items-center justify-center font-medium rounded-lg
+           transition-all duration-200 focus:outline-none focus:ring-2
+           focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Primary gradient button */
+  .btn-primary {
+    @apply btn gradient-primary text-white shadow-md hover:shadow-lg
+           focus:ring-bogner-blue;
+  }
+  .btn-primary:hover:not(:disabled) {
+    @apply gradient-primary-hover;
+  }
+
+  /* Secondary/outline button */
+  .btn-secondary {
+    @apply btn bg-white text-bogner-blue border-2 border-bogner-blue
+           hover:bg-bogner-blue hover:text-white focus:ring-bogner-blue;
+  }
+
+  /* Ghost button */
+  .btn-ghost {
+    @apply btn text-gray-600 hover:bg-gray-100 focus:ring-gray-400;
+  }
+
+  /* Danger button */
+  .btn-danger {
+    @apply btn bg-red-500 text-white hover:bg-red-600 focus:ring-red-500;
+  }
+
+  /* Button sizes */
+  .btn-sm {
+    @apply px-3 py-1.5 text-sm;
+  }
+
+  .btn-md {
+    @apply px-4 py-2 text-sm;
+  }
+
+  .btn-lg {
+    @apply px-6 py-3 text-base;
+  }
+
+  /* Touch-friendly button (min 44px height for accessibility) */
+  .btn-touch {
+    @apply min-h-[44px] touch-manipulation;
+  }
+
+  /* ----------------------------------------
+     FORM COMPONENTS
+     ---------------------------------------- */
+
+  /* Base input styles */
+  .input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg
+           bg-white text-gray-900 placeholder-gray-400
+           transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-bogner-blue focus:border-transparent;
+  }
+
+  /* Input with error state */
+  .input-error {
+    @apply input border-red-500 focus:ring-red-500;
+  }
+
+  /* Small input */
+  .input-sm {
+    @apply px-2 py-1.5 text-sm;
+  }
+
+  /* Textarea */
+  .textarea {
+    @apply input resize-none;
+  }
+
+  /* Select dropdown */
+  .select {
+    @apply input appearance-none cursor-pointer
+           bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20stroke%3D%22%236b7280%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%221.5%22%20d%3D%22M6%208l4%204%204-4%22%2F%3E%3C%2Fsvg%3E')]
+           bg-[length:1.5rem_1.5rem] bg-[right_0.5rem_center] bg-no-repeat pr-10;
+  }
+
+  /* Form label */
+  .label {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+  }
+
+  /* Form group spacing */
+  .form-group {
+    @apply mb-4;
+  }
+
+  /* Focus ring utility */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-bogner-blue focus:ring-offset-1;
+  }
+
+  /* ----------------------------------------
+     BADGE COMPONENTS
+     ---------------------------------------- */
+
+  /* Base badge */
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded-full;
+  }
+
+  /* Badge variants */
+  .badge-primary {
+    @apply badge bg-bogner-blue/10 text-bogner-blue;
+  }
+
+  .badge-success {
+    @apply badge bg-green-100 text-green-700;
+  }
+
+  .badge-warning {
+    @apply badge bg-amber-100 text-amber-700;
+  }
+
+  .badge-danger {
+    @apply badge bg-red-100 text-red-700;
+  }
+
+  .badge-gray {
+    @apply badge bg-gray-100 text-gray-600;
+  }
+
+  /* Pill variant (smaller) */
+  .pill {
+    @apply inline-flex items-center px-1.5 py-0.5 text-xs font-medium rounded;
+  }
+
+  /* ----------------------------------------
+     TABLE COMPONENTS
+     ---------------------------------------- */
+
+  /* Table container */
+  .table-container {
+    @apply w-full overflow-x-auto rounded-lg border border-gray-200;
+  }
+
+  /* Base table */
+  .table {
+    @apply w-full text-sm text-left;
+  }
+
+  /* Table header */
+  .table-header {
+    @apply gradient-header-dark text-white text-xs font-bold uppercase tracking-wider;
+  }
+
+  .table-header th {
+    @apply px-3 py-2;
+  }
+
+  /* Table body */
+  .table-body tr {
+    @apply border-b border-gray-100 hover:bg-gray-50 transition-colors;
+  }
+
+  .table-body td {
+    @apply px-3 py-2;
+  }
+
+  /* Striped table rows */
+  .table-striped tr:nth-child(even) {
+    @apply bg-gray-50/50;
+  }
+
+  /* ----------------------------------------
+     SECTION COMPONENTS
+     ---------------------------------------- */
+
+  /* Section header (collapsible sections) */
+  .section-header {
+    @apply px-2 py-1.5 gradient-header-dark text-white text-xs font-bold
+           uppercase tracking-wide rounded-t-lg flex items-center justify-between;
+  }
+
+  /* Section content */
+  .section-content {
+    @apply bg-white rounded-b-lg border-x border-b border-gray-200;
+  }
+
+  /* ----------------------------------------
+     ICON COMPONENTS
+     ---------------------------------------- */
+
+  /* Icon sizes */
+  .icon-xs {
+    @apply w-3 h-3 flex-shrink-0;
+  }
+
+  .icon-sm {
+    @apply w-4 h-4 flex-shrink-0;
+  }
+
+  .icon-md {
+    @apply w-5 h-5 flex-shrink-0;
+  }
+
+  .icon-lg {
+    @apply w-6 h-6 flex-shrink-0;
+  }
+
+  .icon-xl {
+    @apply w-8 h-8 flex-shrink-0;
+  }
+
+  /* ----------------------------------------
+     ANIMATION COMPONENTS
+     ---------------------------------------- */
+
+  /* Collapse animation for expandable sections */
+  .collapse-content {
+    @apply overflow-hidden transition-all duration-300;
+  }
+
+  .collapse-content.collapsed {
+    @apply max-h-0 opacity-0;
+  }
+
+  .collapse-content.expanded {
+    @apply max-h-[2000px] opacity-100;
+  }
+
+  /* Fade in animation */
+  .animate-fade-in {
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Spin animation */
+  .animate-spin-slow {
+    animation: spin 2s linear infinite;
+  }
+
+  /* ----------------------------------------
+     NAVIGATION COMPONENTS
+     ---------------------------------------- */
+
+  /* Main navigation header */
+  .nav-header {
+    @apply gradient-primary text-white shadow-xl rounded-t-xl backdrop-blur-sm w-full max-w-full;
+  }
+
+  /* Navigation link base */
+  .nav-link {
+    @apply px-2 sm:px-3 md:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium
+           transition-all duration-200 flex items-center gap-1 sm:gap-2
+           min-h-[44px] touch-manipulation;
+  }
+
+  /* Navigation link active state */
+  .nav-link-active {
+    @apply nav-link bg-white/20 backdrop-blur-md shadow-lg;
+  }
+
+  /* Navigation link inactive state */
+  .nav-link-inactive {
+    @apply nav-link hover:bg-white/10 hover:backdrop-blur-md;
+  }
+
+  /* Navigation badge (e.g., "Soon") */
+  .nav-badge {
+    @apply hidden sm:inline px-1.5 sm:px-2 py-0.5 bg-white/20 rounded text-xs font-semibold;
+  }
+
+  /* ----------------------------------------
+     LINK COMPONENTS
+     ---------------------------------------- */
+
+  /* Text link */
+  .link {
+    @apply text-bogner-blue hover:text-bogner-teal transition-colors duration-200;
+  }
+
+  /* Link with underline */
+  .link-underline {
+    @apply link underline decoration-1 underline-offset-2;
+  }
+
+  /* ----------------------------------------
+     UTILITY COMPONENTS
+     ---------------------------------------- */
+
+  /* Text truncate with ellipsis */
+  .truncate-text {
+    @apply truncate;
+  }
+
+  /* Line clamp utilities */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Divider */
+  .divider {
+    @apply border-t border-gray-200 my-4;
+  }
+
+  .divider-light {
+    @apply border-t border-gray-100 my-2;
+  }
+
+  /* ----------------------------------------
+     RESULT CARD COMPONENTS (Calculator Results)
+     ---------------------------------------- */
+
+  .result-card {
+    @apply rounded-md p-4 text-center border-2;
+  }
+
+  .result-label {
+    @apply text-sm text-gray-600 mb-1;
+  }
+
+  .result-value {
+    @apply text-3xl font-bold;
+  }
+
+  .result-note {
+    @apply text-xs text-gray-500 mt-2;
+  }
+
+  .result-card-blue {
+    @apply result-card bg-gradient-to-r from-bogner-blue/10 to-bogner-teal/10 border-bogner-blue/20;
+  }
+
+  .result-card-green {
+    @apply result-card bg-gradient-to-r from-green-50 to-teal-50 border-green-200;
+  }
+
+  .result-card-cyan {
+    @apply result-card bg-gradient-to-r from-cyan-50 to-blue-50 border-cyan-200;
+  }
+
+  .result-card-purple {
+    @apply result-card bg-gradient-to-r from-purple-50 to-indigo-50 border-purple-200;
+  }
+
+  .result-card-orange {
+    @apply result-card bg-gradient-to-r from-yellow-50 to-orange-50 border-yellow-300;
+  }
+
+  /* ----------------------------------------
+     LOADING COMPONENTS
+     ---------------------------------------- */
+
+  /* Loading spinner */
+  .spinner {
+    @apply animate-spin rounded-full border-2 border-gray-200 border-t-bogner-blue;
+  }
+
+  .spinner-sm {
+    @apply spinner w-4 h-4;
+  }
+
+  .spinner-md {
+    @apply spinner w-6 h-6;
+  }
+
+  .spinner-lg {
+    @apply spinner w-8 h-8;
+  }
+
+  /* Loading overlay */
+  .loading-overlay {
+    @apply absolute inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center z-10;
+  }
+
+  /* ----------------------------------------
+     QUICK LINKS COMPONENTS
+     ---------------------------------------- */
+
+  /* Collapsible section container */
+  .quick-link-section {
+    @apply bg-white/80 backdrop-blur-sm rounded shadow border border-gray-200 overflow-hidden transition-all duration-300 mb-1;
+  }
+
+  /* Collapsible section button header */
+  .quick-link-header {
+    @apply w-full px-2 py-1.5 gradient-header-dark text-white
+           hover:from-slate-700 hover:via-slate-800 hover:to-slate-900
+           transition-all duration-200 flex items-center justify-between
+           min-h-[44px] touch-manipulation;
+  }
+
+  /* Quick link item - add 'group' class separately in JSX */
+  .quick-link-item {
+    @apply flex items-center gap-1.5 px-2 py-1.5 rounded border border-gray-200
+           hover:border-bogner-teal hover:bg-gradient-to-r hover:from-blue-50 hover:to-teal-50
+           transition-all duration-200 min-h-[44px] touch-manipulation;
+  }
+
+  .quick-link-icon {
+    @apply w-3 h-3 flex-shrink-0 text-bogner-blue transition-colors;
+  }
+  .quick-link-item:hover .quick-link-icon {
+    @apply text-bogner-teal;
+  }
+
+  .quick-link-text {
+    @apply text-xs font-medium text-slate-700 transition-colors flex-1;
+  }
+  .quick-link-item:hover .quick-link-text {
+    @apply text-bogner-blue;
+  }
+
+  /* ----------------------------------------
+     PRICE LIST COMPONENTS
+     ---------------------------------------- */
+
+  /* Sidebar navigation */
+  .sidebar {
+    @apply hidden lg:block w-48 xl:w-56 card-glass sticky top-2 self-start overflow-y-auto;
+    max-height: calc(var(--content-height) - 1rem);
+  }
+
+  .sidebar-header {
+    @apply p-2 gradient-page-bg border-b border-gray-200 rounded-t-xl;
+  }
+
+  .sidebar-nav {
+    @apply p-2 space-y-0.5;
+  }
+
+  .sidebar-category {
+    @apply px-2 py-1.5 mt-2 first:mt-0 gradient-header-dark text-white text-xs font-bold tracking-tight shadow-md rounded-lg flex items-center gap-1.5;
+  }
+
+  .sidebar-link {
+    @apply block px-2 py-1.5 pl-4 text-xs rounded-lg border-l-2 transition-all duration-200
+           text-slate-600 border-l-transparent
+           hover:border-l-bogner-teal/50 hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-teal-50/50
+           hover:text-bogner-blue hover:pl-5;
+  }
+
+  .sidebar-link-active {
+    @apply block px-2 py-1.5 pl-4 text-xs rounded-lg border-l-2 transition-all duration-200
+           bg-gradient-to-r from-blue-50 via-sky-50 to-teal-50 text-bogner-blue border-l-bogner-teal font-semibold shadow-sm;
+  }
+
+  .sidebar-link-nested {
+    @apply pl-6;
+  }
+
+  /* Phase button in sidebar */
+  .sidebar-phase {
+    @apply w-full px-2 py-1.5 bg-slate-500 hover:bg-slate-600 text-white text-xs font-bold tracking-tight rounded flex items-center justify-between transition-colors;
+  }
+
+  /* Price table */
+  .price-table {
+    @apply w-full text-xs;
+  }
+
+  .price-table-header {
+    @apply bg-gradient-to-r from-slate-100 via-blue-50 to-teal-50 sticky top-0;
+  }
+
+  .price-table-header th {
+    @apply px-1.5 py-1 text-left text-xs font-bold text-slate-700 border-b border-bogner-blue/20 tracking-tight;
+  }
+
+  .price-table-body td {
+    @apply px-1.5 py-1;
+  }
+
+  .price-table-row {
+    @apply hover:bg-gradient-to-r hover:from-blue-50 hover:via-sky-50 hover:to-teal-50 transition-all duration-150;
+  }
+
+  .price-table-row-striped:nth-child(even) {
+    @apply bg-slate-50/30;
+  }
+
+  /* Price cell */
+  .price-value {
+    @apply font-bold text-bogner-blue text-xs whitespace-nowrap;
+  }
+
+  .price-unit {
+    @apply px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200 transition-colors whitespace-nowrap text-slate-600 text-xs font-semibold;
+  }
+  .group:hover .price-unit {
+    @apply bg-bogner-teal/10 border-bogner-teal/30;
+  }
+
+  /* Note box */
+  .note-box {
+    @apply mx-1.5 my-1 p-1.5 bg-gradient-to-br from-amber-50 via-yellow-50 to-amber-50 border-l-2 border-bogner-teal rounded shadow-sm;
+  }
+
+  .note-label {
+    @apply flex items-center gap-1 flex-shrink-0 text-xs font-bold text-bogner-teal;
+  }
+
+  .note-text {
+    @apply space-y-0.5 text-amber-900 text-xs leading-snug flex-1;
+  }
+
+  /* Section card */
+  .price-section-card {
+    @apply relative bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden scroll-mt-20;
+  }
+
+  .price-section-header {
+    @apply px-2 py-1 text-white text-xs font-semibold transition-all duration-200;
+  }
+
+  .price-section-header-blue {
+    @apply price-section-header bg-gradient-to-r from-bogner-blue via-blue-600 to-bogner-teal;
+  }
+
+  .price-section-header-orange {
+    @apply price-section-header bg-gradient-to-r from-orange-500 via-orange-600 to-amber-500;
+  }
+
+  /* Category header */
+  .category-header {
+    @apply sticky top-0 z-20 px-2 py-1.5 mb-1 gradient-header-dark text-white text-xs sm:text-sm font-bold tracking-tight rounded-lg shadow-lg border-l-4 border-white/30 backdrop-blur-sm;
+  }
+
+  /* Phase header in main content */
+  .phase-header {
+    @apply relative z-10 bg-slate-600 rounded-lg shadow-md overflow-hidden scroll-mt-[45px] mb-1;
+  }
+
+  .phase-header-text {
+    @apply px-3 py-2 text-white text-sm font-bold text-center tracking-tight;
+  }
+
+  /* Search input with icon */
+  .search-input-container {
+    @apply relative;
+  }
+
+  .search-input {
+    @apply w-full px-3 py-2 sm:py-1.5 pl-8 border-2 border-gray-200 rounded-lg text-sm sm:text-xs
+           focus:outline-none focus:border-bogner-teal focus:ring-2 focus:ring-bogner-teal/20
+           transition-all bg-white shadow-sm;
+  }
+
+  .search-input-icon {
+    @apply absolute left-2 top-2.5 sm:top-2 w-4 h-4 sm:w-3.5 sm:h-3.5 text-gray-400 pointer-events-none;
+  }
+
+  /* ----------------------------------------
+     BERT / DROPZONE COMPONENTS
+     ---------------------------------------- */
+
+  /* Dropzone */
+  .dropzone {
+    @apply card-solid p-8 border-2 border-dashed transition-colors cursor-pointer border-gray-300 hover:border-bogner-blue/50;
+  }
+
+  .dropzone-active {
+    @apply border-bogner-blue bg-bogner-blue/5;
+  }
+
+  /* Modal overlay */
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4;
+  }
+
+  .modal-content {
+    @apply bg-white rounded-lg shadow-xl p-6 max-w-md w-full;
+  }
+
+  /* Receipt card */
+  .receipt-card {
+    @apply flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-colors border-gray-200 hover:border-gray-300;
+  }
+
+  .receipt-card-selected {
+    @apply border-bogner-blue bg-bogner-blue/5;
+  }
+
+  .receipt-icon-container {
+    @apply flex-shrink-0 w-10 h-10 bg-gray-100 rounded flex items-center justify-center;
+  }
+
+  /* ----------------------------------------
+     AUTH COMPONENTS
+     ---------------------------------------- */
+
+  /* Auth page container */
+  .auth-container {
+    @apply min-h-screen flex items-center justify-center gradient-page-bg;
+  }
+
+  .auth-card {
+    @apply bg-white p-8 rounded-xl shadow-2xl border border-gray-200 max-w-md w-full;
+  }
+
+  .auth-title {
+    @apply text-3xl font-bold text-gradient-primary mb-2;
+  }
+
+  .auth-subtitle {
+    @apply text-gray-600 mb-2;
+  }
+
+  .auth-note {
+    @apply text-sm text-slate-500;
+  }
+
+  /* Google sign-in button */
+  .btn-google {
+    @apply w-full flex items-center justify-center gap-3 px-6 py-3 bg-white border-2 border-gray-300 rounded-lg font-semibold text-gray-700 hover:bg-gray-50 hover:border-bogner-blue transition-all duration-200 shadow-sm;
+  }
+
+  /* Error alert */
+  .alert-error {
+    @apply p-3 bg-red-50 border border-red-200 rounded-lg;
+  }
+
+  .alert-error-text {
+    @apply text-sm text-red-800;
+  }
+
+  /* Error icon container */
+  .error-icon-container {
+    @apply w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4;
+  }
+
+  /* ----------------------------------------
+     RESPONSIVE UTILITIES
+     ---------------------------------------- */
+
+  /* Hide on mobile, show on desktop */
+  .desktop-only {
+    @apply hidden md:block;
+  }
+
+  /* Show on mobile, hide on desktop */
+  .mobile-only {
+    @apply block md:hidden;
+  }
+
+  /* Touch-friendly spacing for mobile */
+  .touch-spacing {
+    @apply p-2 sm:p-1;
+  }
+}
+
+/* ============================================
+   UTILITY LAYER - Additional Utilities
+   ============================================ */
+@layer utilities {
+  /* Safe area padding for mobile devices with notches */
+  .safe-area-inset {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Custom scrollbar hide */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Smooth scroll */
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
 }
