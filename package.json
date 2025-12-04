@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint",
     "sync-data": "node scripts/excel-to-json.js",
     "update-excel": "node scripts/json-to-excel.js"
   },

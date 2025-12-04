@@ -518,6 +518,7 @@ export default function BERTPage() {
                       <p className="text-sm text-gray-600 mt-2">{selectedReceiptData.file.name}</p>
                     </div>
                   ) : (
+                    /* eslint-disable-next-line @next/next/no-img-element */
                     <img
                       src={selectedReceiptData.preview}
                       alt="Receipt preview"

@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
 import sharp from 'sharp';
 
-interface RedactionArea {
+// Interface kept for future use when implementing visual redaction
+interface _RedactionArea {
   x: number;
   y: number;
   width: number;

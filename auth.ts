@@ -14,7 +14,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     error: '/auth/error',
   },
   callbacks: {
-    async signIn({ user, account, profile }) {
+    async signIn({ user }) {
       // Only allow users with @bognerpools.com email addresses
       if (user.email && user.email.endsWith('@bognerpools.com')) {
         return true

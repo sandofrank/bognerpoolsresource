@@ -366,7 +366,7 @@ export default function ToolsPage() {
               <div>
                 <div className="flex items-center gap-2 mb-2">
                   <label className="label mb-0">Seats & Steps (Optional)</label>
-                  <span className="text-xs text-gray-500">assumes 20" water depth, 16" wide</span>
+                  <span className="text-xs text-gray-500">assumes 20&quot; water depth, 16&quot; wide</span>
                 </div>
                 <div>
                   <label className="text-xs text-gray-600 mb-1 block">Total Length of Seats/Steps (feet)</label>
@@ -669,12 +669,12 @@ export default function ToolsPage() {
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 text-sm text-gray-700 print:hidden">
             <h3 className="font-semibold text-bogner-blue mb-2">Fresh Plaster Startup Calculator:</h3>
             <ul className="space-y-1 list-disc list-inside">
-              <li>Enter your pool's total surface area in square feet</li>
+              <li>Enter your pool&apos;s total surface area in square feet</li>
               <li>If you have a sun shelf/tanning ledge, enter its area and depth separately</li>
-              <li>For seats and steps, enter the total linear footage (assumes 16" wide, 20" water depth)</li>
+              <li>For seats and steps, enter the total linear footage (assumes 16&quot; wide, 20&quot; water depth)</li>
               <li>Measure and enter the depth at the shallow end</li>
               <li>Measure and enter the depth at the deep end (or middle)</li>
-              <li>Check "Deep end in middle" for play/diving pools where both ends are shallow</li>
+              <li>Check &quot;Deep end in middle&quot; for play/diving pools where both ends are shallow</li>
               <li>For play pools with different shallow end depths, enter both shallow depths separately</li>
               <li>Enter desired salt PPM (typically 3200) and CYA stabilizer (70-80 for saltwater)</li>
               <li>All calculations include liquid chlorine to 2.0 PPM for initial sanitation</li>

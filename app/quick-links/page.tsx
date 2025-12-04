@@ -181,6 +181,7 @@ export default function ResourcesPage() {
                         className="quick-link-item"
                         aria-label={`Open ${link.name} in new tab`}
                       >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={`https://icons.duckduckgo.com/ip3/${domain}.ico`}
                           alt=""

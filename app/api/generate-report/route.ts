@@ -32,8 +32,8 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
 
       // Get page dimensions
       const bounds = page.getBounds();
-      const pageWidth = bounds[2] - bounds[0];
-      const pageHeight = bounds[3] - bounds[1];
+      const _pageWidth = bounds[2] - bounds[0];
+      const _pageHeight = bounds[3] - bounds[1];
 
       // Render at 2x resolution for quality
       const scale = 2;

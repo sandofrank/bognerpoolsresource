@@ -33,7 +33,6 @@ export default function PriceListPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
     fetch('/price-data.json')
       .then(res => {
         if (!res.ok) throw new Error('Failed to load price data');
@@ -250,7 +249,6 @@ export default function PriceListPage() {
                 </div>
               </div>
               {category.sections.map((section, secIdx) => {
-                const sectionId = `${catIdx}-${secIdx}`;
                 const isPhase = isPhaseHeader(section.name);
 
                 if (isPhase) {

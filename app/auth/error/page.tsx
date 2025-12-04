@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 export default function AuthError({
-  searchParams,
+  searchParams: _searchParams,
 }: {
   searchParams: { error?: string }
 }) {
