@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import SessionProvider from "@/components/SessionProvider";
+import CookieConsent from "@/components/CookieConsent";
 
 export const metadata: Metadata = {
   title: "Bogner Pools Resources",
@@ -39,6 +40,7 @@ export default function RootLayout({
         <SessionProvider>
           <Navigation />
           {children}
+          <CookieConsent />
         </SessionProvider>
       </body>
     </html>
