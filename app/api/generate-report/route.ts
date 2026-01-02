@@ -279,19 +279,39 @@ export async function POST(request: NextRequest) {
       color: rgb(0.85, 0.85, 0.85),
     });
 
+    // Helper to wrap text into lines
+    const wrapText = (text: string, maxChars: number): string[] => {
+      if (text.length <= maxChars) return [text];
+      const words = text.split(' ');
+      const lines: string[] = [];
+      let currentLine = '';
+
+      for (const word of words) {
+        if ((currentLine + ' ' + word).trim().length <= maxChars) {
+          currentLine = (currentLine + ' ' + word).trim();
+        } else {
+          if (currentLine) lines.push(currentLine);
+          currentLine = word;
+        }
+      }
+      if (currentLine) lines.push(currentLine);
+      return lines;
+    };
+
     // Receipt rows
     let currentY = tableStartY - 25;
+    const lineHeight = 12;
+
     receipts.forEach((receipt) => {
-      if (currentY < 150) {
+      const descLines = wrapText(receipt.data.description || '-', 32);
+      const rowHeight = Math.max(descLines.length * lineHeight, 20);
+
+      if (currentY - rowHeight < 150) {
         return;
       }
 
-      const truncate = (text: string, maxLen: number) => {
-        if (text.length <= maxLen) return text;
-        return text.substring(0, maxLen - 3) + '...';
-      };
-
-      coverPage.drawText(truncate(receipt.data.vendor || 'Unknown', 22), {
+      // Vendor
+      coverPage.drawText((receipt.data.vendor || 'Unknown').substring(0, 22), {
         x: 50,
         y: currentY,
         size: 10,
@@ -299,6 +319,7 @@ export async function POST(request: NextRequest) {
         color: rgb(0.2, 0.2, 0.2),
       });
 
+      // Date
       coverPage.drawText(receipt.data.date || '-', {
         x: 50 + colWidths.vendor,
         y: currentY,
@@ -307,14 +328,18 @@ export async function POST(request: NextRequest) {
         color: rgb(0.2, 0.2, 0.2),
       });
 
-      coverPage.drawText(truncate(receipt.data.description || '-', 35), {
-        x: 50 + colWidths.vendor + colWidths.date,
-        y: currentY,
-        size: 10,
-        font: helvetica,
-        color: rgb(0.2, 0.2, 0.2),
+      // Description (wrapped)
+      descLines.forEach((line, i) => {
+        coverPage.drawText(line, {
+          x: 50 + colWidths.vendor + colWidths.date,
+          y: currentY - (i * lineHeight),
+          size: 10,
+          font: helvetica,
+          color: rgb(0.2, 0.2, 0.2),
+        });
       });
 
+      // Amount
       coverPage.drawText(receipt.data.amount || '$0.00', {
         x: width - 50 - colWidths.amount,
         y: currentY,
@@ -324,13 +349,13 @@ export async function POST(request: NextRequest) {
       });
 
       coverPage.drawLine({
-        start: { x: 50, y: currentY - 8 },
-        end: { x: width - 50, y: currentY - 8 },
+        start: { x: 50, y: currentY - rowHeight + 4 },
+        end: { x: width - 50, y: currentY - rowHeight + 4 },
         thickness: 0.25,
         color: rgb(0.9, 0.9, 0.9),
       });
 
-      currentY -= 25;
+      currentY -= rowHeight + 8;
     });
 
     // Total row
