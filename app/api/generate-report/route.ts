@@ -99,15 +99,11 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
         continue;
       }
 
-      // Create SVG overlay with white boxes and replacement text
-      const fontSize = Math.floor(11 * scale); // Approximate font size
+      // Create SVG overlay with white boxes only (cover page has correct bill-to info)
       const svgRects = redactions.map((r) => {
-        // Add some padding
-        const padding = 2 * scale;
-        return `
-          <rect x="${r.x - padding}" y="${r.y - padding}" width="${r.width + padding * 2}" height="${r.height + padding * 2}" fill="white"/>
-          <text x="${r.x}" y="${r.y + r.height - 2 * scale}" font-family="Arial, Helvetica, sans-serif" font-size="${fontSize}" fill="black">${escapeXml(r.replace)}</text>
-        `;
+        // Add padding to fully cover the text
+        const padding = 4 * scale;
+        return `<rect x="${r.x - padding}" y="${r.y - padding}" width="${r.width + padding * 2}" height="${r.height + padding * 2}" fill="white"/>`;
       }).join('');
 
       const svgOverlay = Buffer.from(`
