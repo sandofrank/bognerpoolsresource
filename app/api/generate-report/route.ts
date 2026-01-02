@@ -5,17 +5,25 @@ import sharp from 'sharp';
 
 // Text patterns to redact and their replacements
 const REDACTION_PATTERNS = [
+  // Email patterns
   { search: "frankster@fsandoval.net's Organization", replace: "Bogner Pools" },
+  { search: "Frank Sandoval's projects", replace: "Bogner Pools" },
   { search: "frankster@fsandoval.net", replace: "franks@bognerpools.com" },
   { search: "frank@greatoakis.com", replace: "franks@bognerpools.com" },
+  // Address patterns - full variations
   { search: "41040 LOS RANCHOS CIRCLE", replace: "5045 Van Buren Blvd" },
   { search: "41040 Los Ranchos Circle", replace: "5045 Van Buren Blvd" },
+  { search: "41040 LOS RANCHOS CIR", replace: "5045 Van Buren Blvd" },
+  { search: "41040 Los Ranchos Cir", replace: "5045 Van Buren Blvd" },
+  // City/State/Zip patterns
   { search: "TEMECULA, CA 92592", replace: "Riverside, CA 92503" },
   { search: "TEMECULA, California 92592", replace: "Riverside, CA 92503" },
   { search: "Temecula, CA 92592", replace: "Riverside, CA 92503" },
   { search: "Temecula, California 92592", replace: "Riverside, CA 92503" },
+  // City alone
   { search: "TEMECULA", replace: "Riverside" },
   { search: "Temecula", replace: "Riverside" },
+  // Zip code alone (last to avoid partial matches)
   { search: "92592", replace: "92503" },
 ];
 

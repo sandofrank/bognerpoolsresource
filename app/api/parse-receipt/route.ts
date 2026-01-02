@@ -50,9 +50,13 @@ export async function POST(request: NextRequest) {
 IMPORTANT: Look for any of these personal items that need to be redacted and replaced:
 - Email "frankster@fsandoval.net" → replace with "franks@bognerpools.com"
 - Email "frank@greatoakis.com" → replace with "franks@bognerpools.com"
-- Address "41040 LOS RANCHOS CIRCLE" → replace with "5045 Van Buren Blvd"
-- City/State/Zip "TEMECULA, CA 92592" or "TEMECULA CA 92592" → replace with "Riverside CA 92503"
-- Just "TEMECULA" alone → replace with "Riverside"
+- Text "frankster@fsandoval.net's Organization" → replace with "Bogner Pools"
+- Text "Frank Sandoval's projects" → replace with "Bogner Pools"
+- Address "41040 LOS RANCHOS CIRCLE" or "41040 Los Ranchos Circle" → replace with "5045 Van Buren Blvd"
+- Address "41040 LOS RANCHOS CIR" or "41040 Los Ranchos Cir" → replace with "5045 Van Buren Blvd"
+- City/State/Zip "TEMECULA, CA 92592" or "Temecula, CA 92592" → replace with "Riverside, CA 92503"
+- City/State/Zip "TEMECULA, California 92592" or "Temecula, California 92592" → replace with "Riverside, CA 92503"
+- Just "TEMECULA" or "Temecula" alone → replace with "Riverside"
 - Just "92592" alone → replace with "92503"
 
 For each found item, add an entry to the "redactions" array with:
@@ -139,14 +143,31 @@ If any field cannot be determined, use an empty string. Do not include any expla
     const replacePersonalInfo = (text: string): string => {
       if (!text) return text;
 
+      // Organization/project name replacements
+      text = text.replace(/frankster@fsandoval\.net's Organization/gi, 'Bogner Pools');
+      text = text.replace(/Frank Sandoval's projects/gi, 'Bogner Pools');
+
       // Email replacements
       text = text.replace(/frankster@fsandoval\.net/gi, 'franks@bognerpools.com');
       text = text.replace(/frank@greatoakis\.com/gi, 'franks@bognerpools.com');
 
-      // Address replacements (handle various formats)
+      // Address replacements (handle various formats - Circle and Cir)
       text = text.replace(/41040\s*LOS\s*RANCHOS\s*CIRCLE/gi, '5045 Van Buren Blvd');
-      text = text.replace(/TEMECULA,?\s*CA\s*92592/gi, 'Riverside CA 92503');
-      text = text.replace(/TEMECULA/gi, 'Riverside');
+      text = text.replace(/41040\s*Los\s*Ranchos\s*Circle/g, '5045 Van Buren Blvd');
+      text = text.replace(/41040\s*LOS\s*RANCHOS\s*CIR\b/gi, '5045 Van Buren Blvd');
+      text = text.replace(/41040\s*Los\s*Ranchos\s*Cir\b/g, '5045 Van Buren Blvd');
+
+      // City/State/Zip replacements
+      text = text.replace(/TEMECULA,?\s*California\s*92592/gi, 'Riverside, CA 92503');
+      text = text.replace(/TEMECULA,?\s*CA\s*92592/gi, 'Riverside, CA 92503');
+      text = text.replace(/Temecula,?\s*California\s*92592/g, 'Riverside, CA 92503');
+      text = text.replace(/Temecula,?\s*CA\s*92592/g, 'Riverside, CA 92503');
+
+      // City alone
+      text = text.replace(/TEMECULA/g, 'Riverside');
+      text = text.replace(/Temecula/g, 'Riverside');
+
+      // Zip code alone (last to avoid partial matches)
       text = text.replace(/92592/g, '92503');
 
       return text;
