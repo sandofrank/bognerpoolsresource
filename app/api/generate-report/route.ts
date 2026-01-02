@@ -27,14 +27,7 @@ const REDACTION_PATTERNS = [
   { search: "92592", replace: "92503" },
 ];
 
-// Bogner info block to overlay on all receipts
-const BOGNER_INFO_BLOCK = `Bogner Pools
-Frank Sandoval
-5045 Van Buren Blvd
-Riverside, CA 92503
-franks@bognerpools.com`;
-
-// Process PDF: white out personal info, add Bogner info block at bottom
+// Process PDF: white out personal info only
 async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
   const images: Buffer[] = [];
 
@@ -56,10 +49,8 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
       );
 
       const pngBuffer = Buffer.from(pixmap.asPNG());
-      const imgWidth = pixmap.getWidth();
-      const imgHeight = pixmap.getHeight();
 
-      // Find all text locations that need redaction (white out only)
+      // Find all text locations that need redaction
       const redactions: Array<{x: number; y: number; width: number; height: number}> = [];
 
       for (const pattern of REDACTION_PATTERNS) {
@@ -87,10 +78,14 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
         }
       }
 
-      // Build composite operations
-      const compositeOps: sharp.OverlayOptions[] = [];
+      if (redactions.length === 0) {
+        images.push(pngBuffer);
+        continue;
+      }
 
       // White out all personal info
+      const compositeOps: sharp.OverlayOptions[] = [];
+
       for (const r of redactions) {
         const padding = 6 * scale;
         const boxW = Math.ceil(r.width + padding * 2);
@@ -112,28 +107,6 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
         });
       }
 
-      // Add Bogner info block at bottom right of every page
-      const blockWidth = 280 * scale;
-      const blockHeight = 100 * scale;
-      const fontSize = 11 * scale;
-      const lineHeight = fontSize * 1.3;
-
-      const infoBlockSvg = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${blockWidth}" height="${blockHeight}">
-        <rect x="0" y="0" width="${blockWidth}" height="${blockHeight}" fill="white" stroke="#0066aa" stroke-width="2"/>
-        <text x="10" y="${lineHeight}" font-family="Arial, sans-serif" font-size="${fontSize}" font-weight="bold" fill="#0066aa">Bogner Pools</text>
-        <text x="10" y="${lineHeight * 2}" font-family="Arial, sans-serif" font-size="${fontSize}" fill="#333">Frank Sandoval</text>
-        <text x="10" y="${lineHeight * 3}" font-family="Arial, sans-serif" font-size="${fontSize}" fill="#333">5045 Van Buren Blvd</text>
-        <text x="10" y="${lineHeight * 4}" font-family="Arial, sans-serif" font-size="${fontSize}" fill="#333">Riverside, CA 92503</text>
-        <text x="10" y="${lineHeight * 5}" font-family="Arial, sans-serif" font-size="${fontSize}" fill="#333">franks@bognerpools.com</text>
-      </svg>`);
-
-      compositeOps.push({
-        input: infoBlockSvg,
-        left: imgWidth - blockWidth - 20,
-        top: imgHeight - blockHeight - 20,
-      });
-
-      // Apply all composites
       const redactedBuffer = await sharp(pngBuffer)
         .composite(compositeOps)
         .png()
@@ -266,7 +239,7 @@ export async function POST(request: NextRequest) {
 
     // Receipt list header
     const tableStartY = height - 320;
-    const colWidths = { vendor: 180, date: 100, description: 150, amount: 80 };
+    const colWidths = { vendor: 150, date: 80, description: 200, amount: 80 };
 
     // Table header
     coverPage.drawText('Vendor', {
@@ -318,7 +291,7 @@ export async function POST(request: NextRequest) {
         return text.substring(0, maxLen - 3) + '...';
       };
 
-      coverPage.drawText(truncate(receipt.data.vendor || 'Unknown', 25), {
+      coverPage.drawText(truncate(receipt.data.vendor || 'Unknown', 22), {
         x: 50,
         y: currentY,
         size: 10,
@@ -334,7 +307,7 @@ export async function POST(request: NextRequest) {
         color: rgb(0.2, 0.2, 0.2),
       });
 
-      coverPage.drawText(truncate(receipt.data.description || '-', 20), {
+      coverPage.drawText(truncate(receipt.data.description || '-', 35), {
         x: 50 + colWidths.vendor + colWidths.date,
         y: currentY,
         size: 10,
