@@ -87,7 +87,7 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
       const compositeOps: sharp.OverlayOptions[] = [];
 
       for (const r of redactions) {
-        const padding = 6 * scale;
+        const padding = 1 * scale;
         const boxW = Math.ceil(r.width + padding * 2);
         const boxH = Math.ceil(r.height + padding * 2);
 
