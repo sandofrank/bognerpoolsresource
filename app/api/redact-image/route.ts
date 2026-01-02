@@ -23,13 +23,20 @@ const REDACTION_RULES = [
 
 export async function POST(request: NextRequest) {
   try {
+    const apiKey = process.env.ANTHROPIC_API_KEY;
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: 'API key not configured on server' },
+        { status: 500 }
+      );
+    }
+
     const formData = await request.formData();
     const file = formData.get('file') as File;
-    const apiKey = formData.get('apiKey') as string;
 
-    if (!file || !apiKey) {
+    if (!file) {
       return NextResponse.json(
-        { error: 'File and API key are required' },
+        { error: 'File is required' },
         { status: 400 }
       );
     }

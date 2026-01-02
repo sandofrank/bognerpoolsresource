@@ -3,8 +3,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 
-const API_KEY_STORAGE_KEY = 'bert_claude_api_key';
-
 interface Redaction {
   original: string;
   replacement: string;
@@ -70,16 +68,6 @@ export default function BERTPage() {
   const [reportTitle, setReportTitle] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [selectedReceipt, setSelectedReceipt] = useState<string | null>(null);
-  const [apiKey, setApiKey] = useState('');
-  const [showApiKeyInput, setShowApiKeyInput] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const storedKey = localStorage.getItem(API_KEY_STORAGE_KEY);
-    if (storedKey) {
-      setApiKey(storedKey);
-    }
-  }, []);
 
   // Cleanup object URLs on unmount to prevent memory leaks
   useEffect(() => {
@@ -91,15 +79,6 @@ export default function BERTPage() {
       });
     };
   }, [receipts]);
-
-  const saveApiKey = (key: string) => {
-    setApiKey(key);
-    if (key) {
-      localStorage.setItem(API_KEY_STORAGE_KEY, key);
-    } else {
-      localStorage.removeItem(API_KEY_STORAGE_KEY);
-    }
-  };
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     const newReceipts: Receipt[] = acceptedFiles.map((file) => ({
@@ -130,11 +109,6 @@ export default function BERTPage() {
   });
 
   const parseReceipt = async (receiptId: string) => {
-    if (!apiKey) {
-      setShowApiKeyInput(true);
-      return;
-    }
-
     const receipt = receipts.find((r) => r.id === receiptId);
     if (!receipt) return;
 
@@ -147,7 +121,6 @@ export default function BERTPage() {
     try {
       const formData = new FormData();
       formData.append('file', receipt.file);
-      formData.append('apiKey', apiKey);
 
       const response = await fetch('/api/parse-receipt', {
         method: 'POST',
@@ -189,11 +162,6 @@ export default function BERTPage() {
   };
 
   const parseAllReceipts = async () => {
-    if (!apiKey) {
-      setShowApiKeyInput(true);
-      return;
-    }
-
     const unparsedReceipts = receipts.filter((r) => !r.parsed && !r.parsing);
     for (const receipt of unparsedReceipts) {
       await parseReceipt(receipt.id);
@@ -278,10 +246,6 @@ export default function BERTPage() {
         data: r.data,
       }))));
 
-      if (apiKey) {
-        formData.append('apiKey', apiKey);
-      }
-
       receipts.forEach((receipt, index) => {
         formData.append(`file_${index}`, receipt.file);
       });
@@ -317,73 +281,10 @@ export default function BERTPage() {
   return (
     <main className="page-content">
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-center justify-center gap-2 mb-1">
-          <h1 className="text-2xl font-bold text-gradient-primary">
-            BERT
-          </h1>
-          <button
-            onClick={() => setShowApiKeyInput(true)}
-            className="p-1.5 text-gray-400 hover:text-bogner-blue transition-colors"
-            title="API Key Settings"
-          >
-            <svg className="icon-md" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-          </button>
-          {apiKey && (
-            <span className="w-2 h-2 bg-green-500 rounded-full" title="API key configured" />
-          )}
-        </div>
+        <h1 className="text-2xl font-bold text-gradient-primary text-center mb-1">
+          BERT
+        </h1>
         <p className="text-center text-gray-600 mb-4 text-sm">Bogner Expense Report Tool</p>
-
-        {/* API Key Modal */}
-        {showApiKeyInput && (
-          <div className="modal-overlay">
-            <div className="modal-content">
-              <h3 className="text-lg font-semibold mb-2">Claude API Key</h3>
-              <p className="text-sm text-gray-600 mb-4">
-                Enter your Anthropic API key to enable receipt parsing. Your key will be saved locally.
-              </p>
-              <input
-                type="password"
-                value={apiKey}
-                onChange={(e) => setApiKey(e.target.value)}
-                placeholder="sk-ant-..."
-                className="input mb-4"
-              />
-              <div className="flex gap-2">
-                <button
-                  onClick={() => setShowApiKeyInput(false)}
-                  className="btn btn-secondary btn-md flex-1"
-                >
-                  Cancel
-                </button>
-                {apiKey && (
-                  <button
-                    onClick={() => {
-                      saveApiKey('');
-                    }}
-                    className="btn btn-danger btn-md"
-                  >
-                    Clear
-                  </button>
-                )}
-                <button
-                  onClick={() => {
-                    if (apiKey) {
-                      saveApiKey(apiKey);
-                      setShowApiKeyInput(false);
-                    }
-                  }}
-                  className="btn btn-primary btn-md flex-1"
-                >
-                  Save
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {/* Left Column - Upload & Receipt List */}
