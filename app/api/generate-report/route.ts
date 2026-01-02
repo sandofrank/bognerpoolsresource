@@ -27,7 +27,14 @@ const REDACTION_PATTERNS = [
   { search: "92592", replace: "92503" },
 ];
 
-// Redact a PDF by rendering to image, overlaying white boxes with text, then returning as image
+// Bogner info block to overlay on all receipts
+const BOGNER_INFO_BLOCK = `Bogner Pools
+Frank Sandoval
+5045 Van Buren Blvd
+Riverside, CA 92503
+franks@bognerpools.com`;
+
+// Process PDF: white out personal info, add Bogner info block at bottom
 async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
   const images: Buffer[] = [];
 
@@ -37,11 +44,7 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
 
     for (let pageNum = 0; pageNum < pageCount; pageNum++) {
       const page = doc.loadPage(pageNum) as mupdf.PDFPage;
-
-      // Get page dimensions
       const bounds = page.getBounds();
-      const _pageWidth = bounds[2] - bounds[0];
-      const _pageHeight = bounds[3] - bounds[1];
 
       // Render at 2x resolution for quality
       const scale = 2;
@@ -56,8 +59,8 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
       const imgWidth = pixmap.getWidth();
       const imgHeight = pixmap.getHeight();
 
-      // Find all text locations that need redaction
-      const redactions: Array<{x: number; y: number; width: number; height: number; replace: string}> = [];
+      // Find all text locations that need redaction (white out only)
+      const redactions: Array<{x: number; y: number; width: number; height: number}> = [];
 
       for (const pattern of REDACTION_PATTERNS) {
         const hits = page.search(pattern.search);
@@ -67,50 +70,32 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
 
           for (const quad of quads) {
             if (Array.isArray(quad) && quad.length >= 8) {
-              // Get bounding rect from quad points (in PDF coordinates)
               const q = quad as number[];
               const x0 = Math.min(q[0], q[2], q[4], q[6]);
               const y0 = Math.min(q[1], q[3], q[5], q[7]);
               const x1 = Math.max(q[0], q[2], q[4], q[6]);
               const y1 = Math.max(q[1], q[3], q[5], q[7]);
 
-              // Convert PDF coordinates to image coordinates
-              // PDF origin is bottom-left, image origin is top-left
               const imgX = Math.floor((x0 - bounds[0]) * scale);
               const imgY = Math.floor((y0 - bounds[1]) * scale);
               const imgW = Math.ceil((x1 - x0) * scale);
               const imgH = Math.ceil((y1 - y0) * scale);
 
-              redactions.push({
-                x: imgX,
-                y: imgY,
-                width: imgW,
-                height: imgH,
-                replace: pattern.replace
-              });
+              redactions.push({ x: imgX, y: imgY, width: imgW, height: imgH });
             }
           }
         }
       }
 
-      if (redactions.length === 0) {
-        // No redactions needed, just use the rendered image
-        images.push(pngBuffer);
-        continue;
-      }
-
-      // Build composite operations: white boxes first, then text overlays
+      // Build composite operations
       const compositeOps: sharp.OverlayOptions[] = [];
-      const fontSize = Math.round(11 * scale);
 
+      // White out all personal info
       for (const r of redactions) {
-        const padding = 4 * scale;
+        const padding = 6 * scale;
         const boxW = Math.ceil(r.width + padding * 2);
         const boxH = Math.ceil(r.height + padding * 2);
-        const boxX = Math.floor(r.x - padding);
-        const boxY = Math.floor(r.y - padding);
 
-        // Create white box to cover original text
         const whiteBox = await sharp({
           create: {
             width: boxW,
@@ -122,22 +107,31 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
 
         compositeOps.push({
           input: whiteBox,
-          left: Math.max(0, boxX),
-          top: Math.max(0, boxY),
-        });
-
-        // Create text overlay using SVG with embedded font
-        const textSvg = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${boxW + 50}" height="${boxH}">
-          <style>text { font-family: sans-serif; font-size: ${fontSize}px; fill: #333; }</style>
-          <text x="2" y="${Math.round(boxH * 0.7)}">${r.replace.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</text>
-        </svg>`);
-
-        compositeOps.push({
-          input: textSvg,
-          left: Math.max(0, boxX),
-          top: Math.max(0, boxY),
+          left: Math.max(0, Math.floor(r.x - padding)),
+          top: Math.max(0, Math.floor(r.y - padding)),
         });
       }
+
+      // Add Bogner info block at bottom right of every page
+      const blockWidth = 280 * scale;
+      const blockHeight = 100 * scale;
+      const fontSize = 11 * scale;
+      const lineHeight = fontSize * 1.3;
+
+      const infoBlockSvg = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${blockWidth}" height="${blockHeight}">
+        <rect x="0" y="0" width="${blockWidth}" height="${blockHeight}" fill="white" stroke="#0066aa" stroke-width="2"/>
+        <text x="10" y="${lineHeight}" font-family="Arial, sans-serif" font-size="${fontSize}" font-weight="bold" fill="#0066aa">Bogner Pools</text>
+        <text x="10" y="${lineHeight * 2}" font-family="Arial, sans-serif" font-size="${fontSize}" fill="#333">Frank Sandoval</text>
+        <text x="10" y="${lineHeight * 3}" font-family="Arial, sans-serif" font-size="${fontSize}" fill="#333">5045 Van Buren Blvd</text>
+        <text x="10" y="${lineHeight * 4}" font-family="Arial, sans-serif" font-size="${fontSize}" fill="#333">Riverside, CA 92503</text>
+        <text x="10" y="${lineHeight * 5}" font-family="Arial, sans-serif" font-size="${fontSize}" fill="#333">franks@bognerpools.com</text>
+      </svg>`);
+
+      compositeOps.push({
+        input: infoBlockSvg,
+        left: imgWidth - blockWidth - 20,
+        top: imgHeight - blockHeight - 20,
+      });
 
       // Apply all composites
       const redactedBuffer = await sharp(pngBuffer)
