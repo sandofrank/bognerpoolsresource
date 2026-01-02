@@ -25,19 +25,8 @@ interface Receipt {
     amount: string;
     description: string;
     redactions: Redaction[];
-    billTo: {
-      name: string;
-      company: string;
-      email: string;
-    };
   };
 }
-
-const DEFAULT_BILL_TO = {
-  name: 'Frank Sandoval',
-  company: 'Bogner Pools',
-  email: 'franks@bognerpools.com',
-};
 
 const KNOWN_VENDORS: Record<string, string> = {
   'Google Workspace': 'Business email & productivity suite',
@@ -93,7 +82,6 @@ export default function BERTPage() {
         amount: '',
         description: '',
         redactions: [],
-        billTo: { ...DEFAULT_BILL_TO },
       },
     }));
     setReceipts((prev) => [...prev, ...newReceipts]);
@@ -145,7 +133,6 @@ export default function BERTPage() {
               ...data,
               description: vendorDescription || data.description || '',
               redactions: data.redactions || [],
-              billTo: { ...DEFAULT_BILL_TO },
             },
           };
         })
@@ -176,22 +163,6 @@ export default function BERTPage() {
     setReceipts((prev) =>
       prev.map((r) => {
         if (r.id !== receiptId) return r;
-
-        if (field.startsWith('billTo.')) {
-          const billToKey = field.replace('billTo.', '');
-          if (!['name', 'company', 'email'].includes(billToKey)) return r;
-          const billToField = billToKey as keyof typeof r.data.billTo;
-          return {
-            ...r,
-            data: {
-              ...r.data,
-              billTo: {
-                ...r.data.billTo,
-                [billToField]: value,
-              },
-            },
-          };
-        }
 
         // Auto-fill description when vendor changes and matches a known vendor
         if (field === 'vendor') {
@@ -240,7 +211,7 @@ export default function BERTPage() {
       const formData = new FormData();
       formData.append('title', reportTitle || 'Expense Report');
       formData.append('date', new Date().toLocaleDateString());
-      formData.append('submittedBy', DEFAULT_BILL_TO.name);
+      formData.append('submittedBy', 'Frank Sandoval');
       formData.append('receiptsData', JSON.stringify(receipts.map((r) => ({
         id: r.id,
         data: r.data,
@@ -530,47 +501,6 @@ export default function BERTPage() {
                       placeholder="What was purchased"
                       className="input text-sm"
                     />
-                  </div>
-
-                  {/* Bill To Section */}
-                  <div className="divider-light" />
-                  <div>
-                    <h3 className="text-sm font-semibold text-gray-800 mb-2">Bill To</h3>
-                    <div className="space-y-2">
-                      <div>
-                        <label className="label text-xs">Name</label>
-                        <input
-                          type="text"
-                          value={selectedReceiptData.data.billTo.name}
-                          onChange={(e) =>
-                            updateReceiptData(selectedReceiptData.id, 'billTo.name', e.target.value)
-                          }
-                          className="input text-sm"
-                        />
-                      </div>
-                      <div>
-                        <label className="label text-xs">Company</label>
-                        <input
-                          type="text"
-                          value={selectedReceiptData.data.billTo.company}
-                          onChange={(e) =>
-                            updateReceiptData(selectedReceiptData.id, 'billTo.company', e.target.value)
-                          }
-                          className="input text-sm"
-                        />
-                      </div>
-                      <div>
-                        <label className="label text-xs">Email</label>
-                        <input
-                          type="email"
-                          value={selectedReceiptData.data.billTo.email}
-                          onChange={(e) =>
-                            updateReceiptData(selectedReceiptData.id, 'billTo.email', e.target.value)
-                          }
-                          className="input text-sm"
-                        />
-                      </div>
-                    </div>
                   </div>
                 </div>
               </>
