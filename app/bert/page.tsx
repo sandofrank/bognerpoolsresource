@@ -41,6 +41,30 @@ const DEFAULT_BILL_TO = {
   email: 'franks@bognerpools.com',
 };
 
+const KNOWN_VENDORS: Record<string, string> = {
+  'Google Workspace': 'Business email & productivity suite',
+  'Google Suite': 'Business email & productivity suite',
+  'Google Ads': 'Online advertising & lead generation',
+  'Slack': 'Team communication platform',
+  'Pool Studio': '3D pool design software',
+  'ParcelQuest': 'Property & parcel research tool',
+  'Setapp': 'Web-related software subscription',
+  'Foxit': 'PDF editing software',
+  'Claude': 'Website AI tools',
+  'Anthropic': 'Website AI tools',
+  'Vercel': 'Website hosting & deployment',
+};
+
+const getVendorDescription = (vendor: string): string | null => {
+  const normalizedVendor = vendor.toLowerCase().trim();
+  for (const [knownVendor, description] of Object.entries(KNOWN_VENDORS)) {
+    if (normalizedVendor.includes(knownVendor.toLowerCase())) {
+      return description;
+    }
+  }
+  return null;
+};
+
 export default function BERTPage() {
   const [receipts, setReceipts] = useState<Receipt[]>([]);
   const [reportTitle, setReportTitle] = useState('');
@@ -137,20 +161,21 @@ export default function BERTPage() {
       const data = await response.json();
 
       setReceipts((prev) =>
-        prev.map((r) =>
-          r.id === receiptId
-            ? {
-                ...r,
-                parsing: false,
-                parsed: true,
-                data: {
-                  ...data,
-                  redactions: data.redactions || [],
-                  billTo: { ...DEFAULT_BILL_TO },
-                },
-              }
-            : r
-        )
+        prev.map((r) => {
+          if (r.id !== receiptId) return r;
+          const vendorDescription = getVendorDescription(data.vendor || '');
+          return {
+            ...r,
+            parsing: false,
+            parsed: true,
+            data: {
+              ...data,
+              description: vendorDescription || data.description || '',
+              redactions: data.redactions || [],
+              billTo: { ...DEFAULT_BILL_TO },
+            },
+          };
+        })
       );
     } catch {
       setReceipts((prev) =>
@@ -198,6 +223,21 @@ export default function BERTPage() {
               },
             },
           };
+        }
+
+        // Auto-fill description when vendor changes and matches a known vendor
+        if (field === 'vendor') {
+          const vendorDescription = getVendorDescription(value);
+          if (vendorDescription && !r.data.description) {
+            return {
+              ...r,
+              data: {
+                ...r.data,
+                vendor: value,
+                description: vendorDescription,
+              },
+            };
+          }
         }
 
         return {
@@ -534,6 +574,7 @@ export default function BERTPage() {
                       <label className="label text-xs">Vendor</label>
                       <input
                         type="text"
+                        list="known-vendors"
                         value={selectedReceiptData.data.vendor}
                         onChange={(e) =>
                           updateReceiptData(selectedReceiptData.id, 'vendor', e.target.value)
@@ -541,6 +582,14 @@ export default function BERTPage() {
                         placeholder="Store/Vendor name"
                         className="input text-sm"
                       />
+                      <datalist id="known-vendors">
+                        {Object.keys(KNOWN_VENDORS).filter((v, i, arr) =>
+                          // Filter out duplicates (Google Suite/Workspace, Claude/Anthropic)
+                          !arr.slice(0, i).some(prev => KNOWN_VENDORS[prev] === KNOWN_VENDORS[v])
+                        ).map((vendor) => (
+                          <option key={vendor} value={vendor} />
+                        ))}
+                      </datalist>
                     </div>
                     <div>
                       <label className="label text-xs">Amount</label>
