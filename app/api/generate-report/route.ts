@@ -99,37 +99,49 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
         continue;
       }
 
-      // Create SVG overlay with white boxes and Bogner replacement text
-      const fontSize = Math.round(10 * scale);
-      const svgRects = redactions.map((r) => {
-        // Add padding to fully cover the text
+      // Build composite operations: white boxes first, then text overlays
+      const compositeOps: sharp.OverlayOptions[] = [];
+      const fontSize = Math.round(11 * scale);
+
+      for (const r of redactions) {
         const padding = 4 * scale;
-        const boxX = r.x - padding;
-        const boxY = r.y - padding;
-        const boxW = r.width + padding * 2;
-        const boxH = r.height + padding * 2;
-        // Position text in the middle of the box vertically
-        const textY = r.y + (r.height / 2) + (fontSize / 3);
-        const escaped = r.replace
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;');
-        return `<rect x="${boxX}" y="${boxY}" width="${boxW}" height="${boxH}" fill="white"/><text x="${r.x}" y="${textY}" font-family="Helvetica, Arial, sans-serif" font-size="${fontSize}" fill="#333">${escaped}</text>`;
-      }).join('');
+        const boxW = Math.ceil(r.width + padding * 2);
+        const boxH = Math.ceil(r.height + padding * 2);
+        const boxX = Math.floor(r.x - padding);
+        const boxY = Math.floor(r.y - padding);
 
-      const svgOverlay = Buffer.from(`
-        <svg width="${imgWidth}" height="${imgHeight}" xmlns="http://www.w3.org/2000/svg">
-          ${svgRects}
-        </svg>
-      `);
+        // Create white box to cover original text
+        const whiteBox = await sharp({
+          create: {
+            width: boxW,
+            height: boxH,
+            channels: 3,
+            background: { r: 255, g: 255, b: 255 }
+          }
+        }).png().toBuffer();
 
-      // Composite the redactions onto the image
+        compositeOps.push({
+          input: whiteBox,
+          left: Math.max(0, boxX),
+          top: Math.max(0, boxY),
+        });
+
+        // Create text overlay using SVG with embedded font
+        const textSvg = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${boxW + 50}" height="${boxH}">
+          <style>text { font-family: sans-serif; font-size: ${fontSize}px; fill: #333; }</style>
+          <text x="2" y="${Math.round(boxH * 0.7)}">${r.replace.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</text>
+        </svg>`);
+
+        compositeOps.push({
+          input: textSvg,
+          left: Math.max(0, boxX),
+          top: Math.max(0, boxY),
+        });
+      }
+
+      // Apply all composites
       const redactedBuffer = await sharp(pngBuffer)
-        .composite([{
-          input: svgOverlay,
-          top: 0,
-          left: 0,
-        }])
+        .composite(compositeOps)
         .png()
         .toBuffer();
 
