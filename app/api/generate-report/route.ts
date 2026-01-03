@@ -406,51 +406,84 @@ export async function POST(request: NextRequest) {
           // Get the vendor name for this receipt
           const vendorName = receipts[i]?.data.vendor || file.name.replace(/\.[^/.]+$/, '') || 'Receipt';
 
-          // Embed each page as an image
-          for (let pageIdx = 0; pageIdx < redactedImages.length; pageIdx++) {
-            const imgBuffer = redactedImages[pageIdx];
-            const image = await pdfDoc.embedPng(imgBuffer);
-            const imgDims = image.scale(1);
+          // If redaction returned no images, try to copy original PDF pages directly
+          if (redactedImages.length === 0) {
+            console.log(`Redaction returned no images for ${file.name}, copying original PDF pages`);
+            try {
+              const sourcePdf = await PDFDocument.load(bytes);
+              const pageIndices = sourcePdf.getPageIndices();
+              const copiedPages = await pdfDoc.copyPages(sourcePdf, pageIndices);
 
-            // Scale to fit page (leave room for header)
-            const maxWidth = 562; // 612 - 50 margin on each side
-            const maxHeight = 712; // 792 - 50 margin top - 30 header
-            let scale = 1;
-            if (imgDims.width > maxWidth) {
-              scale = maxWidth / imgDims.width;
+              for (let pageIdx = 0; pageIdx < copiedPages.length; pageIdx++) {
+                const copiedPage = copiedPages[pageIdx];
+                pdfDoc.addPage(copiedPage);
+              }
+            } catch (copyErr) {
+              console.error(`Error copying PDF pages for ${file.name}:`, copyErr);
+              // Create error page as last resort
+              const errorPage = pdfDoc.addPage([612, 792]);
+              errorPage.drawText(`Receipt ${i + 1}: ${vendorName}`, {
+                x: 50,
+                y: 700,
+                size: 14,
+                font: helveticaBold,
+                color: primaryBlue,
+              });
+              errorPage.drawText('(Could not process this PDF)', {
+                x: 50,
+                y: 680,
+                size: 10,
+                font: helvetica,
+                color: gray,
+              });
             }
-            if (imgDims.height * scale > maxHeight) {
-              scale = maxHeight / imgDims.height;
+          } else {
+            // Embed each page as an image
+            for (let pageIdx = 0; pageIdx < redactedImages.length; pageIdx++) {
+              const imgBuffer = redactedImages[pageIdx];
+              const image = await pdfDoc.embedPng(imgBuffer);
+              const imgDims = image.scale(1);
+
+              // Scale to fit page (leave room for header)
+              const maxWidth = 562; // 612 - 50 margin on each side
+              const maxHeight = 712; // 792 - 50 margin top - 30 header
+              let scale = 1;
+              if (imgDims.width > maxWidth) {
+                scale = maxWidth / imgDims.width;
+              }
+              if (imgDims.height * scale > maxHeight) {
+                scale = maxHeight / imgDims.height;
+              }
+
+              const scaledWidth = imgDims.width * scale;
+              const scaledHeight = imgDims.height * scale;
+
+              const imagePage = pdfDoc.addPage([612, 792]);
+
+              // Add receipt header
+              const pageLabel = redactedImages.length > 1
+                ? `Receipt ${i + 1}: ${vendorName} (Page ${pageIdx + 1}/${redactedImages.length})`
+                : `Receipt ${i + 1}: ${vendorName}`;
+
+              imagePage.drawText(pageLabel, {
+                x: 50,
+                y: 760,
+                size: 12,
+                font: helveticaBold,
+                color: primaryBlue,
+              });
+
+              // Center the image below the header
+              const imgX = (612 - scaledWidth) / 2;
+              const imgY = (742 - scaledHeight) / 2;
+
+              imagePage.drawImage(image, {
+                x: imgX,
+                y: imgY,
+                width: scaledWidth,
+                height: scaledHeight,
+              });
             }
-
-            const scaledWidth = imgDims.width * scale;
-            const scaledHeight = imgDims.height * scale;
-
-            const imagePage = pdfDoc.addPage([612, 792]);
-
-            // Add receipt header
-            const pageLabel = redactedImages.length > 1
-              ? `Receipt ${i + 1}: ${vendorName} (Page ${pageIdx + 1}/${redactedImages.length})`
-              : `Receipt ${i + 1}: ${vendorName}`;
-
-            imagePage.drawText(pageLabel, {
-              x: 50,
-              y: 760,
-              size: 12,
-              font: helveticaBold,
-              color: primaryBlue,
-            });
-
-            // Center the image below the header
-            const imgX = (612 - scaledWidth) / 2;
-            const imgY = (742 - scaledHeight) / 2;
-
-            imagePage.drawImage(image, {
-              x: imgX,
-              y: imgY,
-              width: scaledWidth,
-              height: scaledHeight,
-            });
           }
         } catch (err) {
           console.error(`Error processing PDF ${file.name}:`, err);
@@ -472,7 +505,8 @@ export async function POST(request: NextRequest) {
           });
         }
       } else {
-        // For images, embed directly (no redaction for now)
+        // For images, embed directly (with redaction)
+        const vendorName = receipts[i]?.data.vendor || file.name.replace(/\.[^/.]+$/, '') || 'Receipt';
         try {
           let image;
           if (file.type === 'image/png') {
@@ -497,7 +531,7 @@ export async function POST(request: NextRequest) {
           const scaledHeight = imgDims.height * scale;
 
           const imagePage = pdfDoc.addPage([612, 792]);
-          imagePage.drawText(`Receipt ${i + 1}: ${receipts[i]?.data.vendor || file.name}`, {
+          imagePage.drawText(`Receipt ${i + 1}: ${vendorName}`, {
             x: 50,
             y: 750,
             size: 12,
@@ -516,6 +550,22 @@ export async function POST(request: NextRequest) {
           });
         } catch (err) {
           console.error(`Error embedding image ${file.name}:`, err);
+          // Create error page for failed image
+          const errorPage = pdfDoc.addPage([612, 792]);
+          errorPage.drawText(`Receipt ${i + 1}: ${vendorName}`, {
+            x: 50,
+            y: 700,
+            size: 14,
+            font: helveticaBold,
+            color: primaryBlue,
+          });
+          errorPage.drawText('(Could not process this image)', {
+            x: 50,
+            y: 680,
+            size: 10,
+            font: helvetica,
+            color: gray,
+          });
         }
       }
     }
