@@ -5,21 +5,29 @@ import sharp from 'sharp';
 
 // Text patterns to redact and their replacements
 const REDACTION_PATTERNS = [
+  // Name patterns (check longer patterns first)
+  { search: "Frank Sandoval", replace: "Bogner Pools" },
+  { search: "FRANK SANDOVAL", replace: "Bogner Pools" },
+  { search: "frank sandoval", replace: "Bogner Pools" },
   // Email patterns
   { search: "frankster@fsandoval.net's Organization", replace: "Bogner Pools" },
   { search: "Frank Sandoval's projects", replace: "Bogner Pools" },
   { search: "frankster@fsandoval.net", replace: "franks@bognerpools.com" },
   { search: "frank@greatoakis.com", replace: "franks@bognerpools.com" },
+  { search: "frank@fsandoval.net", replace: "franks@bognerpools.com" },
+  { search: "fsandoval@gmail.com", replace: "franks@bognerpools.com" },
   // Address patterns - full variations
   { search: "41040 LOS RANCHOS CIRCLE", replace: "5045 Van Buren Blvd" },
   { search: "41040 Los Ranchos Circle", replace: "5045 Van Buren Blvd" },
   { search: "41040 LOS RANCHOS CIR", replace: "5045 Van Buren Blvd" },
   { search: "41040 Los Ranchos Cir", replace: "5045 Van Buren Blvd" },
+  { search: "41040 Los Ranchos", replace: "5045 Van Buren Blvd" },
   // City/State/Zip patterns
   { search: "TEMECULA, CA 92592", replace: "Riverside, CA 92503" },
   { search: "TEMECULA, California 92592", replace: "Riverside, CA 92503" },
   { search: "Temecula, CA 92592", replace: "Riverside, CA 92503" },
   { search: "Temecula, California 92592", replace: "Riverside, CA 92503" },
+  { search: "Temecula CA 92592", replace: "Riverside CA 92503" },
   // City alone
   { search: "TEMECULA", replace: "Riverside" },
   { search: "Temecula", replace: "Riverside" },
@@ -87,18 +95,22 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
       const compositeOps: sharp.OverlayOptions[] = [];
 
       for (const r of redactions) {
-        const padding = 1 * scale;
-        const boxW = Math.ceil(r.width + padding * 2);
+        const padding = 2 * scale;
         const boxH = Math.ceil(r.height + padding * 2);
 
-        // Calculate font size based on box height (slightly smaller than box to fit)
-        const fontSize = Math.max(10, Math.floor(boxH * 0.7));
+        // Calculate font size based on box height
+        const fontSize = Math.max(12, Math.floor(boxH * 0.65));
+
+        // Estimate width needed for replacement text (approx 0.6 * fontSize per character)
+        const estimatedTextWidth = r.replace.length * fontSize * 0.55;
+        const minBoxW = Math.ceil(r.width + padding * 2);
+        const boxW = Math.max(minBoxW, Math.ceil(estimatedTextWidth + padding * 2));
 
         // Create SVG with white background and replacement text
         const svgText = `
           <svg width="${boxW}" height="${boxH}" xmlns="http://www.w3.org/2000/svg">
             <rect width="100%" height="100%" fill="white"/>
-            <text x="1" y="${boxH * 0.75}" font-family="Arial, Helvetica, sans-serif" font-size="${fontSize}" fill="#333333">${escapeXml(r.replace)}</text>
+            <text x="${padding}" y="${boxH * 0.72}" font-family="Arial, Helvetica, sans-serif" font-size="${fontSize}" fill="#333333">${escapeXml(r.replace)}</text>
           </svg>
         `;
 
