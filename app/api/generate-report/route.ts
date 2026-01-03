@@ -35,9 +35,18 @@ const REDACTION_PATTERNS = [
 
 const REPLACEMENT_TEXT = "Bogner Pools";
 
-// Process PDF: white out personal info and add replacement text
-async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
-  const images: Buffer[] = [];
+interface RedactionResult {
+  imageBuffer: Buffer;
+  // Redaction positions in PDF coordinates (for drawing text with pdf-lib)
+  textPositions: Array<{x: number; y: number; fontSize: number}>;
+  // Original page dimensions
+  pageWidth: number;
+  pageHeight: number;
+}
+
+// Process PDF: white out personal info and return positions for text overlay
+async function redactPdfToImage(pdfBuffer: Buffer): Promise<RedactionResult[]> {
+  const results: RedactionResult[] = [];
 
   try {
     const doc = mupdf.Document.openDocument(pdfBuffer, "application/pdf") as mupdf.PDFDocument;
@@ -46,6 +55,8 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
     for (let pageNum = 0; pageNum < pageCount; pageNum++) {
       const page = doc.loadPage(pageNum) as mupdf.PDFPage;
       const bounds = page.getBounds();
+      const pageWidth = bounds[2] - bounds[0];
+      const pageHeight = bounds[3] - bounds[1];
 
       // Render at 2x resolution for quality
       const scale = 2;
@@ -59,7 +70,7 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
       const pngBuffer = Buffer.from(pixmap.asPNG());
 
       // Find all text locations that need redaction
-      const redactions: Array<{x: number; y: number; width: number; height: number}> = [];
+      const redactions: Array<{x: number; y: number; width: number; height: number; pdfX: number; pdfY: number; pdfH: number}> = [];
 
       for (const searchText of REDACTION_PATTERNS) {
         const hits = page.search(searchText);
@@ -75,51 +86,59 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
               const x1 = Math.max(q[0], q[2], q[4], q[6]);
               const y1 = Math.max(q[1], q[3], q[5], q[7]);
 
+              // Image coordinates (scaled)
               const imgX = Math.floor((x0 - bounds[0]) * scale);
               const imgY = Math.floor((y0 - bounds[1]) * scale);
               const imgW = Math.ceil((x1 - x0) * scale);
               const imgH = Math.ceil((y1 - y0) * scale);
 
-              redactions.push({ x: imgX, y: imgY, width: imgW, height: imgH });
+              // PDF coordinates (relative to page origin)
+              const pdfX = x0 - bounds[0];
+              const pdfY = y0 - bounds[1];
+              const pdfH = y1 - y0;
+
+              redactions.push({ x: imgX, y: imgY, width: imgW, height: imgH, pdfX, pdfY, pdfH });
             }
           }
         }
       }
 
       if (redactions.length === 0) {
-        images.push(pngBuffer);
+        results.push({ imageBuffer: pngBuffer, textPositions: [], pageWidth, pageHeight });
         continue;
       }
 
-      // White out all personal info and add replacement text
+      // White out all personal info (just white boxes, no text)
       const compositeOps: sharp.OverlayOptions[] = [];
+      const textPositions: Array<{x: number; y: number; fontSize: number}> = [];
 
       for (const r of redactions) {
         const padding = 2 * scale;
+        const boxW = Math.ceil(r.width + padding * 2);
         const boxH = Math.ceil(r.height + padding * 2);
 
-        // Calculate font size based on box height
-        const fontSize = Math.max(12, Math.floor(boxH * 0.65));
-
-        // Estimate width needed for "Bogner Pools" text
-        const estimatedTextWidth = REPLACEMENT_TEXT.length * fontSize * 0.55;
-        const minBoxW = Math.ceil(r.width + padding * 2);
-        const boxW = Math.max(minBoxW, Math.ceil(estimatedTextWidth + padding * 2));
-
-        // Create SVG with white background and replacement text
-        const svgText = `
-          <svg width="${boxW}" height="${boxH}" xmlns="http://www.w3.org/2000/svg">
-            <rect width="100%" height="100%" fill="white"/>
-            <text x="${padding}" y="${boxH * 0.72}" font-family="Arial, Helvetica, sans-serif" font-size="${fontSize}" fill="#333333">${escapeXml(REPLACEMENT_TEXT)}</text>
-          </svg>
-        `;
-
-        const textBox = await sharp(Buffer.from(svgText)).png().toBuffer();
+        // Create white box
+        const whiteBox = await sharp({
+          create: {
+            width: boxW,
+            height: boxH,
+            channels: 3,
+            background: { r: 255, g: 255, b: 255 }
+          }
+        }).png().toBuffer();
 
         compositeOps.push({
-          input: textBox,
+          input: whiteBox,
           left: Math.max(0, Math.floor(r.x - padding)),
           top: Math.max(0, Math.floor(r.y - padding)),
+        });
+
+        // Store position for pdf-lib text drawing (convert to PDF coordinate system)
+        const fontSize = Math.max(8, Math.floor(r.pdfH * 0.8));
+        textPositions.push({
+          x: r.pdfX,
+          y: r.pdfY,
+          fontSize
         });
       }
 
@@ -128,24 +147,14 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
         .png()
         .toBuffer();
 
-      images.push(redactedBuffer);
+      results.push({ imageBuffer: redactedBuffer, textPositions, pageWidth, pageHeight });
     }
 
-    return images;
+    return results;
   } catch (err) {
     console.error("Error redacting PDF:", err);
     return [];
   }
-}
-
-// Helper to escape XML special characters for SVG
-function escapeXml(text: string): string {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;');
 }
 
 interface ReceiptData {
@@ -464,25 +473,25 @@ export async function POST(request: NextRequest) {
               });
             }
           } else {
-            // Embed each page as an image
+            // Embed each page as an image with text overlays
             for (let pageIdx = 0; pageIdx < redactedImages.length; pageIdx++) {
-              const imgBuffer = redactedImages[pageIdx];
-              const image = await pdfDoc.embedPng(imgBuffer);
+              const result = redactedImages[pageIdx];
+              const image = await pdfDoc.embedPng(result.imageBuffer);
               const imgDims = image.scale(1);
 
               // Scale to fit page (leave room for header)
               const maxWidth = 562; // 612 - 50 margin on each side
               const maxHeight = 712; // 792 - 50 margin top - 30 header
-              let scale = 1;
+              let imgScale = 1;
               if (imgDims.width > maxWidth) {
-                scale = maxWidth / imgDims.width;
+                imgScale = maxWidth / imgDims.width;
               }
-              if (imgDims.height * scale > maxHeight) {
-                scale = maxHeight / imgDims.height;
+              if (imgDims.height * imgScale > maxHeight) {
+                imgScale = maxHeight / imgDims.height;
               }
 
-              const scaledWidth = imgDims.width * scale;
-              const scaledHeight = imgDims.height * scale;
+              const scaledWidth = imgDims.width * imgScale;
+              const scaledHeight = imgDims.height * imgScale;
 
               const imagePage = pdfDoc.addPage([612, 792]);
 
@@ -509,6 +518,24 @@ export async function POST(request: NextRequest) {
                 width: scaledWidth,
                 height: scaledHeight,
               });
+
+              // Draw "Bogner Pools" text at each redaction position
+              // Convert from original PDF coords to final page coords
+              const pdfToPageScale = scaledWidth / result.pageWidth;
+              for (const pos of result.textPositions) {
+                const textX = imgX + (pos.x * pdfToPageScale);
+                // PDF y-coords are from bottom, but mupdf returns from top, so we flip
+                const textY = imgY + scaledHeight - ((pos.y + pos.fontSize) * pdfToPageScale);
+                const textSize = Math.max(6, Math.min(12, pos.fontSize * pdfToPageScale));
+
+                imagePage.drawText(REPLACEMENT_TEXT, {
+                  x: textX,
+                  y: textY,
+                  size: textSize,
+                  font: helvetica,
+                  color: rgb(0.2, 0.2, 0.2),
+                });
+              }
             }
           }
         } catch (err) {
