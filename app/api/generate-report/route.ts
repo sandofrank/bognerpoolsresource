@@ -27,7 +27,7 @@ const REDACTION_PATTERNS = [
   { search: "92592", replace: "92503" },
 ];
 
-// Process PDF: white out personal info only
+// Process PDF: white out personal info and add replacement text
 async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
   const images: Buffer[] = [];
 
@@ -50,8 +50,8 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
 
       const pngBuffer = Buffer.from(pixmap.asPNG());
 
-      // Find all text locations that need redaction
-      const redactions: Array<{x: number; y: number; width: number; height: number}> = [];
+      // Find all text locations that need redaction along with their replacements
+      const redactions: Array<{x: number; y: number; width: number; height: number; replace: string}> = [];
 
       for (const pattern of REDACTION_PATTERNS) {
         const hits = page.search(pattern.search);
@@ -72,7 +72,7 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
               const imgW = Math.ceil((x1 - x0) * scale);
               const imgH = Math.ceil((y1 - y0) * scale);
 
-              redactions.push({ x: imgX, y: imgY, width: imgW, height: imgH });
+              redactions.push({ x: imgX, y: imgY, width: imgW, height: imgH, replace: pattern.replace });
             }
           }
         }
@@ -83,7 +83,7 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
         continue;
       }
 
-      // White out all personal info
+      // White out all personal info and add replacement text
       const compositeOps: sharp.OverlayOptions[] = [];
 
       for (const r of redactions) {
@@ -91,17 +91,21 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
         const boxW = Math.ceil(r.width + padding * 2);
         const boxH = Math.ceil(r.height + padding * 2);
 
-        const whiteBox = await sharp({
-          create: {
-            width: boxW,
-            height: boxH,
-            channels: 3,
-            background: { r: 255, g: 255, b: 255 }
-          }
-        }).png().toBuffer();
+        // Calculate font size based on box height (slightly smaller than box to fit)
+        const fontSize = Math.max(10, Math.floor(boxH * 0.7));
+
+        // Create SVG with white background and replacement text
+        const svgText = `
+          <svg width="${boxW}" height="${boxH}" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100%" height="100%" fill="white"/>
+            <text x="1" y="${boxH * 0.75}" font-family="Arial, Helvetica, sans-serif" font-size="${fontSize}" fill="#333333">${escapeXml(r.replace)}</text>
+          </svg>
+        `;
+
+        const textBox = await sharp(Buffer.from(svgText)).png().toBuffer();
 
         compositeOps.push({
-          input: whiteBox,
+          input: textBox,
           left: Math.max(0, Math.floor(r.x - padding)),
           top: Math.max(0, Math.floor(r.y - padding)),
         });
@@ -120,6 +124,16 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
     console.error("Error redacting PDF:", err);
     return [];
   }
+}
+
+// Helper to escape XML special characters for SVG
+function escapeXml(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
 }
 
 interface ReceiptData {
