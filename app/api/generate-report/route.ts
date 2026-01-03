@@ -34,6 +34,7 @@ const REDACTION_PATTERNS = [
 ];
 
 const REPLACEMENT_TEXT = "Bogner Pools";
+const BOGNER_ADDRESS = "5045 Van Buren Blvd, Riverside, CA 92503";
 
 interface RedactionResult {
   imageBuffer: Buffer;
@@ -534,6 +535,23 @@ export async function POST(request: NextRequest) {
                   font: helvetica,
                   color: rgb(0.2, 0.2, 0.2),
                 });
+
+                // Add address below if it fits (check if there's room below the text)
+                const addressY = textY - textSize - 2;
+                const addressSize = Math.max(5, textSize * 0.8);
+                // Estimate address width (approx 0.5 * fontSize per char)
+                const addressWidth = BOGNER_ADDRESS.length * addressSize * 0.5;
+                const rightEdge = imgX + scaledWidth;
+
+                if (addressY > imgY && (textX + addressWidth) < rightEdge) {
+                  imagePage.drawText(BOGNER_ADDRESS, {
+                    x: textX,
+                    y: addressY,
+                    size: addressSize,
+                    font: helvetica,
+                    color: rgb(0.2, 0.2, 0.2),
+                  });
+                }
               }
             }
           }
