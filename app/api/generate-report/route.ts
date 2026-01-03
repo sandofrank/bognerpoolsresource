@@ -519,12 +519,11 @@ export async function POST(request: NextRequest) {
                 height: scaledHeight,
               });
 
-              // Draw "Bogner Pools" text at each redaction position
-              // Convert from original PDF coords to final page coords
-              const pdfToPageScale = scaledWidth / result.pageWidth;
-              for (const pos of result.textPositions) {
+              // Draw "Bogner Pools" once at the first redaction position (if any)
+              if (result.textPositions.length > 0) {
+                const pos = result.textPositions[0];
+                const pdfToPageScale = scaledWidth / result.pageWidth;
                 const textX = imgX + (pos.x * pdfToPageScale);
-                // PDF y-coords are from bottom, but mupdf returns from top, so we flip
                 const textY = imgY + scaledHeight - ((pos.y + pos.fontSize) * pdfToPageScale);
                 const textSize = Math.max(6, Math.min(12, pos.fontSize * pdfToPageScale));
 
