@@ -3,37 +3,37 @@ import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
 import * as mupdf from 'mupdf';
 import sharp from 'sharp';
 
-// Text patterns to redact and their replacements
+// Text patterns to redact - all replaced with "Bogner Pools"
 const REDACTION_PATTERNS = [
-  // Name patterns (check longer patterns first)
-  { search: "Frank Sandoval", replace: "Bogner Pools" },
-  { search: "FRANK SANDOVAL", replace: "Bogner Pools" },
-  { search: "frank sandoval", replace: "Bogner Pools" },
+  // Name patterns
+  "Frank Sandoval",
+  "FRANK SANDOVAL",
+  "frank sandoval",
   // Email patterns
-  { search: "frankster@fsandoval.net's Organization", replace: "Bogner Pools" },
-  { search: "Frank Sandoval's projects", replace: "Bogner Pools" },
-  { search: "frankster@fsandoval.net", replace: "franks@bognerpools.com" },
-  { search: "frank@greatoakis.com", replace: "franks@bognerpools.com" },
-  { search: "frank@fsandoval.net", replace: "franks@bognerpools.com" },
-  { search: "fsandoval@gmail.com", replace: "franks@bognerpools.com" },
-  // Address patterns - full variations
-  { search: "41040 LOS RANCHOS CIRCLE", replace: "5045 Van Buren Blvd" },
-  { search: "41040 Los Ranchos Circle", replace: "5045 Van Buren Blvd" },
-  { search: "41040 LOS RANCHOS CIR", replace: "5045 Van Buren Blvd" },
-  { search: "41040 Los Ranchos Cir", replace: "5045 Van Buren Blvd" },
-  { search: "41040 Los Ranchos", replace: "5045 Van Buren Blvd" },
+  "frankster@fsandoval.net's Organization",
+  "Frank Sandoval's projects",
+  "frankster@fsandoval.net",
+  "frank@greatoakis.com",
+  "frank@fsandoval.net",
+  "fsandoval@gmail.com",
+  // Address patterns
+  "41040 LOS RANCHOS CIRCLE",
+  "41040 Los Ranchos Circle",
+  "41040 LOS RANCHOS CIR",
+  "41040 Los Ranchos Cir",
+  "41040 Los Ranchos",
   // City/State/Zip patterns
-  { search: "TEMECULA, CA 92592", replace: "Riverside, CA 92503" },
-  { search: "TEMECULA, California 92592", replace: "Riverside, CA 92503" },
-  { search: "Temecula, CA 92592", replace: "Riverside, CA 92503" },
-  { search: "Temecula, California 92592", replace: "Riverside, CA 92503" },
-  { search: "Temecula CA 92592", replace: "Riverside CA 92503" },
-  // City alone
-  { search: "TEMECULA", replace: "Riverside" },
-  { search: "Temecula", replace: "Riverside" },
-  // Zip code alone (last to avoid partial matches)
-  { search: "92592", replace: "92503" },
+  "TEMECULA, CA 92592",
+  "TEMECULA, California 92592",
+  "Temecula, CA 92592",
+  "Temecula, California 92592",
+  "Temecula CA 92592",
+  "TEMECULA",
+  "Temecula",
+  "92592",
 ];
+
+const REPLACEMENT_TEXT = "Bogner Pools";
 
 // Process PDF: white out personal info and add replacement text
 async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
@@ -58,11 +58,11 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
 
       const pngBuffer = Buffer.from(pixmap.asPNG());
 
-      // Find all text locations that need redaction along with their replacements
-      const redactions: Array<{x: number; y: number; width: number; height: number; replace: string}> = [];
+      // Find all text locations that need redaction
+      const redactions: Array<{x: number; y: number; width: number; height: number}> = [];
 
-      for (const pattern of REDACTION_PATTERNS) {
-        const hits = page.search(pattern.search);
+      for (const searchText of REDACTION_PATTERNS) {
+        const hits = page.search(searchText);
 
         for (const hit of hits) {
           const quads = Array.isArray(hit[0]) ? hit : [hit];
@@ -80,7 +80,7 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
               const imgW = Math.ceil((x1 - x0) * scale);
               const imgH = Math.ceil((y1 - y0) * scale);
 
-              redactions.push({ x: imgX, y: imgY, width: imgW, height: imgH, replace: pattern.replace });
+              redactions.push({ x: imgX, y: imgY, width: imgW, height: imgH });
             }
           }
         }
@@ -101,8 +101,8 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
         // Calculate font size based on box height
         const fontSize = Math.max(12, Math.floor(boxH * 0.65));
 
-        // Estimate width needed for replacement text (approx 0.6 * fontSize per character)
-        const estimatedTextWidth = r.replace.length * fontSize * 0.55;
+        // Estimate width needed for "Bogner Pools" text
+        const estimatedTextWidth = REPLACEMENT_TEXT.length * fontSize * 0.55;
         const minBoxW = Math.ceil(r.width + padding * 2);
         const boxW = Math.max(minBoxW, Math.ceil(estimatedTextWidth + padding * 2));
 
@@ -110,7 +110,7 @@ async function redactPdfToImage(pdfBuffer: Buffer): Promise<Buffer[]> {
         const svgText = `
           <svg width="${boxW}" height="${boxH}" xmlns="http://www.w3.org/2000/svg">
             <rect width="100%" height="100%" fill="white"/>
-            <text x="${padding}" y="${boxH * 0.72}" font-family="Arial, Helvetica, sans-serif" font-size="${fontSize}" fill="#333333">${escapeXml(r.replace)}</text>
+            <text x="${padding}" y="${boxH * 0.72}" font-family="Arial, Helvetica, sans-serif" font-size="${fontSize}" fill="#333333">${escapeXml(REPLACEMENT_TEXT)}</text>
           </svg>
         `;
 
